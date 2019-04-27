@@ -1,5 +1,6 @@
 {
   "projects": {
-    "fempower": "fempowerbackend"
+    "fempower": "fempowerbackend",
+    "default": "fempowerbackend"
   }
 }
