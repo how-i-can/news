@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "y",
+    "public": "client",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,7 +12,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "y/index.html"
+        "destination": "client/index.html"
       }
     ]
   },
