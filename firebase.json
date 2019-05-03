@@ -3,16 +3,12 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "client",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "public": "client-front",
+
     "rewrites": [
       {
         "source": "**",
-        "destination": "client/index.html"
+        "destination": "/public/index.html"
       }
     ]
   },
