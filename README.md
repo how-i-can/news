@@ -8,7 +8,7 @@ Basic news app for displaying trending, current news in the United States
 git clone
 cd server
 npm install
-cd ../client-front
+cd ../client
 npm install
 ```
 
