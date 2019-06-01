@@ -74,6 +74,7 @@ class NewsCard extends React.Component {
           image="/static/images/cards/paella.jpg"
           title="Paella dish"
         />
+        {console.log(classes)}
         <CardContent>
           <Typography component="p">
             This impressive paella is a perfect party dish and a fun meal to

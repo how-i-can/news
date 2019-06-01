@@ -8,6 +8,12 @@ Basic news app for displaying trending, current news in the United States
 git clone
 cd server
 npm install
+touch .env
+```
+
+Add NEWS API key
+
+```
 cd ../client
 npm install
 ```

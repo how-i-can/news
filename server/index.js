@@ -1,17 +1,32 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const volleyball = require("volleyball");
 const app = express();
 const port = process.env.PORT || 3000;
-const newsApi = require("./newsapi");
+const axios = require("axios");
+
+const API_KEY = process.env.NEWS_API_KEY;
+const newsApiURL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 
 const bodyParser = express.json();
 
 //logging HTTP requests and responses
 app.use(volleyball);
 //cross-origin resource sharing
+app.use(bodyParser);
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.get("/", (req, res) => res.send(newsApi));
+app.get("/", (req, res, next) => {
+  axios
+    .get(newsApiURL)
+    .then(response => {
+      res.json(response.data.articles);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
 
 //Error Handling
 function notFound(req, res, next) {
