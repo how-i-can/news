@@ -1,36 +1,51 @@
-const express = require('express');
-const cors = require('cors');
-const volleyball = require('volleyball');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const volleyball = require("volleyball");
 const app = express();
 const port = process.env.PORT || 3000;
+const axios = require("axios");
 
+const API_KEY = process.env.NEWS_API_KEY;
+const newsApiURL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 
 const bodyParser = express.json();
 
 //logging HTTP requests and responses
 app.use(volleyball);
 //cross-origin resource sharing
+app.use(bodyParser);
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get("/", (req, res, next) => {
+  axios
+    .get(newsApiURL)
+    .then(response => {
+      res.json(response.data.articles);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
 
 //Error Handling
 function notFound(req, res, next) {
-    res.status(404);
-    const error = new Error("Not Found - " + req.originalUrl);
-    //next forwards an error
-    //next() is a function that tells the code to go on to the NEXT middleware so that it can do its thing
-    next(error);
-};
-  
+  res.status(404);
+  const error = new Error("Not Found - " + req.originalUrl);
+  //next forwards an error
+  //next() is a function that tells the code to go on to the NEXT middleware so that it can do its thing
+  next(error);
+}
+
 function errorHandler(err, req, res, next) {
-    res.status(res.statusCode || 500);
-    res.json({
-      message: err.message,
-      stack: err.stack
-    });
-};
-  
+  res.status(res.statusCode || 500);
+  res.json({
+    message: err.message,
+    stack: err.stack
+  });
+}
+
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Listening on port ${port}!`))
+app.listen(port, () => console.log(`Listening on port ${port}!`));
