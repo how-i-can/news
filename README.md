@@ -11,9 +11,11 @@ npm install
 touch .env
 ```
 
-Add NEWS API key
+Add NEWS API key in the .env file
 
 ```
+NEWS_API_KEY=yourkey
+npm run dev
 cd ../client
 npm install
 ```
@@ -21,11 +23,13 @@ npm install
 ## Built With
 
 - [Express](https://expressjs.com/en/starter/installing.html) - The web framework for Node.js
-- [CORS](https://www.npmjs.com/package/cors) - Node.js package for providing middleware to enable CORS - Cross-origin resource sharing
-- [Volleyball](https://www.npmjs.com/package/volleyball) - Express HTTP logger
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 - [create-react-app](https://github.com/facebook/create-react-app) - Set up a modern web app by running one command.
+- [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+- [News API](https://newsapi.org/) - News API is a simple HTTP REST API for searching and retrieving live articles from all over the web
 
 ## Authors
 
-//add yourselves here
+- **Paulina Carolina** - [GitHub](https://github.com/codelikeamexican)
+- **Rooshee Roy** - [GitHub](https://github.com/roo-shy)
+- **Mariya Mego Vela** - [GitHub](https://github.com/mash-a)
