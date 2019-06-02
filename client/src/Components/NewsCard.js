@@ -69,11 +69,7 @@ class NewsCard extends React.Component {
           title="Shrimp and Chorizo Paella"
           subheader="September 14, 2016"
         />
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
-        />
+        <CardMedia className={classes.media} image="#" title="Paella dish" />
         {console.log(classes)}
         <CardContent>
           <Typography component="p">
