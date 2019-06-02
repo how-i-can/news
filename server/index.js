@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const volleyball = require("volleyball");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const axios = require("axios");
 
 const API_KEY = process.env.NEWS_API_KEY;
@@ -16,8 +16,9 @@ app.use(volleyball);
 //cross-origin resource sharing
 app.use(bodyParser);
 app.use(express.urlencoded({ extended: true }));
+
 app.use(cors());
-app.get("/", (req, res, next) => {
+app.get("/news", (req, res, next) => {
   axios
     .get(newsApiURL)
     .then(response => {
