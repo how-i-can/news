@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import NewsCard from "./NewsCard";
 
 class NewsCards extends Component {
-  componentDidMount = async () => {
-    const response = await fetch("/news");
-    const json = response.json();
-    await this.props.handleChange("articles", json);
+  componentDidMount = () => {
+    fetch("/news")
+      .then(response => response.json())
+      .then(response => {
+        this.props.handleChange("articles", response);
+      });
   };
   render() {
     return <NewsCard />;
