@@ -10,7 +10,14 @@ class NewsCards extends Component {
       });
   };
   render() {
-    return <NewsCard />;
+    const { articles } = this.props;
+    return (
+      <div>
+        {articles.map((article, index) => (
+          <NewsCard article={article} key={index} />
+        ))}
+      </div>
+    );
   }
 }
 

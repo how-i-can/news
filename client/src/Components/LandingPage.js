@@ -19,7 +19,10 @@ class LandingPage extends Component {
     return (
       <div className="LandingPage">
         <NavBar />
-        <NewsCards handleChange={this.handleChange} />
+        <NewsCards
+          handleChange={this.handleChange}
+          articles={this.state.articles}
+        />
       </div>
     );
   }
