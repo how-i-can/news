@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
 import NewsCards from "./NewsCards";
+import SearchBar from "./SearchBar";
 
 class LandingPage extends Component {
   constructor(props) {
@@ -23,6 +24,9 @@ class LandingPage extends Component {
           handleChange={this.handleChange}
           articles={this.state.articles}
         />
+        <SearchBar
+          handleInputChange={this.handleInputChange}
+          results={this.state.results} />
       </div>
     );
   }
