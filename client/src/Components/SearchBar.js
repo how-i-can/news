@@ -6,13 +6,9 @@ import Suggestions from "./Suggestions"
 
 
 class Search extends Component {
-  state = {
-    query: '',
-    results: []
-  }
 
   getInfo = () => {
-    fetch(`https://newsapi.org/v2/top-headlines?q=${this.state.query}&apiKey=e317b0d0248c4948b663ee58365af377`)
+    fetch(`https://newsapi.org/v2/top-headlines?q=${this.state.query}&apiKey={}`)
       .then(({ data }) => {
         this.setState({
           results: data.data // News API returns an object named data,

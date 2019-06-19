@@ -8,7 +8,9 @@ class LandingPage extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      articles: []
+      articles: [],
+      query: '',
+      searchResults: []
     };
   }
 
@@ -26,7 +28,7 @@ class LandingPage extends Component {
         />
         <SearchBar
           handleInputChange={this.handleInputChange}
-          results={this.state.results} />
+          searchResults={this.state.searchResults} />
       </div>
     );
   }
