@@ -7,28 +7,6 @@ import Suggestions from "./Suggestions"
 
 class Search extends Component {
 
-  getInfo = () => {
-    fetch(`https://newsapi.org/v2/top-headlines?q=${this.state.query}&apiKey={}`)
-      .then(({ data }) => {
-        this.setState({
-          results: data.data // News API returns an object named data,
-                             // as does axios. So... data.data
-        })
-      })
-  }
-
-  handleInputChange = () => {
-    this.setState({
-      query: this.search.value
-    }, () => {
-      if (this.state.query && this.state.query.length > 1) {
-        if (this.state.query.length % 2 === 0) {
-          this.getInfo()
-        }
-      }
-    })
-  }
-
   render() {
     return (
       <form>

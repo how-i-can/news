@@ -2,21 +2,42 @@ import React, { Component } from "react";
 import NavBar from "./NavBar";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
+import axios from 'axios'
 
 class LandingPage extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
+  state = {
       articles: [],
       query: '',
       searchResults: []
-    };
-  }
+    }
 
   handleChange = (indexKey, data) => {
     this.setState({ [indexKey]: data });
   };
+
+  getInfo = () => {
+    const { query } = this.state;
+    axios.post('/news/search', { query })
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          results: response// News API returns an object named data,
+                           // as does axios. So... data.data
+        })
+      })
+  }
+
+  handleInputChange = () => {
+    this.setState({
+      query: this.search.value
+    }, () => {
+      if (this.state.query && this.state.query.length > 1) {
+        if (this.state.query.length % 2 === 0) {
+          this.getInfo()
+        }
+      }
+    })
+  }
 
   render() {
     return (
