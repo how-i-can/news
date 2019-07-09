@@ -24,6 +24,10 @@ const styles = theme => ({
   grow: {
     flexGrow: 1
   },
+  appBar: {
+    backgroundColor: 'white',
+    color: 'grey'
+  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20
@@ -52,7 +56,6 @@ const styles = theme => ({
   searchIcon: {
     width: theme.spacing.unit * 9,
     height: "100%",
-    position: "absolute",
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
@@ -60,13 +63,13 @@ const styles = theme => ({
   },
   inputRoot: {
     color: "inherit",
-    width: "100%"
+    width: 350
   },
   inputInput: {
     paddingTop: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
+    // paddingLeft: theme.spacing.unit * 10,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
@@ -164,7 +167,9 @@ class NavBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar
+          className={classes.appBar}
+          position="static">
           <Toolbar>
             <IconButton
               className={classes.menuButton}
@@ -179,19 +184,18 @@ class NavBar extends React.Component {
               color="inherit"
               noWrap
             >
-              Material-UI
             </Typography>
             <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="What are you looking for?"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
               />
+            </div>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
