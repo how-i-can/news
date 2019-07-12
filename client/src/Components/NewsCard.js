@@ -21,6 +21,12 @@ const styles = theme => ({
     maxWidth: 400,
     marginTop: 10
   },
+  title: {
+    fontSize: '10px',
+    color: "white",
+    textAlign: "left",
+    paddingBottom: 15
+  },
   media: {
     height: 0,
     paddingTop: "56.25%"
@@ -61,6 +67,7 @@ class NewsCard extends React.Component {
             </IconButton>
           }
           title={article.title}
+          className={classes.title}
           subheader={article.publishedAt}
         />
         <CardMedia

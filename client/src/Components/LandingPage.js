@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
+// import BottomNavBar from "./BottomNavBar";
 import NewsCards from "./NewsCards";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -31,6 +32,7 @@ class LandingPage extends Component {
           handleChange={this.handleChange}
           articles={this.state.articles}
         />
+        {/* <BottomNavBar /> */}
       </div>
     );
   }
