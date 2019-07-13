@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import NavBar from "./NavBar";
-// import BottomNavBar from "./BottomNavBar";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
 import axios from 'axios'
@@ -15,33 +13,47 @@ const styles = theme => ({
 class LandingPage extends Component {
   state = {
       articles: [],
+      queriedArticles: [],
       query: '',
-      searchResults: []
-    }
+      error: false,
+      isLoading: false
+  }
 
   handleChange = (indexKey, data) => {
     this.setState({ [indexKey]: data });
   };
 
-  getInfo = () => {
+  getInfo = async () => {
     const { query } = this.state;
-    axios.post('/news/search', { query })
-      .then(response => response.json())
-      .then(response => {
-        this.setState({ results: response })
+    await axios.post('/news/search', { query })
+      .then((response) => {
+        let res = response.data
+        if(res < 6) {
+          this.setState({
+            queriedArticles: response.data
+          })
+        } else {
+          res = res.slice(0, 5)
+          this.setState({
+            queriedArticles: res
+          })
+        }
+        
       })
+      .catch(() => this.setState({ error: true }))
   }
 
-  handleInputChange = () => {
-    // this.setState({
-    //   query: this.search.value
-    // }, () => {
-    //   if (this.state.query && this.state.query.length > 1) {
-    //     if (this.state.query.length % 2 === 0) {
-    //       this.getInfo()
-    //     }
-    //   }
-    // })
+  handleInputChange = (queryVal) => {
+    const { query } = this.state;
+    this.setState({
+      query: queryVal
+    }, () => {
+      if (query && query.length > 1) {
+        if (query.length % 2 === 0) {
+          this.getInfo()
+        }
+      }
+    })
   }
 
   render() {
@@ -50,14 +62,13 @@ class LandingPage extends Component {
       <div className={classes.landingPage}>
       <SearchBar
           handleInputChange={this.handleInputChange}
-          searchResults={this.state.searchResults} />
-        {/* <NavBar query={this.props.query}/> */}
-        <NavBar />
-        <NewsCards
+          queriedArticles={this.state.queriedArticles} 
+          query={this.state.query}
+          />
+      <NewsCards
           handleChange={this.handleChange}
           articles={this.state.articles}
         />
-        {/* <BottomNavBar /> */}
       </div>
     );
   }

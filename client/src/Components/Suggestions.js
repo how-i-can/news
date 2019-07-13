@@ -1,12 +1,16 @@
 import React from 'react'
 
 const Suggestions = (props) => {
-  const options = props.results.map(r => (
+  const options = props.queriedArticles.map(r => (
     <li key={r.id}>
-      {r.name}
+    {console.log(r)}
+      {r.title}
     </li>
   ))
-  return <ul>{options}</ul>
+  let styles = {
+    "list-style": "none"
+  }
+  return <ul style={styles}>{options}</ul>
 }
 
 export default Suggestions
