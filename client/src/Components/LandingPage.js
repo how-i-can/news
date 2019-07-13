@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
+// import BottomNavBar from "./BottomNavBar";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
 import axios from 'axios'
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  landingPage: {
+    width: "100%"
+  }
+});
 
 class LandingPage extends Component {
   state = {
@@ -37,19 +45,22 @@ class LandingPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className="LandingPage">
+      <div className={classes.landingPage}>
       <SearchBar
           handleInputChange={this.handleInputChange}
           searchResults={this.state.searchResults} />
         {/* <NavBar query={this.props.query}/> */}
+        <NavBar />
         <NewsCards
           handleChange={this.handleChange}
           articles={this.state.articles}
         />
+        {/* <BottomNavBar /> */}
       </div>
     );
   }
 }
 
-export default LandingPage;
+export default withStyles(styles)(LandingPage);

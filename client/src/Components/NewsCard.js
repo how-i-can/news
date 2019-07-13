@@ -18,11 +18,18 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const styles = theme => ({
   card: {
-    maxWidth: 400
+    maxWidth: 400,
+    marginTop: 10
+  },
+  title: {
+    fontSize: '10px',
+    color: "white",
+    textAlign: "left",
+    paddingBottom: 15
   },
   media: {
     height: 0,
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%"
   },
   actions: {
     display: "flex"
@@ -60,6 +67,7 @@ class NewsCard extends React.Component {
             </IconButton>
           }
           title={article.title}
+          className={classes.title}
           subheader={article.publishedAt}
         />
         <CardMedia
