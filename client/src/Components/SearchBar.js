@@ -1,26 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Suggestions from "./Suggestions"
-//
-// const { API_KEY } = process.env
-// const API_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
+import InputBase from '@material-ui/core/InputBase';
+import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
 
-class Search extends Component {
 
-  render() {
-    return (
+const styles = theme => ({
+  textField: {
+    width: 200,
+  }
+})
+
+const SearchBar = (props) => {
+  // const { classes } = this.props;
+  
+  return (
       <form>
-        <input
+        <InputBase
           placeholder="Search for..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
+          // ref={input => this.search = input}
+          // onChange={this.handleInputChange}
         />
-        <p>{this.state.query}</p>
-        <Suggestions results={this.state.results} />
+        {/* <p>{this.props.query}</p> */}
+        {/* <Suggestions results={this.props.results} /> */}
       </form>
     )
-  }
 }
 
-export default Search
+SearchBar.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(SearchBar)
 

@@ -20,36 +20,33 @@ class LandingPage extends Component {
     axios.post('/news/search', { query })
       .then(response => response.json())
       .then(response => {
-        this.setState({
-          results: response// News API returns an object named data,
-                           // as does axios. So... data.data
-        })
+        this.setState({ results: response })
       })
   }
 
   handleInputChange = () => {
-    this.setState({
-      query: this.search.value
-    }, () => {
-      if (this.state.query && this.state.query.length > 1) {
-        if (this.state.query.length % 2 === 0) {
-          this.getInfo()
-        }
-      }
-    })
+    // this.setState({
+    //   query: this.search.value
+    // }, () => {
+    //   if (this.state.query && this.state.query.length > 1) {
+    //     if (this.state.query.length % 2 === 0) {
+    //       this.getInfo()
+    //     }
+    //   }
+    // })
   }
 
   render() {
     return (
       <div className="LandingPage">
-        <NavBar />
+      <SearchBar
+          handleInputChange={this.handleInputChange}
+          searchResults={this.state.searchResults} />
+        {/* <NavBar query={this.props.query}/> */}
         <NewsCards
           handleChange={this.handleChange}
           articles={this.state.articles}
         />
-        <SearchBar
-          handleInputChange={this.handleInputChange}
-          searchResults={this.state.searchResults} />
       </div>
     );
   }
