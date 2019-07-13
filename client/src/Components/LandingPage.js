@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
+// import BottomNavBar from "./BottomNavBar";
 import NewsCards from "./NewsCards";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  landingPage: {
+    width: "100%"
+  }
+});
 
 class LandingPage extends Component {
   constructor(props) {
@@ -16,16 +24,18 @@ class LandingPage extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className="LandingPage">
+      <div className={classes.landingPage}>
         <NavBar />
         <NewsCards
           handleChange={this.handleChange}
           articles={this.state.articles}
         />
+        {/* <BottomNavBar /> */}
       </div>
     );
   }
 }
 
-export default LandingPage;
+export default withStyles(styles)(LandingPage);
