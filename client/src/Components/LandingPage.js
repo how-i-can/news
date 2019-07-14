@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
+import BottomNavBar from "./BottomNavBar";
 import axios from 'axios'
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   landingPage: {
     width: "100%"
+  },
+  title: {
+    textAlign: "center",
+    fontFamily: "Roboto",
+    color: "#084D67"
   }
 });
 
@@ -65,10 +71,12 @@ class LandingPage extends Component {
           queriedArticles={this.state.queriedArticles} 
           query={this.state.query}
           />
+      <h3 className={classes.title}>Top Stories</h3>
       <NewsCards
           handleChange={this.handleChange}
           articles={this.state.articles}
         />
+      <BottomNavBar />
       </div>
     );
   }

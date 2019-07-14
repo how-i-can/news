@@ -14,22 +14,31 @@ import red from "@material-ui/core/colors/red";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 const styles = theme => ({
   card: {
+    display: "flex",
     maxWidth: 400,
-    marginTop: 10
+    marginTop: 10,
+    boxShadow: "none"
+  },
+  details: {
+    display: "flex",
+    flexDirection: 'column'
+  },
+  date: {
+    paddingBottom: 10
   },
   title: {
-    fontSize: '10px',
-    color: "white",
-    textAlign: "left",
-    paddingBottom: 15
+    fontSize: 13.5,
+    color: "textPrimary",
+    paddingBottom: 10,
+    textTransform: "uppercase"
   },
   media: {
     height: 0,
-    paddingTop: "56.25%"
+    width: "353px",
+    padding: "10.25%"
   },
   actions: {
     display: "flex"
@@ -60,24 +69,17 @@ class NewsCard extends React.Component {
     const { classes, article } = this.props;
     return (
       <Card className={classes.card}>
-        <CardHeader
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title={article.title}
-          className={classes.title}
+        <div className={classes.details}>
+        {/* <CardHeader
           subheader={article.publishedAt}
-        />
-        <CardMedia
-          className={classes.media}
-          image={article.urlToImage}
-          title="Paella dish"
-        />
+          title={article.title}
+          className={classes.cardHeader}
+        /> */}
         {console.log(classes)}
         <CardContent>
-          <Typography component="p">{article.description}</Typography>
+          <Typography className={classes.date} color="textSecondary">{article.publishedAt}</Typography>
+          <Typography className={classes.title} color="textPrimary">{article.title}</Typography>
+          <Typography component="p" color="textSecondary">{article.description}</Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites">
@@ -103,6 +105,12 @@ class NewsCard extends React.Component {
             <Typography paragraph>{article.content}</Typography>
           </CardContent>
         </Collapse>
+      </div>
+        <CardMedia
+          className={classes.media}
+          image={article.urlToImage}
+          title="Paella dish"
+        />
       </Card>
     );
   }

@@ -18,7 +18,8 @@ const styles = theme => ({
   },
   appBar: {
     backgroundColor: 'white',
-    color: 'grey'
+    color: 'grey',
+    boxShadow: "none"
   },
   title: {
     display: "none",
