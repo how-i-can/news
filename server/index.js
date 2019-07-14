@@ -18,6 +18,11 @@ app.use(bodyParser);
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
+
+app.get("/", (req, res, next) => {
+  res.json({message : "working"})
+})
+// GET top news headlines
 app.get("/news", (req, res, next) => {
   axios
     .get(newsApiURL)
@@ -28,6 +33,19 @@ app.get("/news", (req, res, next) => {
       console.error(err);
     });
 });
+
+//search top news headlines 
+app.use("/news/search", (req, res, next) => {
+  const searchNewsApi = `https://newsapi.org/v2/top-headlines?q=${req.body.query}&apiKey=${API_KEY}`
+  axios
+    .get(searchNewsApi)
+    .then(response => {
+      res.json(response.data.articles);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+})
 
 //Error Handling
 function notFound(req, res, next) {

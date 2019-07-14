@@ -1,4 +1,4 @@
-# News App
+# Perch
 
 Basic news app for displaying trending, current news in the United States
 
@@ -33,3 +33,6 @@ npm install
 - **Paulina Carolina** - [GitHub](https://github.com/codelikeamexican)
 - **Rooshee Roy** - [GitHub](https://github.com/roo-shy)
 - **Mariya Mego Vela** - [GitHub](https://github.com/mash-a)
+
+## License 
+Perch is open source software
