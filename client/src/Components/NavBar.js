@@ -19,7 +19,8 @@ const styles = theme => ({
   },
   appBar: {
     backgroundColor: 'white',
-    color: 'grey'
+    color: 'grey',
+    boxShadow: "none"
   },
   menuButton: {
     marginLeft: -12,
