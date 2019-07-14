@@ -1,14 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import Suggestions from './Suggestions'
 
 const styles = theme => ({
   root: {
@@ -20,10 +19,6 @@ const styles = theme => ({
   appBar: {
     backgroundColor: 'white',
     color: 'grey'
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
   },
   title: {
     display: "none",
@@ -68,84 +63,20 @@ const styles = theme => ({
     [theme.breakpoints.up("md")]: {
       width: 200
     }
-  },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
-  },
-  sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
   }
 });
-
-class NavBar extends React.Component {
+class SearchBar extends Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null
   };
 
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-    this.handleMobileMenuClose();
-  };
-
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
-  };
-
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
-  };
+  handleInput = (e) => {
+    this.props.handleInputChange(e.target.value)
+  }
 
   render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
-    const { classes } = this.props;
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-      </Menu>
-    );
-
-    const renderMobileMenu = (
-      <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-        <MenuItem onClick={this.handleMobileMenuClose}>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMobileMenuClose}>
-
-          <p>Notifications</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
-          <p>Profile</p>
-        </MenuItem>
-      </Menu>
-    );
-
+    const { classes, queriedArticles } = this.props;
     return (
       <div className={classes.root}>
         <AppBar
@@ -164,31 +95,67 @@ class NavBar extends React.Component {
             </div>
             <div className={classes.search}>
               <InputBase
-                placeholder="What are you looking for?"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
+                placeholder="Search for..."
+                // ref={input => this.search = input}
+                onChange={this.handleInput}
               />
+              {/* <p>{this.props.query}</p> */}
+              {console.log(queriedArticles)}
+              <Suggestions queriedArticles={queriedArticles}/>
             </div>
             <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-
-
-            </div>
-            <div className={classes.sectionMobile}>
-            </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
-        {renderMobileMenu}
       </div>
     );
   }
 }
 
-NavBar.propTypes = {
+SearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(NavBar);
+export default withStyles(styles)(SearchBar);
+
+
+
+// import React from 'react'
+// import Suggestions from "./Suggestions"
+// import InputBase from '@material-ui/core/InputBase';
+// import { withStyles } from "@material-ui/core/styles";
+// import PropTypes from "prop-types";
+
+
+
+// const styles = theme => ({
+//   textField: {
+//     width: 200,
+//   }
+// })
+
+// const SearchBar = (props) => {
+//   // const { classes } = this.props;
+
+//   return (
+//       <form>
+//         <InputBase
+//           placeholder="Search for..."
+//           // ref={input => this.search = input}
+//           // onChange={this.handleInputChange}
+//         />
+//         {/* <p>{this.props.query}</p> */}
+//         {/* <Suggestions results={this.props.results} /> */}
+//       </form>
+//     )
+// }
+
+// SearchBar.propTypes = {
+//   classes: PropTypes.object.isRequired
+// };
+
+// export default withStyles(styles)(SearchBar)
+
