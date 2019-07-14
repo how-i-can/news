@@ -15,7 +15,7 @@ Add NEWS API key in the .env file
 
 ```
 NEWS_API_KEY=yourkey
-npm run dev
+npm start
 cd ../client
 npm install
 ```
