@@ -8,7 +8,7 @@ const Suggestions = (props) => {
     </li>
   ))
   let styles = {
-    "list-style": "none"
+    "listStyle": "none"
   }
   return <ul style={styles}>{options}</ul>
 }
