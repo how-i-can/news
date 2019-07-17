@@ -76,7 +76,7 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { classes, queriedArticles } = this.props;
+    const { classes, queriedArticles, handleSearchClick } = this.props;
     return (
       <div className={classes.root}>
         <AppBar
@@ -102,7 +102,7 @@ class SearchBar extends Component {
                 placeholder="Search for..."
                 onChange={this.handleInput}
               />
-              <Suggestions queriedArticles={queriedArticles}/>
+              <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>
             </div>
             <div className={classes.grow} />
           </Toolbar>

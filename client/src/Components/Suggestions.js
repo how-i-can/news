@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Suggestions = (props) => {
-  const options = props.queriedArticles.map(r => (
-    <li key={r.id}>
-    {console.log(r)}
-      {r.title}
-    </li>
-  ))
-  let styles = {
-    "listStyle": "none"
+class Suggestions extends Component {
+
+  handleClick = (e, article) => {
+    this.props.handleSearchClick(e, article)
   }
-  return <ul style={styles}>{options}</ul>
+
+  render() {
+    const options = this.props.queriedArticles.map(article => (
+      <li key={article.id} onClick={(e) => this.handleClick(e, article)}>
+        {article.title}
+      </li>
+    ))
+    let styles = {
+      "listStyle": "none"
+    }
+    return <ul style={styles}>{options}</ul>
+  }
+
 }
 
 export default Suggestions

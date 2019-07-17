@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
@@ -49,7 +49,7 @@ const styles = theme => ({
   }
 });
 
-class NewsCard extends React.Component {
+class NewsCard extends Component {
   state = { expanded: false };
 
   handleExpandClick = () => {
@@ -77,6 +77,7 @@ class NewsCard extends React.Component {
         />
         {console.log(classes)}
         <CardContent>
+          <Typography component="p">By {article.author}</Typography>
           <Typography component="p">{article.description}</Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
