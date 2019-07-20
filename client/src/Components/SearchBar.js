@@ -43,10 +43,8 @@ const styles = theme => ({
     }
   },
   searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: "100%",
+    width: theme.spacing.unit * 5,
     pointerEvents: "none",
-    display: "flex",
     alignItems: "center",
     justifyContent: "center"
   },
