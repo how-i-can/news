@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import classnames from "classnames";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -17,21 +17,16 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   card: {
     maxWidth: 400,
     marginTop: 10,
     boxShadow: "none"
   },
-  // details: {
-    // display: "flex",
-    // flex: 1,
-    // flexDirection: "row"
-  // },
   media: {
-    width: "80px",
-    height: "60px",
+    width: "93px",
+    height: "68px",
     marginTop: 20,
     marginLeft: 20
   },
@@ -39,19 +34,13 @@ const styles = theme => ({
     fontSize: 13.5,
     fontWeight: 500,
     color: "textPrimary",
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    paddingLeft: 0
   },
-  // actions: {
-  //   display: "flex",
-  //   flexWrap: "wrap",
-  //   flexDirection: "column"
-  // },
   expand: {
     transform: "rotate(0deg)",
     marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
+    transition: theme.transitions.create("transform", {duration: theme.transitions.duration.shortest})
   },
   expandOpen: {
     transform: "rotate(180deg)"
@@ -62,78 +51,62 @@ const styles = theme => ({
 });
 
 class NewsCard extends React.Component {
-  state = { expanded: false };
+  state = {
+    expanded: false
+  };
 
   handleExpandClick = () => {
-    this.setState(state => ({ expanded: !state.expanded }));
+    this.setState(state => ({
+      expanded: !state.expanded
+    }));
   };
 
   render() {
-    const { classes, article } = this.props;
-    return (
-      <div className={classes.root}>
-        <Grid container spacing={24}>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-             <Grid item xs={6}>
-               {/* <div className={classes.details}> */}
-              <CardMedia
-                className={classes.media}
-                image={article.urlToImage}
-                title="Paella dish"
-              />
-            {/* </div> */}
-            </Grid>
-          <Grid item xs={6}>
-            {/* <CardHeader
-              subheader={article.publishedAt}
-              title={article.title}
-              className={classes.cardHeader}
-            /> */}
-            {console.log(classes)}
-
+    const {classes, article} = this.props;
+    return (<div className={classes.root}>
+      <Card className={classes.card}>
+        <Grid container="container" spacing={24}>
+          <Grid item="item" xs={12}>
             <CardContent>
               <Typography className={classes.date} color="textSecondary">{article.publishedAt}</Typography>
+            </CardContent>
+          </Grid>
+          <Grid item="item" xs={4}>
+            <CardMedia className={classes.media} image={article.urlToImage} title="Paella dish"/>
+          </Grid>
+          <Grid item="item" xs={8}>
+            <CardContent>
               <Typography className={classes.title} color="textPrimary">{article.title}</Typography>
             </CardContent>
-        </Grid>
-            <Grid item xs={12}>
-              <CardContent>
-            <Typography component="p" color="textSecondary">{article.description}</Typography>
-          </CardContent>
-            <CardActions className={classes.actions} disableActionSpacing>
+          </Grid>
+          <Grid item="item" xs={12}>
+            <CardContent>
+              <Typography component="p" color="textSecondary">{article.description}</Typography>
+            </CardContent>
+            <CardActions className={classes.actions} disableActionSpacing="disableActionSpacing">
               <IconButton aria-label="Add to favorites">
-                <FavoriteIcon />
+                <FavoriteIcon/>
               </IconButton>
               <IconButton aria-label="Share">
-                <ShareIcon />
+                <ShareIcon/>
               </IconButton>
-              <IconButton
-                className={classnames(classes.expand, {
+              <IconButton className={classnames(classes.expand, {
                   [classes.expandOpen]: this.state.expanded
-                })}
-                onClick={this.handleExpandClick}
-                aria-expanded={this.state.expanded}
-                aria-label="Show more"
-              >
-                <ExpandMoreIcon />
+                })} onClick={this.handleExpandClick} aria-expanded={this.state.expanded} aria-label="Show more">
+                <ExpandMoreIcon/>
               </IconButton>
             </CardActions>
 
-            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit="unmountOnExit">
               <CardContent>
-                <Typography paragraph>Content</Typography>
-                <Typography paragraph>{article.content}</Typography>
+                <Typography paragraph="paragraph">Content</Typography>
+                <Typography paragraph="paragraph">{article.content}</Typography>
               </CardContent>
             </Collapse>
           </Grid>
-          </Card>
-         </Grid>
         </Grid>
-      </div>
-
-
-    );
+      </Card>
+    </div>);
   }
 }
 
