@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -9,9 +9,9 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import red from "@material-ui/core/colors/red";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
+import Pause from "@material-ui/icons/NotInterested";
+import TimeAgo from "@material-ui/icons/AccessTime"
+import BookMark from "@material-ui/icons/BookmarkBorder";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from '@material-ui/core/Grid';
 
@@ -22,7 +22,8 @@ const styles = theme => ({
   card: {
     maxWidth: 400,
     marginTop: 10,
-    boxShadow: "none"
+    boxShadow: "0.25",
+    fontFamily: 'Source Sans Pro',
   },
   media: {
     width: "93px",
@@ -35,20 +36,22 @@ const styles = theme => ({
     fontWeight: 500,
     color: "textPrimary",
     textTransform: "uppercase",
-    paddingLeft: 0
+    paddingLeft: 0,
+    fontFamily: 'Source Sans Pro',
   },
   expand: {
     transform: "rotate(0deg)",
     marginLeft: "auto",
-    transition: theme.transitions.create("transform", {duration: theme.transitions.duration.shortest})
+    transition: theme.transitions.create("transform", { duration: theme.transitions.duration.shortest })
   },
   expandOpen: {
     transform: "rotate(180deg)"
   },
-  avatar: {
-    backgroundColor: red[500]
+  actions: {
+    background: 'linear-gradient(to bottom, #ffffff, #a8cbd7)'
   }
 });
+
 
 class NewsCard extends React.Component {
   state = {
@@ -61,52 +64,70 @@ class NewsCard extends React.Component {
     }));
   };
 
+  calculateHours = (date) => {
+    let datePublished = new Date(date).getTime()
+    let dateNow = new Date().getTime()
+    let milliseconds = dateNow - datePublished
+    let hours = Math.round(milliseconds / 1000 / 60 / 60)
+    if (hours < 2) {
+      return ` ${hours}hr ago`
+    } else {
+      return ` ${hours}hrs ago`
+    }
+  }
+
   render() {
-    const {classes, article} = this.props;
-    return (<div className={classes.root}>
-      <Card className={classes.card}>
-        <Grid container="container" spacing={24}>
-          <Grid item="item" xs={12}>
-            <CardContent>
-              <Typography className={classes.date} color="textSecondary">{article.publishedAt}</Typography>
-            </CardContent>
-          </Grid>
-          <Grid item="item" xs={4}>
-            <CardMedia className={classes.media} image={article.urlToImage} title="Paella dish"/>
-          </Grid>
-          <Grid item="item" xs={8}>
-            <CardContent>
-              <Typography className={classes.title} color="textPrimary">{article.title}</Typography>
-            </CardContent>
-          </Grid>
-          <Grid item="item" xs={12}>
-            <CardContent>
-              <Typography component="p" color="textSecondary">{article.description}</Typography>
-            </CardContent>
-            <CardActions className={classes.actions} disableActionSpacing="disableActionSpacing">
-              <IconButton aria-label="Add to favorites">
-                <FavoriteIcon/>
-              </IconButton>
-              <IconButton aria-label="Share">
-                <ShareIcon/>
-              </IconButton>
-              <IconButton className={classnames(classes.expand, {
+    const { classes, article } = this.props;
+    const hours = this.calculateHours(article.publishedAt)
+    return (
+      <div className={classes.root}>
+        <Card className={classes.card}>
+          <Grid container="container" spacing={24}>
+            <Grid item="item" xs={12}>
+              <CardContent>
+                <Typography className={classes.date} color="textSecondary">
+                  <TimeAgo style={{fontSize:20}}/>
+                  {hours}
+                </Typography>
+              </CardContent>
+            </Grid>
+            <Grid item="item" xs={4}>
+              <CardMedia className={classes.media} image={article.urlToImage} title={article.source.name} />
+            </Grid>
+            <Grid item="item" xs={8}>
+              <CardContent>
+                <Typography className={classes.title} color="textPrimary">{article.title}</Typography>
+              </CardContent>
+            </Grid>
+            <Grid item="item" xs={12}>
+              <CardContent>
+                <Typography component="p" color="textSecondary">{article.description}</Typography>
+              </CardContent>
+              <CardActions className={classes.actions} disableActionSpacing="disableActionSpacing">
+                <IconButton aria-label="Pause">
+                  <Pause />
+                </IconButton>
+                <IconButton aria-label="Bookmark">
+                  <BookMark />
+                </IconButton>
+                <IconButton className={classnames(classes.expand, {
                   [classes.expandOpen]: this.state.expanded
                 })} onClick={this.handleExpandClick} aria-expanded={this.state.expanded} aria-label="Show more">
-                <ExpandMoreIcon/>
-              </IconButton>
-            </CardActions>
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
 
-            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit="unmountOnExit">
-              <CardContent>
-                <Typography paragraph="paragraph">Content</Typography>
-                <Typography paragraph="paragraph">{article.content}</Typography>
-              </CardContent>
-            </Collapse>
+              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit="unmountOnExit">
+                <CardContent>
+                  <Typography paragraph="paragraph">{article.title}</Typography>
+                  <Typography paragraph="paragraph">By {article.author}</Typography>
+                  <Typography paragraph="paragraph">{article.content}</Typography>
+                </CardContent>
+              </Collapse>
+            </Grid>
           </Grid>
-        </Grid>
-      </Card>
-    </div>);
+        </Card>
+      </div>);
   }
 }
 

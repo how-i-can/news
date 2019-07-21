@@ -11,7 +11,7 @@ const styles = theme => ({
   },
   title: {
     textAlign: "center",
-    fontFamily: "Roboto",
+    fontFamily: 'Source Sans Pro',
     color: "#084D67"
   }
 });
@@ -22,7 +22,8 @@ class LandingPage extends Component {
       queriedArticles: [],
       query: '',
       error: false,
-      isLoading: false
+      isLoading: false,
+      loadSearchedQuery: false
   }
 
   handleChange = (indexKey, data) => {
@@ -62,6 +63,11 @@ class LandingPage extends Component {
     })
   }
 
+  handleSearchClick = (e, article) => {
+    e.preventDefault()
+    this.setState({ articles: [article]})
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -70,6 +76,7 @@ class LandingPage extends Component {
           handleInputChange={this.handleInputChange}
           queriedArticles={this.state.queriedArticles} 
           query={this.state.query}
+          handleSearchClick={this.handleSearchClick}
           />
       <h3 className={classes.title}>Top Stories</h3>
       <NewsCards

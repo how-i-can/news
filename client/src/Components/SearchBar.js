@@ -11,7 +11,7 @@ import Suggestions from './Suggestions'
 
 const styles = theme => ({
   root: {
-    width: "100%"
+    maxWidth: 400
   },
   grow: {
     flexGrow: 1
@@ -19,7 +19,7 @@ const styles = theme => ({
   appBar: {
     backgroundColor: 'white',
     color: 'grey',
-    boxShadow: "none"
+    boxShadow: "0.25"
   },
   title: {
     display: "none",
@@ -75,7 +75,7 @@ class SearchBar extends Component {
   }
 
   render() {
-    const { classes, queriedArticles } = this.props;
+    const { classes, queriedArticles, handleSearchClick } = this.props;
     return (
       <div className={classes.root}>
         <AppBar
@@ -98,10 +98,10 @@ class SearchBar extends Component {
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
-                placeholder="Search for..."
+                placeholder="What are you looking for?"
                 onChange={this.handleInput}
               />
-              <Suggestions queriedArticles={queriedArticles}/>
+              <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>
             </div>
             <div className={classes.grow} />
           </Toolbar>

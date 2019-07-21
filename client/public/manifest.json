@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Perch",
+  "name": "Perch, news Web App",
+  "description": "Basic news app for displaying trending, current news in the United States",
   "icons": [
     {
       "src": "favicon.ico",
