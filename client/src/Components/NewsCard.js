@@ -56,8 +56,21 @@ class NewsCard extends Component {
     this.setState(state => ({ expanded: !state.expanded }));
   };
 
+  calculateHours = (date) => {
+    let datePublished = new Date(date).getTime()
+    let dateNow = new Date().getTime()
+    let milliseconds = dateNow - datePublished
+    let hours = Math.round(milliseconds/1000/60/60)
+    if (hours < 2) {
+      return `${hours}hr ago`
+    } else {
+      return `${hours}hrs ago`
+    }
+  }
+
   render() {
     const { classes, article } = this.props;
+    const hours = this.calculateHours(article.publishedAt)
     return (
       <Card className={classes.card}>
         <CardHeader
@@ -68,7 +81,7 @@ class NewsCard extends Component {
           }
           title={article.title}
           className={classes.title}
-          subheader={article.publishedAt}
+          subheader={hours}
         />
         <CardMedia
           className={classes.media}
