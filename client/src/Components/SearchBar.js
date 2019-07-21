@@ -11,14 +11,15 @@ import Suggestions from './Suggestions'
 
 const styles = theme => ({
   root: {
-    width: "100%"
+    maxWidth: 400
   },
   grow: {
     flexGrow: 1
   },
   appBar: {
     backgroundColor: 'white',
-    color: 'grey'
+    color: 'grey',
+    boxShadow: "0.25"
   },
   title: {
     display: "none",
@@ -42,10 +43,8 @@ const styles = theme => ({
     }
   },
   searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: "100%",
+    width: theme.spacing.unit * 5,
     pointerEvents: "none",
-    display: "flex",
     alignItems: "center",
     justifyContent: "center"
   },
@@ -99,7 +98,7 @@ class SearchBar extends Component {
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
-                placeholder="Search for..."
+                placeholder="What are you looking for?"
                 onChange={this.handleInput}
               />
               <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>
