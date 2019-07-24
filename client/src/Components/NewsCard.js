@@ -44,7 +44,7 @@ const styles = theme => ({
 });
 
 
-class NewsCard extends React.Component {
+class NewsCard extends Component {
   state = {
     expanded: false
   };
