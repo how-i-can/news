@@ -10,12 +10,12 @@ import SearchIcon from "@material-ui/icons/Search";
 import Suggestions from './Suggestions'
 
 const styles = theme => ({
-  root: {
-    maxWidth: 400
-  },
-  grow: {
-    flexGrow: 1
-  },
+  // root: {
+  //   maxWidth: 400
+  // },
+  // grow: {
+  //   flexGrow: 1
+  // },
   appBar: {
     backgroundColor: 'white',
     color: 'grey',

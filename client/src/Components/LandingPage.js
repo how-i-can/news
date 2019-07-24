@@ -2,28 +2,40 @@ import React, { Component } from "react";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
 import BottomNavBar from "./BottomNavBar";
+import PropTypes from 'prop-types';
 import axios from 'axios'
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   landingPage: {
-    width: "100%"
+    flexGrow: 1,
+    overflow: 'hidden',
+    alignItems: 'center'
   },
   title: {
     textAlign: "center",
     fontFamily: 'Source Sans Pro',
     color: "#084D67"
-  }
+  },
+  paper: {
+    maxWidth: 450,
+    margin: `${theme.spacing.unit}px auto`,
+    padding: '0px'
+  },
 });
 
 class LandingPage extends Component {
   state = {
-      articles: [],
-      queriedArticles: [],
-      query: '',
-      error: false,
-      isLoading: false,
-      loadSearchedQuery: false
+    articles: [],
+    queriedArticles: [],
+    query: '',
+    error: false,
+    isLoading: false,
+    loadSearchedQuery: false
   }
 
   handleChange = (indexKey, data) => {
@@ -35,7 +47,7 @@ class LandingPage extends Component {
     await axios.post('/news/search', { query })
       .then((response) => {
         let res = response.data
-        if(res < 6) {
+        if (res < 6) {
           this.setState({
             queriedArticles: response.data
           })
@@ -45,7 +57,7 @@ class LandingPage extends Component {
             queriedArticles: res
           })
         }
-        
+
       })
       .catch(() => this.setState({ error: true }))
   }
@@ -65,28 +77,47 @@ class LandingPage extends Component {
 
   handleSearchClick = (e, article) => {
     e.preventDefault()
-    this.setState({ articles: [article]})
+    this.setState({ articles: [article] })
   }
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.landingPage}>
-      <SearchBar
-          handleInputChange={this.handleInputChange}
-          queriedArticles={this.state.queriedArticles} 
-          query={this.state.query}
-          handleSearchClick={this.handleSearchClick}
-          />
-      <h3 className={classes.title}>Top Stories</h3>
-      <NewsCards
-          handleChange={this.handleChange}
-          articles={this.state.articles}
-        />
-      <BottomNavBar />
-      </div>
+      <Paper className={classes.paper}>
+        <Grid container wrap="nowrap" spacing={16}>
+          <Grid item xs zeroMinWidth>
+            <SearchBar
+                handleInputChange={this.handleInputChange}
+                queriedArticles={this.state.queriedArticles}
+                query={this.state.query}
+                handleSearchClick={this.handleSearchClick}
+              />
+          </Grid>
+        </Grid>
+      </Paper>
+      <Paper className={classes.paper}>
+        <Grid container wrap spacing={16}>
+          <Grid item xs>
+          <NewsCards
+                handleChange={this.handleChange}
+                articles={this.state.articles}
+              />
+          </Grid>
+        </Grid>
+      </Paper>
+        <Grid container wrap="nowrap"  className={classes.paper}>
+          <Grid item xs>
+          <BottomNavBar />
+          </Grid>
+        </Grid>
+    </div>
     );
   }
 }
+
+LandingPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(LandingPage);

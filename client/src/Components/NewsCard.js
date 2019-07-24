@@ -16,15 +16,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  card: {
-    maxWidth: 400,
-    marginTop: 10,
-    boxShadow: "0.25",
-    fontFamily: 'Source Sans Pro',
-  },
   media: {
     width: "93px",
     height: "68px",
@@ -119,9 +110,8 @@ class NewsCard extends React.Component {
 
               <Collapse in={this.state.expanded} timeout="auto" unmountOnExit="unmountOnExit">
                 <CardContent>
-                  <Typography paragraph="paragraph">{article.title}</Typography>
                   <Typography paragraph="paragraph">By {article.author}</Typography>
-                  <Typography paragraph="paragraph">{article.content}</Typography>
+                  <Typography paragraph="paragraph">{article.content} <a href={article.url}>Read More</a></Typography>
                 </CardContent>
               </Collapse>
             </Grid>

@@ -13,7 +13,8 @@ class Suggestions extends Component {
       </li>
     ))
     let styles = {
-      "listStyle": "none"
+      "listStyle": "none",
+      "padding": "0px"
     }
     return <ul style={styles}>{options}</ul>
   }
