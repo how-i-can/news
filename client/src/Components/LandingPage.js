@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
@@ -24,7 +22,7 @@ const styles = theme => ({
   paper: {
     maxWidth: 450,
     margin: `${theme.spacing.unit}px auto`,
-    padding: '0px'
+    padding: '0px',
   },
 });
 

@@ -16,6 +16,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
+  newsCard: {
+    marginBottom: "15px",
+  },
   media: {
     width: "93px",
     height: "68px",
@@ -40,9 +43,11 @@ const styles = theme => ({
   },
   actions: {
     background: 'linear-gradient(to bottom, #ffffff, #a8cbd7)'
+  },
+  actionOne: {
+    background: 'white'
   }
 });
-
 
 class NewsCard extends Component {
   state = {
@@ -71,7 +76,7 @@ class NewsCard extends Component {
     const { classes, article } = this.props;
     const hours = this.calculateHours(article.publishedAt)
     return (
-      <div className={classes.root}>
+      <div className={classes.newsCard}>
         <Card className={classes.card}>
           <Grid container="container" spacing={24}>
             <Grid item="item" xs={12}>
@@ -94,7 +99,7 @@ class NewsCard extends Component {
               <CardContent>
                 <Typography component="p" color="textSecondary">{article.description}</Typography>
               </CardContent>
-              <CardActions className={classes.actions} disableActionSpacing="disableActionSpacing">
+              <CardActions className={!this.state.expanded ? classes.actions : classes.actionOne} disableActionSpacing="disableActionSpacing">
                 <IconButton aria-label="Pause">
                   <Pause />
                 </IconButton>

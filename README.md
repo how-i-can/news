@@ -1,6 +1,14 @@
 # Perch
 
-Basic news app for displaying trending, current news in the United States
+Perch is an open, collaborative and changing product to help online news readers feel in control of their information consumption, and to provide tools to help readers better assess news.
+
+Currently the project displays trending news in the United States. Readers can view the descriptions of the news articles as well as follow links to view the full articles. Readers can also search for keywords and articles containing the keywords can be viewed.
+
+To Do:
+Add user accounts so that readers can bookmark articles, compare articles, or block certain topics. 
+
+
+![Perch Screenshot](PerchScreenshot.png)
 
 ### Installing
 
@@ -17,7 +25,9 @@ Add NEWS API key in the .env file
 NEWS_API_KEY=yourkey
 npm start
 cd ../client
+npm install -g nodemon
 npm install
+npm start
 ```
 
 ## Built With
@@ -35,4 +45,16 @@ npm install
 - **Mariya Mego Vela** - [GitHub](https://github.com/mash-a)
 
 ## License 
-Perch is open source software
+
+Licensed under the Apache License, Version 2.0 (the "License");
+You may view a copy of the License at the [LICENSE.md](LICENSE.md) file
+   
+Copyright 2019 How I Can
+
+## Acknowledgments
+This project was built during a How I can cohort. Come check out [How I Can](http://howican.tech/)
+for more details.
+
+Please view our [Wiki](https://github.com/how-i-can/news/wiki) for documentation on the cohort and the AGILE-like process.
+
+
