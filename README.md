@@ -15,7 +15,7 @@ Add user accounts so that readers can bookmark articles, compare articles, or bl
 ```
 git clone
 cd server
-npm install
+npm installd
 touch .env
 ```
 
@@ -37,12 +37,6 @@ npm start
 - [create-react-app](https://github.com/facebook/create-react-app) - Set up a modern web app by running one command.
 - [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 - [News API](https://newsapi.org/) - News API is a simple HTTP REST API for searching and retrieving live articles from all over the web
-
-## Authors
-
-- **Paulina Carolina** - [GitHub](https://github.com/codelikeamexican)
-- **Rooshee Roy** - [GitHub](https://github.com/roo-shy)
-- **Mariya Mego Vela** - [GitHub](https://github.com/mash-a)
 
 ## License 
 
