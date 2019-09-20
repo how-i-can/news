@@ -11,26 +11,51 @@ Add user accounts so that readers can bookmark articles, compare articles, or bl
 ![Perch Screenshot](PerchScreenshot.png)
 
 ### Installing
-Go to https://newsapi.org and register for an API key. While one does exist in the .env file, it is strongly encouraged to have your own.
 
 ```
-git clone
+git clone https://github.com/how-i-can/news
 cd server
 npm install
-touch .env
-Update the file server/.env with the API Key. It should look something like this NEWS_API_KEY=yourkey 
-
-
-cd ../client
-npm install -g nodemon
-cd ../server
-npm start
-From your web browser, open up http://localhost:4000/ to confirm the server has started. You should see {"message": "working"}. This is the server of the news app.
 
 cd ../client
 npm install
+npm install -g nodemon
+```
+
+### Configuring
+
+Go to https://newsapi.org and register for an API key. While one does exist in the .env file, it is strongly encouraged to have your own.
+
+Create .env file within `server/` directory if doesn't exist
+
+```
+touch .env
+```
+
+Add NEWS API key in the .env file
+
+```
+NEWS_API_KEY=yourkey
+```
+
+### Launching
+
+Start server using the CLI from the directory: `news/server`
+```
+cd ../server
 npm start
-After running npm start a web browser should open to http://localhost:4000/. This is the client of the news app. 
+```
+
+Navigate to http://localhost:3000/ from a web browser to confirm the server is running. You should see {"message": "working"}.
+
+Launch client using the CLI from the directory: `news/client`
+```
+cd ../client
+npm start
+```
+
+A browser should load to http://localhost:4000/ where the news app will be loaded.
+
 
 ## Built With
 
