@@ -14,7 +14,8 @@ class Suggestions extends Component {
     ))
     let styles = {
       "listStyle": "none",
-      "padding": "0px"
+      "padding": "0px",
+      "cursor": "pointer"
     }
     return <ul style={styles}>{options}</ul>
   }

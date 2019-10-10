@@ -7,6 +7,8 @@ import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import Button from "@material-ui/core/Button"
+import ClearIcon from '@material-ui/icons/Clear';
 import Suggestions from './Suggestions'
 
 const styles = theme => ({
@@ -48,6 +50,18 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "center"
   },
+  // button: {
+  //   width: theme.spacing.unit * 5,
+  //   pointerEvents: "none",
+  //   alignItems: "center",
+  //   justifyContent: "center"
+  // }
+  clearIcon: {
+    width: theme.spacing.unit * 5,
+    pointerEvents: "none",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   inputRoot: {
     color: "inherit",
     width: 350
@@ -74,6 +88,15 @@ class SearchBar extends Component {
     this.props.handleInputChange(e.target.value)
   }
 
+  // handleInputClear = (e) => {
+  //     this.props.handleInputChange(this.state)
+  // }
+  handleInputClear = (e) => {
+    this.setState({
+    state: ""
+  });
+}
+
   render() {
     const { classes, queriedArticles, handleSearchClick } = this.props;
     return (
@@ -92,6 +115,7 @@ class SearchBar extends Component {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+
             <div className={classes.search}>
               <InputBase
                 classes={{
@@ -101,8 +125,25 @@ class SearchBar extends Component {
                 placeholder="What are you looking for?"
                 onChange={this.handleInput}
               />
+
               <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>
             </div>
+
+
+            <Button variant="" color="secondary"
+
+              onClick={this.getInfo}
+              >
+            <div className={classes.clearIcon}>
+              <ClearIcon
+                />
+            </div>
+            </Button>
+
+
+
+
+
             <div className={classes.grow} />
           </Toolbar>
         </AppBar>
@@ -116,4 +157,3 @@ SearchBar.propTypes = {
 };
 
 export default withStyles(styles)(SearchBar);
-
