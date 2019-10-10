@@ -42,7 +42,7 @@ class LandingPage extends Component {
 
   getInfo = async () => {
     const { query } = this.state;
-    await axios.post('/news/search', { query })
+    await axios.post('/news/filter', { query })
       .then((response) => {
         let res = response.data
         if (res < 6) {

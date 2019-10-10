@@ -48,6 +48,19 @@ app.use("/news/search", (req, res, next) => {
     });
 });
 
+//search news by title-flexible to search by other params in the future
+app.use("/news/filter", (req, res, next) => {
+  const searchNewsApi = `https://newsapi.org/v2/everything?qInTitle=${req.body.query}&pageSize=${pageSize}&apiKey=${API_KEY}`;
+  axios
+    .get(searchNewsApi)
+    .then(response => {
+      res.json(response.data.articles);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
+
 //Error Handling
 function notFound(req, res, next) {
   res.status(404);
