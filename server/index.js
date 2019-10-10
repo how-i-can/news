@@ -7,7 +7,8 @@ const port = process.env.PORT || 4000;
 const axios = require("axios");
 
 const API_KEY = process.env.NEWS_API_KEY;
-const newsApiURL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
+const pageSize = 5;
+const newsApiURL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${pageSize}&apiKey=${API_KEY}`;
 
 const bodyParser = express.json();
 
@@ -20,8 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", (req, res, next) => {
-  res.json({message : "working"})
-})
+  res.json({ message: "working" });
+});
 // GET top news headlines
 app.get("/news", (req, res, next) => {
   axios
@@ -34,9 +35,9 @@ app.get("/news", (req, res, next) => {
     });
 });
 
-//search top news headlines 
+//search top news headlines
 app.use("/news/search", (req, res, next) => {
-  const searchNewsApi = `https://newsapi.org/v2/top-headlines?q=${req.body.query}&apiKey=${API_KEY}`
+  const searchNewsApi = `https://newsapi.org/v2/top-headlines?q=${req.body.query}&apiKey=${API_KEY}`;
   axios
     .get(searchNewsApi)
     .then(response => {
@@ -45,7 +46,7 @@ app.use("/news/search", (req, res, next) => {
     .catch(err => {
       console.error(err);
     });
-})
+});
 
 //Error Handling
 function notFound(req, res, next) {
