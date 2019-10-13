@@ -78,6 +78,12 @@ class LandingPage extends Component {
     this.setState({ articles: [article] })
   }
 
+  handleClearClick = (e, article) => {
+    e.preventDefault()
+    this.setState({ query: "" })
+    this.getInfo()
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -90,6 +96,7 @@ class LandingPage extends Component {
                 queriedArticles={this.state.queriedArticles}
                 query={this.state.query}
                 handleSearchClick={this.handleSearchClick}
+		clearSearch={this.handleClearClick}
               />
           </Grid>
         </Grid>

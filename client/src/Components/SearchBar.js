@@ -92,13 +92,11 @@ class SearchBar extends Component {
   //     this.props.handleInputChange(this.state)
   // }
   handleInputClear = (e) => {
-    this.setState({
-    state: ""
-  });
-}
+   this.setState({ queriedArticles: "" })
+  }
 
   render() {
-    const { classes, queriedArticles, handleSearchClick } = this.props;
+    const { classes, queriedArticles, handleSearchClick, handleClearClick } = this.props;
     return (
       <div className={classes.root}>
         <AppBar
@@ -132,7 +130,7 @@ class SearchBar extends Component {
 
             <Button variant="" color="secondary"
 
-              onClick={this.getInfo}
+              onClick={handleClearClick}
               >
             <div className={classes.clearIcon}>
               <ClearIcon
