@@ -1,4 +1,18 @@
 import React, { Component } from 'react'
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+
+
+const styles = theme => ({
+  root: {
+    display: 'block',
+    width: '100%',
+    maxWidth: 360,
+    cursor: 'pointer',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+});
 
 class Suggestions extends Component {
 
@@ -8,16 +22,19 @@ class Suggestions extends Component {
 
   render() {
     const options = this.props.queriedArticles.map(article => (
-      <li key={article.id} onClick={(e) => this.handleClick(e, article)}>
+      <ListItem button key={article.id} onClick={(e) => this.handleClick(e, article)} className={styles.root}>
         {article.title}
-      </li>
+      </ListItem>
+
     ))
-    let styles = {
-      "listStyle": "none",
-      "padding": "0px",
-      "cursor": "pointer"
-    }
-    return <ul style={styles}>{options}</ul>
+
+    return (
+    <div >
+      <List component="nav" aria-label="results">
+          {options}
+      </List>
+    </div>
+  );
   }
 
 }
