@@ -84,10 +84,6 @@ const styles = theme => ({
     pointerEvents: "on",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.50)
-    },
   },
 });
 class SearchBar extends Component {
@@ -102,9 +98,9 @@ class SearchBar extends Component {
 
 
 // click event for closing search results box
-  // handleClose = () => {
-  //     this.setState({ anchorEl: null });
-  //   };
+  handleClose = (e) => {
+      this.setState({ anchorEl: null });
+    };
 
 
   render() {
@@ -139,11 +135,11 @@ class SearchBar extends Component {
 
 
             <div className={classes.grow} />
-            {/* <Button className={classes.endIcon}> */}
+
             <InputAdornment position="end">
             <ClearIcon />
           </InputAdornment>
-        {/* </Button> */}
+      
           </Toolbar>
         </AppBar>
       </div>
