@@ -11,6 +11,10 @@ import Button from "@material-ui/core/Button"
 import ClearIcon from '@material-ui/icons/Clear';
 import Suggestions from './Suggestions'
 
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+
+
 const styles = theme => ({
   // root: {
   //   maxWidth: 400
@@ -18,6 +22,8 @@ const styles = theme => ({
   // grow: {
   //   flexGrow: 1
   // },
+
+
   appBar: {
     backgroundColor: 'white',
     color: 'grey',
@@ -44,28 +50,24 @@ const styles = theme => ({
       width: "auto"
     }
   },
-  searchIcon: {
-    width: theme.spacing.unit * 5,
-    pointerEvents: "none",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  // button: {
+  // searchIcon: {
   //   width: theme.spacing.unit * 5,
   //   pointerEvents: "none",
   //   alignItems: "center",
   //   justifyContent: "center"
-  // }
-  clearIcon: {
-    width: theme.spacing.unit * 5,
-    pointerEvents: "none",
-    alignItems: "center",
-    justifyContent: "center"
-  },
+  // },
+
+
   inputRoot: {
     color: "inherit",
-    width: 350
+    width: 350,
+    display: 'flex',
+    flexWrap: 'wrap',
   },
+
+  // display: 'flex',
+  //   flexWrap: 'wrap',
+
   inputInput: {
     paddingTop: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
@@ -76,7 +78,17 @@ const styles = theme => ({
     [theme.breakpoints.up("md")]: {
       width: 200
     }
-  }
+  },
+  clearIcon: {
+    width: theme.spacing.unit * 5,
+    pointerEvents: "on",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.50)
+    },
+  },
 });
 class SearchBar extends Component {
   state = {
@@ -88,14 +100,12 @@ class SearchBar extends Component {
     this.props.handleInputChange(e.target.value)
   }
 
-  // handleInputClear = (e) => {
-  //     this.props.handleInputChange(this.state)
-  // }
-  handleInputClear = (e) => {
-    this.setState({
-    state: ""
-  });
-}
+
+// click event for closing search results box
+  // handleClose = () => {
+  //     this.setState({ anchorEl: null });
+  //   };
+
 
   render() {
     const { classes, queriedArticles, handleSearchClick } = this.props;
@@ -112,9 +122,6 @@ class SearchBar extends Component {
               noWrap
             >
             </Typography>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
 
             <div className={classes.search}>
               <InputBase
@@ -122,29 +129,21 @@ class SearchBar extends Component {
                   root: classes.inputRoot,
                   input: classes.inputInput
                 }}
-                placeholder="What are you looking for?"
+                placeholder="Search"
                 onChange={this.handleInput}
               />
+
 
               <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>
             </div>
 
 
-            <Button variant="" color="secondary"
-
-              onClick={this.getInfo}
-              >
-            <div className={classes.clearIcon}>
-              <ClearIcon
-                />
-            </div>
-            </Button>
-
-
-
-
-
             <div className={classes.grow} />
+            {/* <Button className={classes.endIcon}> */}
+            <InputAdornment position="end">
+            <ClearIcon />
+          </InputAdornment>
+        {/* </Button> */}
           </Toolbar>
         </AppBar>
       </div>
