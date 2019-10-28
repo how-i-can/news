@@ -81,13 +81,9 @@ const styles = theme => ({
   },
   clearIcon: {
     width: theme.spacing.unit * 5,
-    pointerEvents: "on",
+    pointerEvents: "none",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.50)
-    },
   },
 });
 class SearchBar extends Component {
