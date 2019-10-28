@@ -5,11 +5,22 @@ const volleyball = require("volleyball");
 const app = express();
 const port = process.env.PORT || 4000;
 const axios = require("axios");
+const firebase = require("firebase");
+var firebaseConfig = {
+  apiKey: 
+  authDomain: 
+  databaseURL: 
+  projectId: 
+  storageBucket: 
+  messagingSenderId: 
+  appId: 
+  measurementId: 
+};
+firebase.initializeApp(firebaseConfig);
 
 const API_KEY = process.env.NEWS_API_KEY;
 const pageSize = 5;
 const newsApiURL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${pageSize}&apiKey=${API_KEY}`;
-
 const bodyParser = express.json();
 
 //logging HTTP requests and responses
@@ -58,6 +69,61 @@ app.use("/news/filter", (req, res, next) => {
     })
     .catch(err => {
       console.error(err);
+    });
+});
+
+app.post("/signin", (req, res) => {
+  const user = {
+    email: req.body.email,
+    password: req.body.password
+  };
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(user.email, user.password)
+    .then(data => {
+      return res
+        .status(201)
+        .json({ message: `user ${data.user.id} signed in successfully` });
+    })
+    .catch(err => {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    });
+});
+
+app.post("/signup", (req, res) => {
+  const newUser = {
+    email: req.body.email,
+    password: req.body.password,
+    confirmPassword: req.body.confirmPassword,
+    handle: req.body.handle
+  };
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(newUser.email, newUser.password)
+    .then(data => {
+      return res
+        .status(201)
+        .json({ message: `user ${data.user.id} signed up successfully` });
+    })
+    .catch(err => {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    });
+});
+
+app.post("/logout", (req, res) => {
+  firebase
+    .auth()
+    .signOut()
+    .then(data => {
+      return res
+        .status(201)
+        .json({ message: `user ${data.user.id} logged out successfully` });
+    })
+    .catch(err => {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
     });
 });
 
