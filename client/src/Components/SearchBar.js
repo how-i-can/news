@@ -102,7 +102,7 @@ class SearchBar extends Component {
 
 
 // click event for closing search results box
-  // handleClose = () => {
+  // handleClose = (e) => {
   //     this.setState({ anchorEl: null });
   //   };
 
