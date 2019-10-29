@@ -96,13 +96,6 @@ class SearchBar extends Component {
     this.props.handleInputChange(e.target.value)
   }
 
-
-// click event for closing search results box
-  // handleClose = (e) => {
-  //     this.setState({ anchorEl: null });
-  //   };
-
-
   render() {
     const { classes, queriedArticles, handleSearchClick } = this.props;
     return (
@@ -135,11 +128,9 @@ class SearchBar extends Component {
 
 
             <div className={classes.grow} />
-            {/* <Button className={classes.endIcon}> */}
             <InputAdornment position="end">
             <ClearIcon />
           </InputAdornment>
-        {/* </Button> */}
           </Toolbar>
         </AppBar>
       </div>
