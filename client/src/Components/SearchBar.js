@@ -10,7 +10,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button"
 import ClearIcon from '@material-ui/icons/Clear';
 import Suggestions from './Suggestions'
-
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 
@@ -96,8 +95,15 @@ class SearchBar extends Component {
     this.props.handleInputChange(e.target.value)
   }
 
+  handleInputClear = (e) => {
+    this.setState ({
+      anchorEl: null,
+      mobileMoreAnchorEl: null
+    })
+  }
+
   render() {
-    const { classes, queriedArticles, handleSearchClick } = this.props;
+    const { classes, queriedArticles, handleSearchClick, handleClear } = this.props;
     return (
       <div className={classes.root}>
         <AppBar
@@ -129,7 +135,7 @@ class SearchBar extends Component {
 
             <div className={classes.grow} />
             <InputAdornment position="end">
-            <ClearIcon />
+            <ClearIcon onClick={this.props.handleClear}/>
           </InputAdornment>
           </Toolbar>
         </AppBar>

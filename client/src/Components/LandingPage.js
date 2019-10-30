@@ -78,6 +78,17 @@ class LandingPage extends Component {
     this.setState({ articles: [article] })
   }
 
+  handleClear = (e) => {
+    this.setState ({
+      // articles: [],
+      queriedArticles: [],
+      query: '',
+      error: false,
+      isLoading: false,
+      loadSearchedQuery: false
+    })
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -90,6 +101,7 @@ class LandingPage extends Component {
                 queriedArticles={this.state.queriedArticles}
                 query={this.state.query}
                 handleSearchClick={this.handleSearchClick}
+                handleClear={this.handleClear}
               />
           </Grid>
         </Grid>
