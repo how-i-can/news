@@ -34,7 +34,7 @@ app.get("/news", (req, res, next) => {
     });
 });
 
-//search top news headlines 
+//search top news headlines
 app.use("/news/search", (req, res, next) => {
   const searchNewsApi = `https://newsapi.org/v2/top-headlines?q=${req.body.query}&apiKey=${API_KEY}`
   axios
@@ -68,3 +68,15 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
+
+
+// -- firebase --
+const firebaseConfig = {
+  apiKey: "AIzaSyBbue1B15iaiWJCDBi007N-D7OE9gZ8TKg",
+  authDomain: "perch-51baf.firebaseapp.com",
+  databaseURL: "https://perch-51baf.firebaseio.com",
+  projectId: "perch-51baf",
+  storageBucket: "perch-51baf.appspot.com",
+  messagingSenderId: "898150122093",
+  appId: "1:898150122093:web:54b4f2c47e05ced9747564"
+};

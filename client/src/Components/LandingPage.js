@@ -87,6 +87,7 @@ class LandingPage extends Component {
       isLoading: false,
       loadSearchedQuery: false
     })
+
   }
 
   render() {
@@ -102,6 +103,7 @@ class LandingPage extends Component {
                 query={this.state.query}
                 handleSearchClick={this.handleSearchClick}
                 handleClear={this.handleClear}
+                handleInputClear={this.handleInputClear}
               />
           </Grid>
         </Grid>

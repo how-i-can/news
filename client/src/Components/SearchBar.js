@@ -98,12 +98,13 @@ class SearchBar extends Component {
   handleInputClear = (e) => {
     this.setState ({
       anchorEl: null,
-      mobileMoreAnchorEl: null
+      mobileMoreAnchorEl: null,
+      query: ''
     })
   }
 
   render() {
-    const { classes, queriedArticles, handleSearchClick, handleClear } = this.props;
+    const { classes, queriedArticles, handleSearchClick, handleClear, handleInputClear } = this.props;
     return (
       <div className={classes.root}>
         <AppBar
