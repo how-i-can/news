@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
+// import Results from "./Results";
 import BottomNavBar from "./BottomNavBar";
 import PropTypes from 'prop-types';
 import axios from 'axios'
