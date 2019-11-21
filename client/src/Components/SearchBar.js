@@ -1,13 +1,17 @@
 import React, { Component } from "react";
+
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+import ClearIcon from "@material-ui/icons/Clear";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import { withStyles } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
+import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from "@material-ui/icons/Search";
 import Suggestions from './Suggestions'
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   // root: {
@@ -67,11 +71,22 @@ const styles = theme => ({
 class SearchBar extends Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+    searchStringValue: null
   };
 
   handleInput = (e) => {
-    this.props.handleInputChange(e.target.value)
+    this.setState({
+      searchStringValue: e.target.value
+    })
+    this.props.handleInputChange(this.state.searchStringValue)
+  }
+
+  handleSearchClearClick = (e) => {
+    this.setState({
+      searchStringValue: ''
+    })
+    this.props.handleInputChange(this.state.searchStringValue)
   }
 
   render() {
@@ -89,19 +104,25 @@ class SearchBar extends Component {
               noWrap
             >
             </Typography>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
             <div className={classes.search}>
               <InputBase
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-                placeholder="What are you looking for?"
-                onChange={this.handleInput}
-              />
-              <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                  placeholder="What are you looking for?"
+                  onChange={this.handleInput}
+                  value={this.state.searchStringValue}
+                  startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton onClick={this.handleSearchClearClick} aria-label="Clear">
+                        <ClearIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  }
+              />  
+              <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>            
             </div>
             <div className={classes.grow} />
           </Toolbar>
