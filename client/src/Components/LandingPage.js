@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
-// import Results from "./Results";
+import Results from "./Results";
+import Suggestions from "./Suggestions";
 import BottomNavBar from "./BottomNavBar";
 import PropTypes from 'prop-types';
 import axios from 'axios'
@@ -35,7 +36,7 @@ class LandingPage extends Component {
     error: false,
     isLoading: false,
     loadSearchedQuery: false
-  }
+  };
 
   handleChange = (indexKey, data) => {
     this.setState({ [indexKey]: data });
@@ -92,7 +93,7 @@ class LandingPage extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, queriedArticles, handleClick, handleSearchClick, handleClearResults } = this.props;
     return (
       <div className={classes.landingPage}>
       <Paper className={classes.paper}>
@@ -105,6 +106,12 @@ class LandingPage extends Component {
                 handleSearchClick={this.handleSearchClick}
                 handleClear={this.handleClear}
                 handleInputClear={this.handleInputClear}
+              />
+              <Suggestions
+                queriedArticles={this.state.queriedArticles}
+                handleClick={this.handleClick}
+                handleSearchClick={this.handleSearchClick}
+                handleClearResults={this.handleClearResults}
               />
           </Grid>
         </Grid>

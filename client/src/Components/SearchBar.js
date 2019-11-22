@@ -9,7 +9,8 @@ import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button"
 import ClearIcon from '@material-ui/icons/Clear';
-import Suggestions from './Suggestions'
+import Suggestions from './Suggestions';
+import Results from './Results'
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 
@@ -129,8 +130,8 @@ class SearchBar extends Component {
                 onChange={this.handleInput}
               />
 
-
-              <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>
+              {/* <Suggestions
+                 queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/> */}
             </div>
 
 
