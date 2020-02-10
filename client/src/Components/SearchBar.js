@@ -8,18 +8,11 @@ import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from "@material-ui/icons/Search";
-import Suggestions from './Suggestions'
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = theme => ({
-  // root: {
-  //   maxWidth: 400
-  // },
-  // grow: {
-  //   flexGrow: 1
-  // },
+const styles = theme => ({  
   appBar: {
     backgroundColor: 'white',
     color: 'grey',
@@ -69,28 +62,33 @@ const styles = theme => ({
   }
 });
 class SearchBar extends Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-    searchStringValue: null
-  };
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      anchorEl: null,
+      mobileMoreAnchorEl: null,
+      searchStringValue: ""
+    }
+  }
+
 
   handleInput = (e) => {
     this.setState({
       searchStringValue: e.target.value
     })
-    this.props.handleInputChange(this.state.searchStringValue)
+    this.props.handleInputChange(e.target.value)
   }
 
   handleSearchClearClick = (e) => {
     this.setState({
       searchStringValue: ''
-    })
-    this.props.handleInputChange(this.state.searchStringValue)
+    }, () => {
+      this.props.handleClearClick()
+    })    
   }
 
   render() {
-    const { classes, queriedArticles, handleSearchClick } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.root}>
         <AppBar
@@ -115,14 +113,13 @@ class SearchBar extends Component {
                   value={this.state.searchStringValue}
                   startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>}
                   endAdornment={
-                    <InputAdornment position="end">
+                    <InputAdornment position="end" alignitems="right">
                       <IconButton onClick={this.handleSearchClearClick} aria-label="Clear">
                         <ClearIcon />
                       </IconButton>
                     </InputAdornment>
                   }
-              />  
-              <Suggestions queriedArticles={queriedArticles} handleSearchClick={handleSearchClick}/>            
+              />                
             </div>
             <div className={classes.grow} />
           </Toolbar>
