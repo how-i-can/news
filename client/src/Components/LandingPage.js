@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
+import Suggestions from './Suggestions'
 import BottomNavBar from "./BottomNavBar";
 import PropTypes from 'prop-types';
 import axios from 'axios'
@@ -12,7 +13,7 @@ const styles = theme => ({
   landingPage: {
     flexGrow: 1,
     overflow: 'hidden',
-    alignItems: 'center'
+    alignitems: 'center'
   },
   title: {
     textAlign: "center",
@@ -27,15 +28,18 @@ const styles = theme => ({
 });
 
 class LandingPage extends Component {
-  state = {
-    articles: [],
-    queriedArticles: [],
-    query: '',
-    error: false,
-    isLoading: false,
-    loadSearchedQuery: false
+  constructor(props, context) {
+    super(props, context)
+    this.state = {
+      newsCardArticles: [], 
+      queryResultArticles: [],
+      query: '',
+      error: false,
+      isLoading: false,
+      loadSearchedQuery: false
+    }
   }
-
+  
   handleChange = (indexKey, data) => {
     this.setState({ [indexKey]: data });
   };
@@ -47,12 +51,12 @@ class LandingPage extends Component {
         let res = response.data
         if (res < 6) {
           this.setState({
-            queriedArticles: response.data
+            queryResultArticles: response.data
           })
         } else {
           res = res.slice(0, 5)
           this.setState({
-            queriedArticles: res
+            queryResultArticles: res
           })
         }
 
@@ -65,17 +69,24 @@ class LandingPage extends Component {
     this.setState({
       query: queryVal
     }, () => {
-      if (query && query.length > 1) {
-        if (query.length % 2 === 0) {
-          this.getInfo()
-        }
+      if (this.state.query && this.state.query.length > 0) {
+         this.getInfo()
       }
     })
   }
 
   handleSearchClick = (e, article) => {
     e.preventDefault()
-    this.setState({ articles: [article] })
+    this.clearSuggestions()
+    this.setState({ newsCardArticles: [article] })
+  }
+
+  handleClearClick = (e, article) => {
+    this.clearSuggestions()
+  }
+
+  clearSuggestions(){
+    this.setState({ query: '', queryResultArticles: [] })
   }
 
   render() {
@@ -86,20 +97,20 @@ class LandingPage extends Component {
         <Grid container wrap="nowrap" spacing={16}>
           <Grid item xs zeroMinWidth>
             <SearchBar
+                handleClearClick={this.handleClearClick}
                 handleInputChange={this.handleInputChange}
-                queriedArticles={this.state.queriedArticles}
-                query={this.state.query}
-                handleSearchClick={this.handleSearchClick}
-              />
+                query={this.state.query}                
+           />
+           <Suggestions queryResultArticles={this.state.queryResultArticles} handleSearchClick={this.handleSearchClick} />
           </Grid>
         </Grid>
       </Paper>
       <Paper className={classes.paper}>
-        <Grid container wrap spacing={16}>
+        <Grid container wrap="wrap" spacing={16}>
           <Grid item xs>
           <NewsCards
                 handleChange={this.handleChange}
-                articles={this.state.articles}
+                articles={this.state.newsCardArticles}
               />
           </Grid>
         </Grid>

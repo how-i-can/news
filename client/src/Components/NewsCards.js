@@ -6,7 +6,7 @@ class NewsCards extends Component {
     fetch("/news")
       .then(response => response.json())
       .then(response => {
-        this.props.handleChange("articles", response);
+        this.props.handleChange("newsCardArticles", response);
       });
   };
   render() {
