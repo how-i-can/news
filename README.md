@@ -16,6 +16,7 @@ Add user accounts so that readers can bookmark articles, compare articles, or bl
 git clone https://github.com/how-i-can/news
 cd news/server
 npm install
+npm install firebase
 
 cd ../client
 npm install
