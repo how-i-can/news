@@ -72,6 +72,20 @@ app.use("/news/filter", (req, res, next) => {
     });
 });
 
+// Firebase config
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBbue1B15iaiWJCDBi007N-D7OE9gZ8TKg",
+//   authDomain: "perch-51baf.firebaseapp.com",
+//   databaseURL: "https://perch-51baf.firebaseio.com",
+//   projectId: "perch-51baf",
+//   storageBucket: "perch-51baf.appspot.com",
+//   messagingSenderId: "898150122093",
+//   appId: "1:898150122093:web:54b4f2c47e05ced9747564"
+// };
+
+// --------------------------------------------------------------
+
 app.post("/signin", (req, res) => {
   const user = {
     email: req.body.email,
