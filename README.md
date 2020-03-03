@@ -25,19 +25,50 @@ npm install -g nodemon
 
 ### Configuring
 
-Go to https://newsapi.org and register for an API key. While one does exist in the .env file, it is strongly encouraged to have your own.
+#### News API Key
 
-Create .env file within `server/` directory if doesn't exist
+Go to https://newsapi.org and register for an API key.
+
+Create `.env` file within `server/` directory
 
 ```
 touch .env
 ```
 
-Add NEWS API key in the .env file
+Add your News API key to the `.env` file*
 
 ```
 NEWS_API_KEY=yourkey
 ```
+
+***Note:** Please check the file `.env-example` for an example on how to add the required environment keys to your own `.env` file.
+
+#### Setup Firebase
+
+1. Create an account at https://firebase.google.com/
+
+2. Click `Go to console` in the right upper corner
+
+3. Click `Create a project` > name it ‘perch’ > disable Google Analytics > click `Create project` > click `Continue`
+
+4. In the menu on the left, click `Develop` and then `Authentication`
+
+5. Click `Set up sign-in method`
+
+6. Under `Sign-in providers`, click `Email/Password` > `Enable` the option > click `Save`
+
+7. Back in the left-hand menu, find the gear icon next to `Project Overview`, click it, and then select `Project settings`
+
+8. In your local repository, add the `Web API Key` and `Project ID` (from step 7) to your `.env` file*
+
+```
+FIREBASE_API_KEY=yourkey
+FIREBASE_PROJECT_ID=yourid
+```
+
+***Note:** Please check the file `.env-example` for an example on how to add the required environment keys to your own `.env` file.
+
+It's okay to leave the fields blank where no values exist because we currently don't utilize all the Firebase functionality.
 
 ### Launching
 
@@ -78,5 +109,3 @@ This project was built during a How I can cohort. Come check out [How I Can](htt
 for more details.
 
 Please view our [Wiki](https://github.com/how-i-can/news/wiki) for documentation on the cohort and the AGILE-like process.
-
-

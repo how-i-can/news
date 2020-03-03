@@ -7,14 +7,14 @@ const port = process.env.PORT || 4000;
 const axios = require("axios");
 const firebase = require("firebase");
 var firebaseConfig = {
-  apiKey: "",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "",
   databaseURL: "",
-  projectId: "",
+  projectId: process.env.FIREBASE_PROJECT_ID,
   storageBucket: "",
-  messagingSenderId: "" ,
+  messagingSenderId: "",
   appId: "",
-  measurementId: "" ,
+  measurementId: "",
 };
 firebase.initializeApp(firebaseConfig);
 
