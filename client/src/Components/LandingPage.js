@@ -94,6 +94,7 @@ class LandingPage extends Component {
 
   render() {
     const { classes } = this.props;
+    const { query } = this.state;
     return (
       <div className={classes.landingPage}>
         <Paper className={classes.paper}>
@@ -102,26 +103,30 @@ class LandingPage extends Component {
               <SearchBar
                 handleClearClick={this.handleClearClick}
                 handleInputChange={this.handleInputChange}
-                query={this.state.query}
+                query={query}
               />
-              <Suggestions
-                queryResultArticles={this.state.queryResultArticles}
-                handleSearchClick={this.handleSearchClick}
-                query={this.state.query}
-              />
+              {query && (
+                <Suggestions
+                  queryResultArticles={this.state.queryResultArticles}
+                  handleSearchClick={this.handleSearchClick}
+                  query={query}
+                />
+              )}
             </Grid>
           </Grid>
         </Paper>
-        <Paper className={classes.paper}>
-          <Grid container wrap="wrap" spacing={16}>
-            <Grid item xs>
-              <NewsCards
-                handleChange={this.handleChange}
-                articles={this.state.newsCardArticles}
-              />
+        {!query && (
+          <Paper className={classes.paper}>
+            <Grid container wrap="wrap" spacing={16}>
+              <Grid item xs>
+                <NewsCards
+                  handleChange={this.handleChange}
+                  articles={this.state.newsCardArticles}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </Paper>
+          </Paper>
+        )}
         <Grid container wrap="nowrap" className={classes.paper}>
           <Grid item xs>
             <BottomNavBar />
