@@ -25,19 +25,23 @@ npm install -g nodemon
 
 ### Configuring
 
-Go to https://newsapi.org and register for an API key. While one does exist in the .env file, it is strongly encouraged to have your own.
+#### News API Key
 
-Create .env file within `server/` directory if doesn't exist
+Go to https://newsapi.org and register for an API key.
+
+Create `.env` file within `server/` directory
 
 ```
 touch .env
 ```
 
-Add NEWS API key in the .env file
+Add your News API key to the `.env` file*
 
 ```
 NEWS_API_KEY=yourkey
 ```
+
+***Note:** Please check the file `.env-example* for an example on how to add the required environment keys to your own `.env` file.
 
 ### Launching
 
