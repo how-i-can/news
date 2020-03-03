@@ -68,36 +68,6 @@ FIREBASE_PROJECT_ID=yourid
 
 ***Note:** Please check the file `.env-example` for an example on how to add the required environment keys to your own `.env` file.
 
-9. Still in your local repo, go to `perch/news/server/index.js` and look for the following config:
-
-```
-var firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "" ,
-  appId: "",
-  measurementId: "" ,
-};
-```
-
-Add your environment variables from step 8:
-
-```
-var firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: "",
-  databaseURL: "",
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: "",
-  messagingSenderId: "" ,
-  appId: "",
-  measurementId: "" ,
-};
-```
-
 It's okay to leave the fields blank where no values exist because we currently don't utilize all the Firebase functionality.
 
 ### Launching
@@ -139,5 +109,3 @@ This project was built during a How I can cohort. Come check out [How I Can](htt
 for more details.
 
 Please view our [Wiki](https://github.com/how-i-can/news/wiki) for documentation on the cohort and the AGILE-like process.
-
-
