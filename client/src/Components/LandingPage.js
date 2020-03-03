@@ -107,6 +107,7 @@ class LandingPage extends Component {
               <Suggestions
                 queryResultArticles={this.state.queryResultArticles}
                 handleSearchClick={this.handleSearchClick}
+                query={this.state.query}
               />
             </Grid>
           </Grid>

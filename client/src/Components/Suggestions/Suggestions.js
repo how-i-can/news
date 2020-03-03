@@ -13,19 +13,23 @@ class Suggestions extends Component {
 
   render() {
     if (this.props.queryResultArticles !== undefined) {
-      const options = this.props.queryResultArticles.map(article => (
-        <ListItem
-          key={article.url}
-          button
-          onClick={e => this.handleClick(e, article)}
-        >
-          <ListItemText
-            className="list-item"
-            disableTypography
-            primary={article.title}
-          />
-        </ListItem>
-      ));
+      const options = this.props.queryResultArticles.map(article => {
+        const text = {
+          __html: article.title
+            .toLowerCase()
+            .split(this.props.query.toLowerCase())
+            .join(`<b>${this.props.query.toLowerCase()}</b>`)
+        };
+        return (
+          <ListItem
+            key={article.url}
+            button
+            onClick={e => this.handleClick(e, article)}
+          >
+            <div className="list-item" dangerouslySetInnerHTML={text} />
+          </ListItem>
+        );
+      });
       return (
         <div className="search-list">
           <h3>Results</h3>
