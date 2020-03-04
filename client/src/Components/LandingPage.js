@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NewsCards from "./NewsCards";
 import SearchBar from "./SearchBar";
-import Suggestions from "./Suggestions/Suggestions";
+import Suggestions from "./Suggestions";
 import BottomNavBar from "./BottomNavBar";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -10,10 +10,25 @@ import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
+  gridContainer: {
+    display: "flex"
+  },
+  gridContainerSearch: {
+    background: "none"
+  },
+  gridItem: {
+    padding: "0px"
+  },
+  gridItemSearch: {
+    padding: "0px"
+  },
   landingPage: {
     flexGrow: 1,
     overflow: "hidden",
-    alignitems: "center"
+    alignitems: "center",
+    background: "whitesmoke",
+    maxWidth: 450,
+    margin: "0 auto"
   },
   title: {
     textAlign: "center",
@@ -21,7 +36,7 @@ const styles = theme => ({
     color: "#084D67"
   },
   paper: {
-    maxWidth: 450,
+    maxWidth: 400,
     margin: `${theme.spacing.unit}px auto`,
     padding: "0px"
   }
@@ -98,8 +113,8 @@ class LandingPage extends Component {
     return (
       <div className={classes.landingPage}>
         <Paper className={classes.paper}>
-          <Grid container wrap="nowrap" spacing={16}>
-            <Grid item xs zeroMinWidth>
+          <Grid container className={classes.gridContainerSearch}>
+            <Grid item xs className={classes.gridItemSearch}>
               <SearchBar
                 handleClearClick={this.handleClearClick}
                 handleInputChange={this.handleInputChange}
@@ -117,8 +132,8 @@ class LandingPage extends Component {
         </Paper>
         {!query && (
           <Paper className={classes.paper}>
-            <Grid container wrap="wrap" spacing={16}>
-              <Grid item xs>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs className={classes.gridItem}>
                 <NewsCards
                   handleChange={this.handleChange}
                   articles={this.state.newsCardArticles}
@@ -127,7 +142,7 @@ class LandingPage extends Component {
             </Grid>
           </Paper>
         )}
-        <Grid container wrap="nowrap" className={classes.paper}>
+        <Grid container wrap="nowrap">
           <Grid item xs>
             <BottomNavBar />
           </Grid>

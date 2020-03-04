@@ -1,10 +1,28 @@
 import React, { Component } from "react";
-import "./Suggestions.css";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  searchList: {
+    display: "flex",
+    flexDirection: "column",
+    backgroundImage: "linear-gradient(white, #e0eff9)",
+    color: "black",
+    fontFamily: "Roboto",
+    height: "100vh"
+  },
+  header: {
+    paddingLeft: "1em"
+  },
+  listItem: {
+    flex: 1,
+    fontWeight: 350
+  }
+});
 
 class Suggestions extends Component {
   handleClick = (e, article) => {
@@ -12,6 +30,7 @@ class Suggestions extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     if (this.props.queryResultArticles !== undefined) {
       const options = this.props.queryResultArticles.map(article => {
         const text = {
@@ -26,13 +45,13 @@ class Suggestions extends Component {
             button
             onClick={e => this.handleClick(e, article)}
           >
-            <div className="list-item" dangerouslySetInnerHTML={text} />
+            <div className={classes.listItem} dangerouslySetInnerHTML={text} />
           </ListItem>
         );
       });
       return (
-        <div className="search-list">
-          <h3>Results</h3>
+        <div className={classes.searchList}>
+          <h3 className={classes.header}>Results</h3>
           <List component="nav" aria-label="main mailbox folders">
             {options}
           </List>
@@ -44,4 +63,4 @@ class Suggestions extends Component {
   }
 }
 
-export default Suggestions;
+export default withStyles(styles)(Suggestions);
