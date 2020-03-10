@@ -78,7 +78,7 @@ cd ../server
 npm start
 ```
 
-Navigate to http://localhost:3000/ from a web browser to confirm the server is running. You should see {"message": "working"}.
+Navigate to http://localhost:4000/ from a web browser to confirm the server is running. You should see {"message": "working"}.
 
 Launch client using the CLI from the directory: `news/client`
 ```
@@ -86,7 +86,7 @@ cd ../client
 npm start
 ```
 
-A browser should load to http://localhost:4000/ where the news app will be loaded.
+A browser should load to http://localhost:3000/ where the news app will be loaded.
 
 
 ## Built With
