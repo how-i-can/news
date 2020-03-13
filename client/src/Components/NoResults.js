@@ -9,6 +9,7 @@ const styles = () => ({
     fontFamily: "Source Sans Pro",
     paddingRight: "20px",
     paddingLeft: "20px",
+    borderBottom: "2px",
   },
   intro: {
     fontWeight: "bold",
@@ -32,21 +33,12 @@ class NoResults extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.noResults}>
-        <h1>Results</h1>
-        <p className={classes.intro}>
-          No results found for <search_term>"search term"</search_term>
-        </p>
+        <h1>No Results</h1>
+        <p className={classes.intro}>No results found for "search term"</p>
         <p>
           Try searching something else such as
-          <search_term className={classes.searchTerm}>
-            {" "}
-            US 2020 Election
-          </search_term>{" "}
-          or
-          <search_term className={classes.searchTerm}>
-            {" "}
-            Cute Dog Videos
-          </search_term>
+          <span className={classes.searchTerm}> US 2020 Election</span> or
+          <span className={classes.searchTerm}> Cute Dog Videos</span>
         </p>
         <img className={classes.image} src={image} alt="" />
       </div>
