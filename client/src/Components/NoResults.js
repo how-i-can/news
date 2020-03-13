@@ -9,6 +9,7 @@ const styles = () => ({
     fontFamily: "Source Sans Pro",
     paddingRight: "20px",
     paddingLeft: "20px",
+    borderBottom: "2px",
   },
   intro: {
     fontWeight: "bold",
