@@ -78,8 +78,8 @@ class NewsCard extends Component {
     return (
       <div className={classes.newsCard}>
         <Card className={classes.card}>
-          <Grid container="container" spacing={24}>
-            <Grid item="item" xs={12}>
+          <Grid container spacing={24}>
+            <Grid container item xs={12} spacing={24}>
               <CardContent>
                 <Typography className={classes.date} color="textSecondary">
                   <TimeAgo style={{fontSize:20}}/>
@@ -87,19 +87,19 @@ class NewsCard extends Component {
                 </Typography>
               </CardContent>
             </Grid>
-            <Grid item="item" xs={4}>
+            <Grid item xs={4}>
               <CardMedia className={classes.media} image={article.urlToImage} title={article.source.name} />
             </Grid>
-            <Grid item="item" xs={8}>
+            <Grid item xs={8}>
               <CardContent>
                 <Typography className={classes.title} color="textPrimary">{article.title}</Typography>
               </CardContent>
             </Grid>
-            <Grid item="item" xs={12}>
+            <Grid item xs={12}>
               <CardContent>
                 <Typography component="p" color="textSecondary">{article.description}</Typography>
               </CardContent>
-              <CardActions className={!this.state.expanded ? classes.actions : classes.actionOne} disableActionSpacing="disableActionSpacing">
+              <CardActions className={!this.state.expanded ? classes.actions : classes.actionOne} >
                 <IconButton aria-label="Pause">
                   <Pause />
                 </IconButton>
@@ -113,10 +113,10 @@ class NewsCard extends Component {
                 </IconButton>
               </CardActions>
 
-              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit="unmountOnExit">
+              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                  <Typography paragraph="paragraph">By {article.author}</Typography>
-                  <Typography paragraph="paragraph">{article.content} <a href={article.url}>Read More</a></Typography>
+                  <Typography paragraph>By {article.author}</Typography>
+                  <Typography paragraph>{article.content} <a href={article.url}>Read More</a></Typography>
                 </CardContent>
               </Collapse>
             </Grid>
