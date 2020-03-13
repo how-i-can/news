@@ -34,20 +34,11 @@ class NoResults extends Component {
     return (
       <div className={classes.noResults}>
         <h1>No Results</h1>
-        <p className={classes.intro}>
-          No results found for "search term"
-        </p>
+        <p className={classes.intro}>No results found for "search term"</p>
         <p>
           Try searching something else such as
-          <span className={classes.searchTerm}>
-            {" "}
-            US 2020 Election
-          </span>{" "}
-          or
-          <span className={classes.searchTerm}>
-            {" "}
-            Cute Dog Videos
-          </span>
+          <span className={classes.searchTerm}> US 2020 Election</span> or
+          <span className={classes.searchTerm}> Cute Dog Videos</span>
         </p>
         <img className={classes.image} src={image} alt="" />
       </div>
