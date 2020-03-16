@@ -15,18 +15,19 @@
     "react-scripts": "3.0.0",
     "withstyles": "^1.0.3"
   },
-    "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --trailing-comma --write",
-      "git add"
-    ]
-  },
   "scripts": {
-    "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": "prettier --trailing-comma --write"
   },
   "eslintConfig": {
     "extends": "react-app"
