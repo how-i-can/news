@@ -13,8 +13,7 @@ const styles = theme => ({
     flexDirection: "column",
     backgroundImage: "linear-gradient(white, #e0eff9)",
     color: "black",
-    fontFamily: "Roboto",
-    height: "100vh"
+    fontFamily: "Roboto"
   },
   header: {
     paddingLeft: "1em"
