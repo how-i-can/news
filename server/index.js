@@ -7,14 +7,14 @@ const port = process.env.PORT || 4000;
 const axios = require("axios");
 const firebase = require("firebase");
 var firebaseConfig = {
-  apiKey: "",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "",
   databaseURL: "",
-  projectId: "",
+  projectId: process.env.FIREBASE_PROJECT_ID,
   storageBucket: "",
-  messagingSenderId: "" ,
+  messagingSenderId: "",
   appId: "",
-  measurementId: "" ,
+  measurementId: "",
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -75,7 +75,7 @@ app.use("/news/filter", (req, res, next) => {
 app.post("/signin", (req, res) => {
   const user = {
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
   };
   firebase
     .auth()
@@ -96,7 +96,7 @@ app.post("/signup", (req, res) => {
     email: req.body.email,
     password: req.body.password,
     confirmPassword: req.body.confirmPassword,
-    handle: req.body.handle
+    handle: req.body.handle,
   };
   firebase
     .auth()
@@ -140,7 +140,7 @@ function errorHandler(err, req, res, next) {
   res.status(res.statusCode || 500);
   res.json({
     message: err.message,
-    stack: err.stack
+    stack: err.stack,
   });
 }
 

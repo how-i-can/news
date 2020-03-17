@@ -8,6 +8,7 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
+import NoResults from "./NoResults";
 
 const styles = theme => ({
   gridContainer: {
@@ -51,7 +52,8 @@ class LandingPage extends Component {
       query: "",
       error: false,
       isLoading: false,
-      loadSearchedQuery: false
+      loadSearchedQuery: false,
+      searchResults: false
     };
   }
 
@@ -65,14 +67,16 @@ class LandingPage extends Component {
       .post("/news/filter", { query })
       .then(response => {
         let res = response.data;
-        if (res < 6) {
+        if (res.length === 0 || res < 6) {
           this.setState({
-            queryResultArticles: response.data
+            queryResultArticles: response.data,
+            searchResults: true
           });
         } else {
           res = res.slice(0, 5);
           this.setState({
-            queryResultArticles: res
+            queryResultArticles: res,
+            searchResults: false
           });
         }
       })
@@ -127,6 +131,7 @@ class LandingPage extends Component {
                   query={query}
                 />
               )}
+              {this.state.searchResults && <NoResults />}
             </Grid>
           </Grid>
         </Paper>
@@ -140,7 +145,7 @@ class LandingPage extends Component {
             </Grid>
           </Grid>
         </Paper>
-        <Grid container wrap="nowrap">
+        <Grid container wrap="nowrap" className={classes.paper}>
           <Grid item xs>
             <BottomNavBar />
           </Grid>
