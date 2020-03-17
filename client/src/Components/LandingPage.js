@@ -130,18 +130,16 @@ class LandingPage extends Component {
             </Grid>
           </Grid>
         </Paper>
-        {!query && (
-          <Paper className={classes.paper}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs className={classes.gridItem}>
-                <NewsCards
-                  handleChange={this.handleChange}
-                  articles={this.state.newsCardArticles}
-                />
-              </Grid>
+        <Paper className={classes.paper}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs className={classes.gridItem}>
+              <NewsCards
+                handleChange={this.handleChange}
+                articles={this.state.newsCardArticles}
+              />
             </Grid>
-          </Paper>
-        )}
+          </Grid>
+        </Paper>
         <Grid container wrap="nowrap">
           <Grid item xs>
             <BottomNavBar />
