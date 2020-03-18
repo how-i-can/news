@@ -32,9 +32,9 @@ const styles = theme => ({
   },
   searchIcon: {
     width: theme.spacing.unit * 5,
-    marginLeft: "0.5em",
+    marginRight: "0.5em",
     pointerEvents: "none",
-    flex: 0.25
+    flex: 0.1
   }
 });
 
@@ -55,13 +55,13 @@ class Suggestions extends Component {
         };
         return (
           <div className={classes.queryResult}>
-            <SearchIcon className={classes.searchIcon} />
             <ListItem
               className={classes.queryLabel}
               key={article.url}
               button
               onClick={e => this.handleClick(e, article)}
             >
+              <SearchIcon className={classes.searchIcon} />
               <div
                 className={classes.listItem}
                 dangerouslySetInnerHTML={text}
