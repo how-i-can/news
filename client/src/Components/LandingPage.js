@@ -122,7 +122,7 @@ class LandingPage extends Component {
           </Grid>
           {this.state.showNoResultsCard && !this.state.hasSearchResults && (
             <Card>
-              <NoResults />
+              <NoResults query={this.state.query} />
             </Card>
           )}
         </Paper>
