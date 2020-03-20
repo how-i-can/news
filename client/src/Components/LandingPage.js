@@ -10,7 +10,6 @@ import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 import NoResults from "./NoResults";
 
-
 const styles = theme => ({
   landingPage: {
     flexGrow: 1,
@@ -39,7 +38,8 @@ class LandingPage extends Component {
       error: false,
       isLoading: false,
       loadSearchedQuery: false,
-      searchResults: false,
+      hasSearchResults: false,
+      showNoResultsCard: false,
     };
   }
 
@@ -53,24 +53,23 @@ class LandingPage extends Component {
       .post("/news/filter", { query })
       .then(response => {
         let res = response.data;
-        if (res.length === 0 || res < 6) {
-          this.setState({
-            queryResultArticles: response.data,
-            searchResults: true,
-          });
+        if (res.length > 0) {
+          this.setState({ hasSearchResults: true, showNoResultsCard: false });
+        } else {
+          this.setState({ hasSearchResults: false, showNoResultsCard: true });
+        }
+        if (res.length < 6) {
+          this.setState({ queryResultArticles: response.data });
+          this.setState({ newsCardArticles: response.data });
         } else {
           res = res.slice(0, 5);
-          this.setState({
-            queryResultArticles: res,
-            searchResults: false,
-          });
+          this.setState({ queryResultArticles: res });
         }
       })
       .catch(() => this.setState({ error: true }));
   };
 
   handleInputChange = queryVal => {
-    const { query } = this.state;
     this.setState(
       {
         query: queryVal,
@@ -78,6 +77,9 @@ class LandingPage extends Component {
       () => {
         if (this.state.query && this.state.query.length > 0) {
           this.getInfo();
+        } else {
+          this.setState({ hasSearchResults: false });
+          this.clearSuggestions();
         }
       }
     );
@@ -93,9 +95,9 @@ class LandingPage extends Component {
     this.clearSuggestions();
   };
 
-  clearSuggestions() {
+  clearSuggestions = () => {
     this.setState({ query: "", queryResultArticles: [] });
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -109,14 +111,20 @@ class LandingPage extends Component {
                 handleInputChange={this.handleInputChange}
                 query={this.state.query}
               />
-              <Suggestions
-                queryResultArticles={this.state.queryResultArticles}
-                handleSearchClick={this.handleSearchClick}
-              />
-              {this.state.searchResults && <NoResults />}
+              {this.state.hasSearchResults && (
+                <Suggestions
+                  queryResultArticles={this.state.queryResultArticles}
+                  handleSearchClick={this.handleSearchClick}
+                />
+              )}
             </Grid>
           </Grid>
         </Paper>
+        {this.state.showNoResultsCard && !this.state.hasSearchResults && (
+          <Paper className={classes.paper}>
+            <NoResults />
+          </Paper>
+        )}
         <Paper className={classes.paper}>
           <Grid container wrap="wrap" spacing={16}>
             <Grid item xs>
