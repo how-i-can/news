@@ -16,7 +16,7 @@ const styles = () => ({
   },
   searchTerm: {
     color: "#466264",
-    textDecoration: "underline",
+    fontWeight: "bold",
   },
   image: {
     display: "block",

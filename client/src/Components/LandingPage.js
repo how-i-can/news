@@ -14,7 +14,7 @@ const styles = theme => ({
   landingPage: {
     flexGrow: 1,
     overflow: "hidden",
-    alignitems: "center",
+    alignItems: "center",
   },
   title: {
     textAlign: "center",
@@ -119,12 +119,12 @@ class LandingPage extends Component {
               )}
             </Grid>
           </Grid>
+          {this.state.showNoResultsCard && !this.state.hasSearchResults && (
+            <Card>
+              <NoResults />
+            </Card>
+          )}
         </Paper>
-        {this.state.showNoResultsCard && !this.state.hasSearchResults && (
-          <Paper className={classes.paper}>
-            <NoResults />
-          </Paper>
-        )}
         <Paper className={classes.paper}>
           <Grid container wrap="wrap" spacing={16}>
             <Grid item xs>
