@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import PropTypes from "prop-types";
+import PropTypes, { nominalTypeHack } from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import ClearIcon from "@material-ui/icons/Clear";
 import { fade } from "@material-ui/core/styles/colorManipulator";
@@ -14,40 +14,44 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   appBar: {
+    display: "flex",
     backgroundColor: "white",
     color: "grey",
-    boxShadow: "0.25",
+    boxShadow: "0.25"
   },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
-      display: "block",
+      display: "block"
     },
+    flex: 1
   },
   search: {
+    display: "flex",
+    justifyContent: "space-evenly",
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginRight: theme.spacing.unit * 2,
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing.unit * 3,
-      width: "auto",
-    },
+      width: "auto"
+    }
   },
   searchIcon: {
     width: theme.spacing.unit * 5,
     pointerEvents: "none",
     alignItems: "center",
-    justifyContent: "center",
+    flex: 1
   },
   inputRoot: {
     color: "inherit",
-    width: 350,
+    flex: 1
   },
   inputInput: {
     paddingTop: theme.spacing.unit,
@@ -57,9 +61,10 @@ const styles = theme => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 200,
+      width: 200
     },
-  },
+    flex: 1
+  }
 });
 class SearchBar extends Component {
   constructor(props, context) {
@@ -67,13 +72,13 @@ class SearchBar extends Component {
     this.state = {
       anchorEl: null,
       mobileMoreAnchorEl: null,
-      searchStringValue: "",
+      searchStringValue: ""
     };
   }
 
   handleInput = e => {
     this.setState({
-      searchStringValue: e.target.value,
+      searchStringValue: e.target.value
     });
     this.props.handleInputChange(e.target.value);
   };
@@ -81,7 +86,7 @@ class SearchBar extends Component {
   handleSearchClearClick = e => {
     this.setState(
       {
-        searchStringValue: "",
+        searchStringValue: ""
       },
       () => {
         this.props.handleClearClick();
@@ -105,14 +110,14 @@ class SearchBar extends Component {
               <InputBase
                 classes={{
                   root: classes.inputRoot,
-                  input: classes.inputInput,
+                  input: classes.inputInput
                 }}
                 placeholder="What are you looking for?"
                 onChange={this.handleInput}
                 value={this.state.searchStringValue}
                 startAdornment={
                   <InputAdornment position="start">
-                    <SearchIcon />
+                    <SearchIcon className={classes.searchIcon} />
                   </InputAdornment>
                 }
                 endAdornment={
@@ -136,7 +141,7 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(SearchBar);

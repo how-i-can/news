@@ -14,11 +14,11 @@ const styles = theme => ({
     display: "flex",
     position: "relative",
     backgroundColor: "#87BCBF",
-    maxWidth: 450,
+    flexGrow: 1
   },
   toolbar: {
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly"
   },
   fabButton: {
     position: "absolute",
@@ -26,8 +26,8 @@ const styles = theme => ({
     top: -30,
     left: 0,
     right: 0,
-    margin: "0 auto",
-  },
+    margin: "0 auto"
+  }
 });
 
 function BottomAppBar(props) {
@@ -53,7 +53,7 @@ function BottomAppBar(props) {
 }
 
 BottomAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(BottomAppBar);

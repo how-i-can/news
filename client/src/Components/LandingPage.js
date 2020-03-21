@@ -11,21 +11,36 @@ import { withStyles } from "@material-ui/core/styles";
 import NoResults from "./NoResults";
 
 const styles = theme => ({
+  gridContainer: {
+    display: "flex"
+  },
+  gridContainerSearch: {
+    background: "none"
+  },
+  gridItem: {
+    padding: "0px"
+  },
+  gridItemSearch: {
+    padding: "0px"
+  },
   landingPage: {
     flexGrow: 1,
     overflow: "hidden",
     alignitems: "center",
+    background: "whitesmoke",
+    maxWidth: 450,
+    margin: "0 auto"
   },
   title: {
     textAlign: "center",
     fontFamily: "Source Sans Pro",
-    color: "#084D67",
+    color: "#084D67"
   },
   paper: {
-    maxWidth: 450,
+    maxWidth: 400,
     margin: `${theme.spacing.unit}px auto`,
-    padding: "0px",
-  },
+    padding: "0px"
+  }
 });
 
 class LandingPage extends Component {
@@ -38,7 +53,7 @@ class LandingPage extends Component {
       error: false,
       isLoading: false,
       loadSearchedQuery: false,
-      searchResults: false,
+      searchResults: false
     };
   }
 
@@ -55,13 +70,13 @@ class LandingPage extends Component {
         if (res.length === 0 || res < 6) {
           this.setState({
             queryResultArticles: response.data,
-            searchResults: true,
+            searchResults: true
           });
         } else {
           res = res.slice(0, 5);
           this.setState({
             queryResultArticles: res,
-            searchResults: false,
+            searchResults: false
           });
         }
       })
@@ -72,7 +87,7 @@ class LandingPage extends Component {
     const { query } = this.state;
     this.setState(
       {
-        query: queryVal,
+        query: queryVal
       },
       () => {
         if (this.state.query && this.state.query.length > 0) {
@@ -98,27 +113,31 @@ class LandingPage extends Component {
 
   render() {
     const { classes } = this.props;
+    const { query } = this.state;
     return (
       <div className={classes.landingPage}>
         <Paper className={classes.paper}>
-          <Grid container wrap="nowrap">
-            <Grid item xs zeroMinWidth>
+          <Grid container className={classes.gridContainerSearch}>
+            <Grid item xs className={classes.gridItemSearch}>
               <SearchBar
                 handleClearClick={this.handleClearClick}
                 handleInputChange={this.handleInputChange}
-                query={this.state.query}
+                query={query}
               />
-              <Suggestions
-                queryResultArticles={this.state.queryResultArticles}
-                handleSearchClick={this.handleSearchClick}
-              />
+              {query && (
+                <Suggestions
+                  queryResultArticles={this.state.queryResultArticles}
+                  handleSearchClick={this.handleSearchClick}
+                  query={query}
+                />
+              )}
               {this.state.searchResults && <NoResults />}
             </Grid>
           </Grid>
         </Paper>
         <Paper className={classes.paper}>
-          <Grid container wrap="wrap" spacing={16}>
-            <Grid item xs>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs className={classes.gridItem}>
               <NewsCards
                 handleChange={this.handleChange}
                 articles={this.state.newsCardArticles}
@@ -137,7 +156,7 @@ class LandingPage extends Component {
 }
 
 LandingPage.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(LandingPage);
