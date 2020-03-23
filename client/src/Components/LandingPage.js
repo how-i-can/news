@@ -42,6 +42,15 @@ class LandingPage extends Component {
     };
   }
 
+  setDefaultCards = e => {
+    fetch("/news")
+      .then(response => response.json())
+      .then(response => {
+        this.setState({ newsCardArticles: response });
+      });
+    //console.log("debug_message1");
+  };
+
   handleChange = (indexKey, data) => {
     this.setState({ [indexKey]: data });
   };
@@ -121,6 +130,7 @@ class LandingPage extends Component {
             <Grid item xs>
               <NewsCards
                 handleChange={this.handleChange}
+                onLoad={this.setDefaultCards}
                 articles={this.state.newsCardArticles}
               />
             </Grid>
@@ -128,7 +138,7 @@ class LandingPage extends Component {
         </Paper>
         <Grid container wrap="nowrap" className={classes.paper}>
           <Grid item xs>
-            <BottomNavBar />
+            <BottomNavBar onLoad={this.setDefaultCards} />
           </Grid>
         </Grid>
       </div>

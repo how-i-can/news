@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Account from "@material-ui/icons/Person";
 import Grade from "@material-ui/icons/Grade";
 import Home from "@material-ui/icons/Home";
+import LandingPage from "./LandingPage";
 
 const styles = theme => ({
   appBar: {
@@ -37,7 +38,10 @@ function BottomAppBar(props) {
       <CssBaseline />
       <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <IconButton>
+          <IconButton
+            onClick={props.onLoad()}
+            //onClick={() => console.log("onclick debug")}
+          >
             <Home />
           </IconButton>
           <IconButton>
