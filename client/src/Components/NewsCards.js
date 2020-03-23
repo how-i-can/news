@@ -3,11 +3,7 @@ import NewsCard from "./NewsCard";
 
 class NewsCards extends Component {
   componentDidMount = () => {
-    fetch("/news")
-      .then(response => response.json())
-      .then(response => {
-        this.props.handleChange("newsCardArticles", response);
-      });
+    this.props.onLoad();
   };
   render() {
     const { articles } = this.props;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
@@ -38,7 +38,10 @@ function BottomAppBar(props) {
       <CssBaseline />
       <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <IconButton>
+          <IconButton
+            onClick={props.onLoad()}
+            //onClick={() => console.log("onclick debug")}
+          >
             <Home />
           </IconButton>
           <IconButton>
