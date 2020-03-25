@@ -12,35 +12,35 @@ import NoResults from "./NoResults";
 
 const styles = theme => ({
   gridContainer: {
-    display: "flex"
+    display: "flex",
   },
   gridContainerSearch: {
-    background: "none"
+    background: "none",
   },
   gridItem: {
-    padding: "0px"
+    padding: "0px",
   },
   gridItemSearch: {
-    padding: "0px"
+    padding: "0px",
   },
   landingPage: {
     flexGrow: 1,
     overflow: "hidden",
-    alignitems: "center",
+    alignItems: "center",
     background: "whitesmoke",
     maxWidth: 450,
-    margin: "0 auto"
+    margin: "0 auto",
   },
   title: {
     textAlign: "center",
     fontFamily: "Source Sans Pro",
-    color: "#084D67"
+    color: "#084D67",
   },
   paper: {
     maxWidth: 400,
     margin: `${theme.spacing.unit}px auto`,
-    padding: "0px"
-  }
+    padding: "0px",
+  },
 });
 
 class LandingPage extends Component {
@@ -53,7 +53,7 @@ class LandingPage extends Component {
       error: false,
       isLoading: false,
       loadSearchedQuery: false,
-      searchResults: false
+      searchResults: false,
     };
   }
 
@@ -70,13 +70,13 @@ class LandingPage extends Component {
         if (res.length === 0 || res < 6) {
           this.setState({
             queryResultArticles: response.data,
-            searchResults: true
+            searchResults: true,
           });
         } else {
           res = res.slice(0, 5);
           this.setState({
             queryResultArticles: res,
-            searchResults: false
+            searchResults: false,
           });
         }
       })
@@ -87,7 +87,7 @@ class LandingPage extends Component {
     const { query } = this.state;
     this.setState(
       {
-        query: queryVal
+        query: queryVal,
       },
       () => {
         if (this.state.query && this.state.query.length > 0) {
@@ -135,6 +135,7 @@ class LandingPage extends Component {
             </Grid>
           </Grid>
         </Paper>
+        <CategoryFilter />
         <Paper className={classes.paper}>
           <Grid container className={classes.gridContainer}>
             <Grid item xs className={classes.gridItem}>
@@ -156,7 +157,7 @@ class LandingPage extends Component {
 }
 
 LandingPage.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(LandingPage);
