@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 import NoResults from "./NoResults";
+import CategoryFilter from "./CategoryFilter";
 
 const styles = theme => ({
   gridContainer: {
