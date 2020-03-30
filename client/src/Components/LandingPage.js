@@ -58,10 +58,10 @@ class LandingPage extends Component {
           this.setState({ hasSearchResults: true, showNoResultsCard: false });
         } else {
           this.setState({ hasSearchResults: false, showNoResultsCard: true });
+          this.setState({ queryResultArticles: [] });
         }
         if (res.length < 6) {
           this.setState({ queryResultArticles: response.data });
-          this.setState({ newsCardArticles: response.data });
         } else {
           res = res.slice(0, 5);
           this.setState({ queryResultArticles: res });
