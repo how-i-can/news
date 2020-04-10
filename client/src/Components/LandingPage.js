@@ -129,10 +129,12 @@ class LandingPage extends Component {
         <Paper className={classes.paper}>
           <Grid container wrap="wrap" spacing={16}>
             <Grid item xs>
-              <NewsCards
-                handleChange={this.handleChange}
-                articles={this.state.newsCardArticles}
-              />
+              {!this.state.showNoResultsCard && (
+                <NewsCards
+                  handleChange={this.handleChange}
+                  articles={this.state.newsCardArticles}
+                />
+              )}
             </Grid>
           </Grid>
         </Paper>
