@@ -25,7 +25,7 @@ const styles = theme => ({
   paper: {
     maxWidth: 450,
     margin: `${theme.spacing.unit}px auto`,
-    padding: "0px",
+    padding: 0,
   },
 });
 
@@ -105,7 +105,7 @@ class LandingPage extends Component {
     return (
       <div className={classes.landingPage}>
         <Paper className={classes.paper}>
-          <Grid container wrap="nowrap">
+          <Grid container wrap="nowrap" direction="column">
             <Grid item xs zeroMinWidth>
               <SearchBar
                 handleClearClick={this.handleClearClick}
@@ -125,20 +125,16 @@ class LandingPage extends Component {
               <NoResults query={this.state.query} />
             </Card>
           )}
-          <Grid container wrap="wrap" spacing={16}>
-            <Grid item xs>
-              {!this.state.showNoResultsCard && (
-                <NewsCards
-                  handleChange={this.handleChange}
-                  articles={this.state.newsCardArticles}
-                />
-              )}
-            </Grid>
+          <Grid item xs>
+            {!this.state.showNoResultsCard && (
+              <NewsCards
+                handleChange={this.handleChange}
+                articles={this.state.newsCardArticles}
+              />
+            )}
           </Grid>
-          <Grid container wrap="nowrap">
-            <Grid item xs>
-              <BottomNavBar />
-            </Grid>
+          <Grid item xs>
+            <BottomNavBar />
           </Grid>
         </Paper>
       </div>
