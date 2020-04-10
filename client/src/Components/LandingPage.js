@@ -125,8 +125,6 @@ class LandingPage extends Component {
               <NoResults query={this.state.query} />
             </Card>
           )}
-        </Paper>
-        <Paper className={classes.paper}>
           <Grid container wrap="wrap" spacing={16}>
             <Grid item xs>
               {!this.state.showNoResultsCard && (
@@ -137,12 +135,12 @@ class LandingPage extends Component {
               )}
             </Grid>
           </Grid>
-        </Paper>
-        <Grid container wrap="nowrap" className={classes.paper}>
-          <Grid item xs>
-            <BottomNavBar />
+          <Grid container wrap="nowrap">
+            <Grid item xs>
+              <BottomNavBar />
+            </Grid>
           </Grid>
-        </Grid>
+        </Paper>
       </div>
     );
   }
