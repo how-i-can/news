@@ -83,6 +83,12 @@ class SearchBar extends Component {
     this.props.handleInputChange(e.target.value);
   };
 
+  handleSearch = e => {
+    if (e.key === "Enter") {
+      this.props.handleSearch(this.state.searchStringValue);
+    }
+  };
+
   handleSearchClearClick = e => {
     this.setState(
       {
@@ -114,6 +120,7 @@ class SearchBar extends Component {
                 }}
                 placeholder="What are you looking for?"
                 onChange={this.handleInput}
+                onKeyDown={this.handleSearch}
                 value={this.state.searchStringValue}
                 startAdornment={
                   <InputAdornment position="start">
