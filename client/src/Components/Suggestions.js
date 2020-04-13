@@ -54,7 +54,7 @@ class Suggestions extends Component {
             .join(`<b>${this.props.query.toLowerCase()}</b>`)
         };
         return (
-          <div className={classes.queryResult}>
+          <div className={classes.queryResult} key={article.url}>
             <ListItem
               className={classes.queryLabel}
               key={article.url}
