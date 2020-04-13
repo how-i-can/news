@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+
+import axios from "axios";
+import PropTypes from "prop-types";
+
 import BottomNavBar from "./BottomNavBar";
 import NewsCards from "./NewsCards";
 import NoResults from "./NoResults";
 import SearchBar from "./SearchBar";
 import Suggestions from "./Suggestions";
-import axios from "axios";
-import PropTypes from "prop-types";
+
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -17,15 +20,15 @@ const styles = theme => ({
     overflow: "hidden",
     alignItems: "center",
   },
-  title: {
-    textAlign: "center",
-    fontFamily: "Source Sans Pro",
-    color: "#084D67",
-  },
   paper: {
     maxWidth: 400,
     margin: `${theme.spacing.unit}px auto`,
     padding: 0,
+  },
+  title: {
+    textAlign: "center",
+    fontFamily: "Source Sans Pro",
+    color: "#084D67",
   },
 });
 
