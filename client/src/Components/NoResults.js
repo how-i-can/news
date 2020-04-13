@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import image from "../images/perch.png";
 import PropTypes from "prop-types";
+
 import { withStyles } from "@material-ui/core/styles";
+
+import image from "../images/perch.png";
 
 const styles = () => ({
   noResults: {
@@ -16,7 +18,7 @@ const styles = () => ({
   },
   searchTerm: {
     color: "#466264",
-    textDecoration: "underline",
+    fontWeight: "bold",
   },
   image: {
     display: "block",
@@ -34,7 +36,9 @@ class NoResults extends Component {
     return (
       <div className={classes.noResults}>
         <h1>No Results</h1>
-        <p className={classes.intro}>No results found for "search term"</p>
+        <p className={classes.intro}>
+          No results found for "{this.props.query}"
+        </p>
         <p>
           Try searching something else such as
           <span className={classes.searchTerm}> US 2020 Election</span> or
