@@ -12,18 +12,6 @@ import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
-  gridContainer: {
-    display: "flex",
-  },
-  gridContainerSearch: {
-    background: "none",
-  },
-  gridItem: {
-    padding: "0px",
-  },
-  gridItemSearch: {
-    padding: "0px",
-  },
   landingPage: {
     flexGrow: 1,
     overflow: "hidden",
@@ -122,8 +110,8 @@ class LandingPage extends Component {
     return (
       <div className={classes.landingPage}>
         <Paper className={classes.paper}>
-          <Grid container wrap="nowrap" direction="column">
-            <Grid item xs zeroMinWidth>
+          <Grid container direction="column">
+            <Grid item xs>
               <SearchBar
                 handleClearClick={this.handleClearClick}
                 handleInputChange={this.handleInputChange}
