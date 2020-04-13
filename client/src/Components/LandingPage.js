@@ -13,16 +13,16 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   gridContainer: {
-    display: "flex"
+    display: "flex",
   },
   gridContainerSearch: {
-    background: "none"
+    background: "none",
   },
   gridItem: {
-    padding: "0px"
+    padding: "0px",
   },
   gridItemSearch: {
-    padding: "0px"
+    padding: "0px",
   },
   landingPage: {
     flexGrow: 1,
@@ -32,7 +32,7 @@ const styles = theme => ({
   title: {
     textAlign: "center",
     fontFamily: "Source Sans Pro",
-    color: "#084D67"
+    color: "#084D67",
   },
   paper: {
     maxWidth: 400,
@@ -85,7 +85,7 @@ class LandingPage extends Component {
   handleInputChange = queryVal => {
     this.setState(
       {
-        query: queryVal
+        query: queryVal,
       },
       () => {
         if (this.state.query && this.state.query.length > 0) {
@@ -119,7 +119,6 @@ class LandingPage extends Component {
 
   render() {
     const { classes } = this.props;
-    const { query } = this.state;
     return (
       <div className={classes.landingPage}>
         <Paper className={classes.paper}>
@@ -135,6 +134,7 @@ class LandingPage extends Component {
                 <Suggestions
                   queryResultArticles={this.state.queryResultArticles}
                   handleSearchClick={this.handleSearchClick}
+                  query={this.state.query}
                 />
               )}
             </Grid>
@@ -162,7 +162,7 @@ class LandingPage extends Component {
 }
 
 LandingPage.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(LandingPage);
