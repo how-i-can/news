@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 import BottomNavBar from "./BottomNavBar";
+import CategoryFilter from "./CategoryFilter";
 import NewsCards from "./NewsCards";
 import NoResults from "./NoResults";
 import SearchBar from "./SearchBar";
@@ -129,6 +130,7 @@ class LandingPage extends Component {
               )}
             </Grid>
           </Grid>
+          <CategoryFilter />
           {this.state.showNoResultsCard && !this.state.hasSearchResults && (
             <Card>
               <NoResults query={this.state.query} />
