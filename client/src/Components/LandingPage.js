@@ -95,7 +95,7 @@ class LandingPage extends Component {
     this.setState({ newsCardArticles: [article] });
   };
 
-  handleClearClick = (e, article) => {
+  handleClearClick = () => {
     this.clearSuggestions();
   };
 
