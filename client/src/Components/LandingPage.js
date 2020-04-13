@@ -1,43 +1,34 @@
 import React, { Component } from "react";
+
+import axios from "axios";
+import PropTypes from "prop-types";
+
 import BottomNavBar from "./BottomNavBar";
 import NewsCards from "./NewsCards";
 import NoResults from "./NoResults";
 import SearchBar from "./SearchBar";
 import Suggestions from "./Suggestions";
-import axios from "axios";
-import PropTypes from "prop-types";
+
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
-  gridContainer: {
-    display: "flex",
-  },
-  gridContainerSearch: {
-    background: "none",
-  },
-  gridItem: {
-    padding: "0px",
-  },
-  gridItemSearch: {
-    padding: "0px",
-  },
   landingPage: {
     flexGrow: 1,
     overflow: "hidden",
     alignItems: "center",
   },
-  title: {
-    textAlign: "center",
-    fontFamily: "Source Sans Pro",
-    color: "#084D67",
-  },
   paper: {
     maxWidth: 400,
     margin: `${theme.spacing.unit}px auto`,
     padding: 0,
+  },
+  title: {
+    textAlign: "center",
+    fontFamily: "Source Sans Pro",
+    color: "#084D67",
   },
 });
 
@@ -65,18 +56,13 @@ class LandingPage extends Component {
     await axios
       .post("/news/filter", { query })
       .then(response => {
-        let res = response.data;
-        if (res.length > 0) {
+        const results = response.data;
+        if (results.length > 0) {
           this.setState({ hasSearchResults: true, showNoResultsCard: false });
+          this.setState({ queryResultArticles: results.slice(0, 5) });
         } else {
           this.setState({ hasSearchResults: false, showNoResultsCard: true });
           this.setState({ queryResultArticles: [] });
-        }
-        if (res.length < 6) {
-          this.setState({ queryResultArticles: response.data });
-        } else {
-          res = res.slice(0, 5);
-          this.setState({ queryResultArticles: res });
         }
       })
       .catch(() => this.setState({ error: true }));
@@ -109,7 +95,7 @@ class LandingPage extends Component {
     this.setState({ newsCardArticles: [article] });
   };
 
-  handleClearClick = (e, article) => {
+  handleClearClick = () => {
     this.clearSuggestions();
   };
 
@@ -122,8 +108,8 @@ class LandingPage extends Component {
     return (
       <div className={classes.landingPage}>
         <Paper className={classes.paper}>
-          <Grid container wrap="nowrap" direction="column">
-            <Grid item xs zeroMinWidth>
+          <Grid container direction="column">
+            <Grid item xs>
               <SearchBar
                 handleClearClick={this.handleClearClick}
                 handleInputChange={this.handleInputChange}
