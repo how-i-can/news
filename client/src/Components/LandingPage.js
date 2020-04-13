@@ -86,6 +86,11 @@ class LandingPage extends Component {
     );
   };
 
+  handleSearch = queryVal => {
+    this.handleInputChange(queryVal);
+    this.setState({ newsCardArticles: this.state.queryResultArticles });
+  };
+
   handleSearchClick = (e, article) => {
     e.preventDefault();
     this.clearSuggestions();
@@ -110,6 +115,7 @@ class LandingPage extends Component {
               <SearchBar
                 handleClearClick={this.handleClearClick}
                 handleInputChange={this.handleInputChange}
+                handleSearch={this.handleSearch}
                 query={this.state.query}
               />
               {this.state.hasSearchResults && (
