@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import image from "../images/perch.png";
 import PropTypes from "prop-types";
+
 import { withStyles } from "@material-ui/core/styles";
+
+import image from "../images/perch.png";
 
 const styles = () => ({
   noResults: {

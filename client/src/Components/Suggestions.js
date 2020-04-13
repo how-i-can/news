@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+
 import { withStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 import SearchIcon from "@material-ui/icons/Search";
 
 const styles = theme => ({
@@ -13,29 +11,29 @@ const styles = theme => ({
     flexDirection: "column",
     backgroundImage: "linear-gradient(white, #e0eff9)",
     color: "black",
-    fontFamily: "Roboto"
+    fontFamily: "Roboto",
   },
   header: {
-    paddingLeft: "1em"
+    paddingLeft: "1em",
   },
   listItem: {
     flex: 1,
-    fontWeight: 350
+    fontWeight: 350,
   },
   queryResult: {
     display: "flex",
     justifyContent: "space-evenly",
-    alignItems: "center"
+    alignItems: "center",
   },
   queryLabel: {
-    flex: 4
+    flex: 4,
   },
   searchIcon: {
     width: theme.spacing.unit * 5,
     marginRight: "0.5em",
     pointerEvents: "none",
-    flex: 0.1
-  }
+    flex: 0.1,
+  },
 });
 
 class Suggestions extends Component {
@@ -51,7 +49,7 @@ class Suggestions extends Component {
           __html: article.title
             .toLowerCase()
             .split(this.props.query.toLowerCase())
-            .join(`<b>${this.props.query.toLowerCase()}</b>`)
+            .join(`<b>${this.props.query.toLowerCase()}</b>`),
         };
         return (
           <div className={classes.queryResult} key={article.url}>

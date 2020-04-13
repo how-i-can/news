@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import Pause from "@material-ui/icons/NotInterested";
-import TimeAgo from "@material-ui/icons/AccessTime";
+import PropTypes from "prop-types";
+
+import { withStyles } from "@material-ui/core/styles";
 import BookMark from "@material-ui/icons/BookmarkBorder";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
+import Pause from "@material-ui/icons/NotInterested";
+import TimeAgo from "@material-ui/icons/AccessTime";
+import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
   newsCard: {
