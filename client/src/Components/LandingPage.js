@@ -12,6 +12,18 @@ import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
+  gridContainer: {
+    display: "flex"
+  },
+  gridContainerSearch: {
+    background: "none"
+  },
+  gridItem: {
+    padding: "0px"
+  },
+  gridItemSearch: {
+    padding: "0px"
+  },
   landingPage: {
     flexGrow: 1,
     overflow: "hidden",
@@ -20,10 +32,10 @@ const styles = theme => ({
   title: {
     textAlign: "center",
     fontFamily: "Source Sans Pro",
-    color: "#084D67",
+    color: "#084D67"
   },
   paper: {
-    maxWidth: 450,
+    maxWidth: 400,
     margin: `${theme.spacing.unit}px auto`,
     padding: 0,
   },
@@ -73,7 +85,7 @@ class LandingPage extends Component {
   handleInputChange = queryVal => {
     this.setState(
       {
-        query: queryVal,
+        query: queryVal
       },
       () => {
         if (this.state.query && this.state.query.length > 0) {
@@ -107,6 +119,7 @@ class LandingPage extends Component {
 
   render() {
     const { classes } = this.props;
+    const { query } = this.state;
     return (
       <div className={classes.landingPage}>
         <Paper className={classes.paper}>
@@ -149,7 +162,7 @@ class LandingPage extends Component {
 }
 
 LandingPage.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(LandingPage);
