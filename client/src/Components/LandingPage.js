@@ -56,18 +56,13 @@ class LandingPage extends Component {
     await axios
       .post("/news/filter", { query })
       .then(response => {
-        let res = response.data;
-        if (res.length > 0) {
+        const results = response.data;
+        if (results.length > 0) {
           this.setState({ hasSearchResults: true, showNoResultsCard: false });
+          this.setState({ queryResultArticles: results.slice(0, 5) });
         } else {
           this.setState({ hasSearchResults: false, showNoResultsCard: true });
           this.setState({ queryResultArticles: [] });
-        }
-        if (res.length < 6) {
-          this.setState({ queryResultArticles: response.data });
-        } else {
-          res = res.slice(0, 5);
-          this.setState({ queryResultArticles: res });
         }
       })
       .catch(() => this.setState({ error: true }));
