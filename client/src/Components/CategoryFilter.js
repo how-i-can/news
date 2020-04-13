@@ -5,9 +5,9 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = () => ({
   filter: {
     display: "flex",
-    paddingTop: "4px",
+    paddingTop: "12px",
     paddingRight: "16px",
-    paddingBottom: "4px",
+    paddingBottom: "12px",
     paddingLeft: "16px",
     overflowX: "scroll",
     "&::-webkit-scrollbar": {
