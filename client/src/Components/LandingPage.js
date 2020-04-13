@@ -100,7 +100,12 @@ class LandingPage extends Component {
   };
 
   clearSuggestions = () => {
-    this.setState({ query: "", queryResultArticles: [] });
+    this.setState({
+      query: "",
+      queryResultArticles: [],
+      hasSearchResults: false,
+      showNoResultsCard: false,
+    });
   };
 
   render() {
