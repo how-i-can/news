@@ -6,6 +6,9 @@ const app = express();
 const port = process.env.PORT || 4000;
 const axios = require("axios");
 const firebase = require("firebase");
+
+const readTimeFromContent = require("./helpers/readTimeFromContent");
+
 var firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "",
@@ -39,7 +42,14 @@ app.get("/news", (req, res, next) => {
   axios
     .get(newsApiURL)
     .then(response => {
-      res.json(response.data.articles);
+      const articles = response.data.articles;
+      const articlesWithReadTime = articles.map(article => {
+        const content = article.content;
+        const readTime = readTimeFromContent(content);
+        article.readTime = readTime;
+        return article;
+      });
+      res.json(articlesWithReadTime);
     })
     .catch(err => {
       console.error(err);
