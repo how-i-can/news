@@ -16,7 +16,7 @@ import TimeAgo from "@material-ui/icons/AccessTime";
 
 import Typography from "@material-ui/core/Typography";
 
-const calculateHours = require("../Helpers/calculateHours");
+const calculateArticleAge = require("../helpers/calculateArticleAge");
 
 const styles = theme => ({
   card: {
@@ -32,7 +32,7 @@ const styles = theme => ({
     fontSize: 16,
     fontWeight: "bold",
   },
-  publicationDateWrapper: {
+  articleAgeWrapper: {
     paddingTop: 0,
     display: "flex",
     alignItems: "center",
@@ -42,7 +42,7 @@ const styles = theme => ({
     fontSize: 18,
     marginRight: 4,
   },
-  publicationDate: {
+  articleAge: {
     fontFamily: "Avenir",
     fontSize: 14,
   },
@@ -77,7 +77,7 @@ class NewsCard extends Component {
 
   render() {
     const { classes, article } = this.props;
-    const hours = calculateHours(article.publishedAt);
+    const articleAge = calculateArticleAge(article.publishedAt);
     return (
       <div className={classes.newsCard}>
         <Card className={classes.card}>
@@ -89,9 +89,9 @@ class NewsCard extends Component {
           <CardContent>
             <Typography className={classes.title}>{article.title}</Typography>
           </CardContent>
-          <CardContent className={classes.publicationDateWrapper}>
+          <CardContent className={classes.articleAgeWrapper}>
             <TimeAgo className={classes.clockIcon} />
-            <Typography className={classes.publicationDate}>{hours}</Typography>
+            <Typography className={classes.articleAge}>{articleAge}</Typography>
           </CardContent>
           <CardActions
             className={
