@@ -16,7 +16,7 @@ import TimeAgo from "@material-ui/icons/AccessTime";
 
 import Typography from "@material-ui/core/Typography";
 
-const calculateArticleAge = require("../helpers/calculateArticleAge");
+const calculateArticleAge = require("../Helpers/calculateArticleAge");
 
 const styles = theme => ({
   card: {
