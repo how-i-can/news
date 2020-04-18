@@ -31,6 +31,41 @@ const styles = theme => ({
   },
 });
 
+class BottomAppBar extends Component {
+  //componentDidMount = () => {
+  //this.props.onLoad();
+  //};
+
+  render() {
+    console.log("Debug message triggered after render");
+    const { classes } = this.props;
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <AppBar className={classes.appBar}>
+          <Toolbar className={classes.toolbar}>
+            //{/* Debug message inside IconButton */}
+            <IconButton
+              onClick={() => this.props.onLoad()}
+              //onClick={() => console.log("onclick debug")}
+              //console.log('Triggered after onClick')
+            >
+              <Home />
+            </IconButton>
+            <IconButton>
+              <Grade />
+            </IconButton>
+            <IconButton>
+              <Account />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      </React.Fragment>
+    );
+  }
+}
+
+/*
 function BottomAppBar(props) {
   const { classes } = props;
   return (
@@ -55,6 +90,7 @@ function BottomAppBar(props) {
     </React.Fragment>
   );
 }
+*/
 
 BottomAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
