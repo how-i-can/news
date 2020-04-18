@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
 import Account from "@material-ui/icons/Person";
 import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Grade from "@material-ui/icons/Grade";
 import Home from "@material-ui/icons/Home";
 import IconButton from "@material-ui/core/IconButton";
@@ -31,14 +30,13 @@ const styles = theme => ({
   },
 });
 
-function BottomAppBar(props) {
-  const { classes } = props;
-  return (
-    <React.Fragment>
-      <CssBaseline />
+class BottomAppBar extends Component {
+  render() {
+    const { classes } = this.props;
+    return (
       <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <IconButton>
+          <IconButton onClick={this.props.loadDefaultNewsArticles}>
             <Home />
           </IconButton>
           <IconButton>
@@ -49,8 +47,8 @@ function BottomAppBar(props) {
           </IconButton>
         </Toolbar>
       </AppBar>
-    </React.Fragment>
-  );
+    );
+  }
 }
 
 BottomAppBar.propTypes = {

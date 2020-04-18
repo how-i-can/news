@@ -108,6 +108,14 @@ class LandingPage extends Component {
     });
   };
 
+  loadDefaultNewsArticles = () => {
+    fetch("/news")
+      .then(response => response.json())
+      .then(response => {
+        this.handleChange("newsCardArticles", response);
+      });
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -139,13 +147,16 @@ class LandingPage extends Component {
           <Grid item xs>
             {!this.state.showNoResultsCard && (
               <NewsCards
+                loadDefaultNewsArticles={this.loadDefaultNewsArticles}
                 handleChange={this.handleChange}
                 articles={this.state.newsCardArticles}
               />
             )}
           </Grid>
           <Grid item xs>
-            <BottomNavBar />
+            <BottomNavBar
+              loadDefaultNewsArticles={this.loadDefaultNewsArticles}
+            />
           </Grid>
         </Paper>
       </div>
