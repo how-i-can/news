@@ -48,7 +48,7 @@ app.get("/news", (req, res, next) => {
 
 //search top news headlines
 app.use("/news/search", (req, res, next) => {
-  const searchNewsApi = `https://newsapi.org/v2/top-headlines?q=${req.body.query}&apiKey=${API_KEY}`;
+  const searchNewsApi = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${pageSize}&apiKey=${API_KEY}`;
   axios
     .get(searchNewsApi)
     .then(response => {
@@ -61,7 +61,7 @@ app.use("/news/search", (req, res, next) => {
 
 //search news by title-flexible to search by other params in the future
 app.use("/news/filter", (req, res, next) => {
-  const searchNewsApi = `https://newsapi.org/v2/everything?qInTitle=${req.body.query}&pageSize=${pageSize}&apiKey=${API_KEY}`;
+  const searchNewsApi = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${pageSize}&apiKey=${API_KEY}`;
   axios
     .get(searchNewsApi)
     .then(response => {
