@@ -16,6 +16,8 @@ import TimeAgo from "@material-ui/icons/AccessTime";
 
 import Typography from "@material-ui/core/Typography";
 
+const calculateHours = require("../Helpers/calculateHours");
+
 const styles = theme => ({
   card: {
     marginBottom: 20,
@@ -73,21 +75,9 @@ class NewsCard extends Component {
     }));
   };
 
-  calculateHours = date => {
-    let datePublished = new Date(date).getTime();
-    let dateNow = new Date().getTime();
-    let milliseconds = dateNow - datePublished;
-    let hours = Math.round(milliseconds / 1000 / 60 / 60);
-    if (hours < 2) {
-      return ` ${hours}hr ago`;
-    } else {
-      return ` ${hours}hrs ago`;
-    }
-  };
-
   render() {
     const { classes, article } = this.props;
-    const hours = this.calculateHours(article.publishedAt);
+    const hours = calculateHours(article.publishedAt);
     return (
       <div className={classes.newsCard}>
         <Card className={classes.card}>
