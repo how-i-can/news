@@ -10,29 +10,41 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Pause from "@material-ui/icons/NotInterested";
 import TimeAgo from "@material-ui/icons/AccessTime";
+
 import Typography from "@material-ui/core/Typography";
 
+const calculateArticleAge = require("../Helpers/calculateArticleAge");
+
 const styles = theme => ({
-  newsCard: {
-    marginBottom: "15px",
+  card: {
+    marginBottom: 20,
   },
   media: {
-    width: "93px",
-    height: "68px",
-    marginTop: 20,
-    marginLeft: 20,
+    height: 0,
+    paddingTop: "56.25%", // 16:9
   },
   title: {
-    fontSize: 13.5,
-    fontWeight: 500,
     color: "textPrimary",
-    textTransform: "uppercase",
-    paddingLeft: 0,
-    fontFamily: "Source Sans Pro",
+    fontFamily: "Avenir",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  articleAgeWrapper: {
+    paddingTop: 0,
+    display: "flex",
+    alignItems: "center",
+  },
+  clockIcon: {
+    fontFamily: "Avenir",
+    fontSize: 18,
+    marginRight: 4,
+  },
+  articleAge: {
+    fontFamily: "Avenir",
+    fontSize: 14,
   },
   expand: {
     transform: "rotate(0deg)",
@@ -63,86 +75,54 @@ class NewsCard extends Component {
     }));
   };
 
-  calculateHours = date => {
-    let datePublished = new Date(date).getTime();
-    let dateNow = new Date().getTime();
-    let milliseconds = dateNow - datePublished;
-    let hours = Math.round(milliseconds / 1000 / 60 / 60);
-    if (hours < 2) {
-      return ` ${hours}hr ago`;
-    } else {
-      return ` ${hours}hrs ago`;
-    }
-  };
-
   render() {
     const { classes, article } = this.props;
-    const hours = this.calculateHours(article.publishedAt);
+    const articleAge = calculateArticleAge(article.publishedAt);
     return (
       <div className={classes.newsCard}>
         <Card className={classes.card}>
-          <Grid container spacing={24}>
-            <Grid container item xs={12} spacing={24}>
-              <CardContent>
-                <Typography className={classes.date} color="textSecondary">
-                  <TimeAgo style={{ fontSize: 20 }} />
-                  {hours}
-                </Typography>
-              </CardContent>
-            </Grid>
-            <Grid item xs={4}>
-              <CardMedia
-                className={classes.media}
-                image={article.urlToImage}
-                title={article.source.name}
-              />
-            </Grid>
-            <Grid item xs={8}>
-              <CardContent>
-                <Typography className={classes.title} color="textPrimary">
-                  {article.title}
-                </Typography>
-              </CardContent>
-            </Grid>
-            <Grid item xs={12}>
-              <CardContent>
-                <Typography component="p" color="textSecondary">
-                  {article.description}
-                </Typography>
-              </CardContent>
-              <CardActions
-                className={
-                  !this.state.expanded ? classes.actions : classes.actionOne
-                }
-              >
-                <IconButton aria-label="Pause">
-                  <Pause />
-                </IconButton>
-                <IconButton aria-label="Bookmark">
-                  <BookMark />
-                </IconButton>
-                <IconButton
-                  className={classnames(classes.expand, {
-                    [classes.expandOpen]: this.state.expanded,
-                  })}
-                  onClick={this.handleExpandClick}
-                  aria-expanded={this.state.expanded}
-                  aria-label="Show more"
-                >
-                  <ExpandMoreIcon />
-                </IconButton>
-              </CardActions>
-
-              <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Typography paragraph>By {article.author}</Typography>
-                  <Typography paragraph>
-                    {article.content} <a href={article.url}>Read More</a>
-                  </Typography>
-                </CardContent>
-              </Collapse>
-            </Grid>
-          </Grid>
+          <CardMedia
+            className={classes.media}
+            image={article.urlToImage}
+            title={article.source.name}
+          />
+          <CardContent>
+            <Typography className={classes.title}>{article.title}</Typography>
+          </CardContent>
+          <CardContent className={classes.articleAgeWrapper}>
+            <TimeAgo className={classes.clockIcon} />
+            <Typography className={classes.articleAge}>{articleAge}</Typography>
+          </CardContent>
+          <CardActions
+            className={
+              !this.state.expanded ? classes.actions : classes.actionOne
+            }
+          >
+            <IconButton aria-label="pause">
+              <Pause />
+            </IconButton>
+            <IconButton aria-label="bookmark">
+              <BookMark />
+            </IconButton>
+            <IconButton
+              className={classnames(classes.expand, {
+                [classes.expandOpen]: this.state.expanded,
+              })}
+              onClick={this.handleExpandClick}
+              aria-expanded={this.state.expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography paragraph>By {article.author}</Typography>
+              <Typography paragraph>
+                {article.content} <a href={article.url}>Read More</a>
+              </Typography>
+            </CardContent>
+          </Collapse>
         </Card>
       </div>
     );
