@@ -4,35 +4,31 @@ import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import SearchIcon from "@material-ui/icons/Search";
+import Typography from "@material-ui/core/Typography";
 
-const styles = theme => ({
-  searchList: {
+const styles = () => ({
+  list: {
     display: "flex",
     flexDirection: "column",
-    backgroundImage: "linear-gradient(white, #e0eff9)",
-    color: "black",
-    fontFamily: "Roboto",
+    backgroundImage: "linear-gradient(white, #E0EFF9)",
   },
-  header: {
-    paddingLeft: "1em",
+  listHeader: {
+    paddingLeft: 16,
+    fontSize: 20,
+    fontWeight: "bold",
   },
   listItem: {
-    flex: 1,
-    fontWeight: 350,
-  },
-  queryResult: {
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
+    fontSize: 18,
   },
-  queryLabel: {
-    flex: 4,
-  },
-  searchIcon: {
-    width: theme.spacing.unit * 5,
-    marginRight: "0.5em",
+  listItemIcon: {
+    marginRight: 18,
     pointerEvents: "none",
-    flex: 0.1,
+  },
+  listItemText: {
+    flex: 1,
   },
 });
 
@@ -52,32 +48,29 @@ class Suggestions extends Component {
             .join(`<b>${this.props.query.toLowerCase()}</b>`),
         };
         return (
-          <div className={classes.queryResult} key={article.url}>
-            <ListItem
-              className={classes.queryLabel}
-              key={article.url}
-              button
-              onClick={e => this.handleClick(e, article)}
-            >
-              <SearchIcon className={classes.searchIcon} />
-              <div
-                className={classes.listItem}
-                dangerouslySetInnerHTML={text}
-              />
-            </ListItem>
-          </div>
+          <ListItem
+            className={classes.listItem}
+            key={article.url}
+            button
+            onClick={e => this.handleClick(e, article)}
+          >
+            <SearchIcon className={classes.listItemIcon} />
+            <Typography
+              className={classes.listItemText}
+              dangerouslySetInnerHTML={text}
+            />
+          </ListItem>
         );
       });
       return (
-        <div className={classes.searchList}>
-          <h3 className={classes.header}>Results</h3>
-          <List component="nav" aria-label="main mailbox folders">
+        <div className={classes.list}>
+          <Typography className={classes.listHeader}>Results</Typography>
+          <List component="nav" aria-label="search results">
             {options}
           </List>
         </div>
       );
     }
-
     return null;
   }
 }
