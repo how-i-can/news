@@ -3,13 +3,11 @@ import axios from "axios";
 import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import Paper from "@material-ui/core/Paper";
-
 import BottomNavBar from "./BottomNavBar";
 import CategoryFilter from "./CategoryFilter";
 import NewsCards from "./NewsCards";
 import NoResults from "./NoResults";
+import Paper from "@material-ui/core/Paper";
 import SearchBar from "./SearchBar";
 import Suggestions from "./Suggestions";
 
