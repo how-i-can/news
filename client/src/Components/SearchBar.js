@@ -67,30 +67,32 @@ class SearchBar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <AppBar className={classes.appBar} position="static">
-        <Toolbar>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+      <div className={classes.root}>
+        <AppBar className={classes.appBar} position="static">
+          <Toolbar>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                classes={{
+                  root: classes.inputRoot,
+                }}
+                placeholder="What are you looking for?"
+                onChange={this.handleInput}
+                onKeyDown={this.handleSearch}
+                value={this.state.searchStringValue}
+              />
+              <IconButton
+                onClick={this.handleSearchClearClick}
+                aria-label="clear"
+              >
+                <ClearIcon />
+              </IconButton>
             </div>
-            <InputBase
-              classes={{
-                root: classes.inputRoot,
-              }}
-              placeholder="What are you looking for?"
-              onChange={this.handleInput}
-              onKeyDown={this.handleSearch}
-              value={this.state.searchStringValue}
-            />
-            <IconButton
-              onClick={this.handleSearchClearClick}
-              aria-label="clear"
-            >
-              <ClearIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+        </AppBar>
+      </div>
     );
   }
 }
