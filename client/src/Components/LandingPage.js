@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 import BottomNavBar from "./BottomNavBar";
@@ -14,21 +13,17 @@ import NoResults from "./NoResults";
 import SearchBar from "./SearchBar";
 import Suggestions from "./Suggestions";
 
-const styles = theme => ({
+const styles = () => ({
   landingPage: {
-    flexGrow: 1,
-    overflow: "hidden",
-    alignItems: "center",
-  },
-  paper: {
-    maxWidth: 400,
-    margin: `${theme.spacing.unit}px auto`,
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+    maxWidth: 576,
+    margin: "0 auto",
     padding: 0,
   },
-  title: {
-    textAlign: "center",
-    fontFamily: "Source Sans Pro",
-    color: "#084D67",
+  landingPageMain: {
+    flexGrow: 1,
   },
 });
 
@@ -119,47 +114,40 @@ class LandingPage extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.landingPage}>
-        <Paper className={classes.paper}>
-          <Grid container direction="column">
-            <Grid item xs>
-              <SearchBar
-                handleClearClick={this.handleClearClick}
-                handleInputChange={this.handleInputChange}
-                handleSearch={this.handleSearch}
-                query={this.state.query}
-              />
-              {this.state.hasSearchResults && (
-                <Suggestions
-                  queryResultArticles={this.state.queryResultArticles}
-                  handleSearchClick={this.handleSearchClick}
-                  query={this.state.query}
-                />
-              )}
-            </Grid>
-          </Grid>
-          <CategoryFilter />
-          {this.state.showNoResultsCard && !this.state.hasSearchResults && (
-            <Card>
-              <NoResults query={this.state.query} />
-            </Card>
-          )}
-          <Grid item xs>
-            {!this.state.showNoResultsCard && (
-              <NewsCards
-                handleChange={this.handleChange}
-                loadDefaultNewsArticles={this.loadDefaultNewsArticles}
-                articles={this.state.newsCardArticles}
-              />
-            )}
-          </Grid>
-          <Grid item xs>
-            <BottomNavBar
-              loadDefaultNewsArticlesProp={this.loadDefaultNewsArticles}
+      <Paper className={classes.landingPage}>
+        <div className={classes.landingPageMain}>
+          <SearchBar
+            handleClearClick={this.handleClearClick}
+            handleInputChange={this.handleInputChange}
+            handleSearch={this.handleSearch}
+            query={this.state.query}
+          />
+          {this.state.hasSearchResults && (
+            <Suggestions
+              queryResultArticles={this.state.queryResultArticles}
+              handleSearchClick={this.handleSearchClick}
+              query={this.state.query}
             />
-          </Grid>
-        </Paper>
-      </div>
+          )}
+          {!this.state.showNoResultsCard && !this.state.hasSearchResults && (
+            <CategoryFilter />
+          )}
+          {this.state.showNoResultsCard && !this.state.hasSearchResults && (
+            <NoResults query={this.state.query} />
+          )}
+          {!this.state.showNoResultsCard && (
+            <NewsCards
+              handleChange={this.handleChange}
+              loadDefaultNewsArticles={this.loadDefaultNewsArticles}
+              articles={this.state.newsCardArticles}
+            />
+          )}
+        </div>
+        <BottomNavBar
+          className={classes.BottomNavBar}
+          loadDefaultNewsArticlesProp={this.loadDefaultNewsArticles}
+        />
+      </Paper>
     );
   }
 }
