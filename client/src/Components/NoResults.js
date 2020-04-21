@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -8,24 +9,34 @@ import image from "../images/perch.png";
 const styles = () => ({
   noResults: {
     background: "linear-gradient(to bottom, #ffffff, #def4f4)",
-    fontFamily: "Source Sans Pro",
-    paddingRight: "20px",
-    paddingLeft: "20px",
-    borderBottom: "2px",
+    paddingTop: 10,
+    paddingRight: 16,
+    paddingLeft: 16,
+    height: `calc(100vh - 128px)` /* Account for search bar and footer */,
   },
-  intro: {
+  noResultsHeader: {
+    fontSize: 20,
     fontWeight: "bold",
   },
-  searchTerm: {
+  noResultsIntro: {
+    paddingTop: 24,
+    paddingBottom: 8,
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  noResultsText: {
+    fontSize: 18,
+  },
+  noResultsSearchQuery: {
     color: "#466264",
     fontWeight: "bold",
   },
-  image: {
+  noResultsImage: {
     display: "block",
     maxWidth: "100%",
-    width: "224px",
-    paddingTop: "24px",
-    paddingBottom: "32px",
+    width: 224,
+    paddingTop: 32,
+    paddingBottom: 32,
     margin: "0 auto",
   },
 });
@@ -35,16 +46,22 @@ class NoResults extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.noResults}>
-        <h1>No Results</h1>
-        <p className={classes.intro}>
+        <Typography variant="h1" className={classes.noResultsHeader}>
+          No Results
+        </Typography>
+        <Typography className={classes.noResultsIntro}>
           No results found for "{this.props.query}"
-        </p>
-        <p>
+        </Typography>
+        <Typography className={classes.noResultsText}>
           Try searching something else such as
-          <span className={classes.searchTerm}> US 2020 Election</span> or
-          <span className={classes.searchTerm}> Cute Dog Videos</span>
-        </p>
-        <img className={classes.image} src={image} alt="" />
+          <span className={classes.noResultsSearchQuery}>
+            {" "}
+            US 2020 Election
+          </span>{" "}
+          or
+          <span className={classes.noResultsSearchQuery}> Cute Dog Videos</span>
+        </Typography>
+        <img className={classes.noResultsImage} src={image} alt="" />
       </div>
     );
   }
