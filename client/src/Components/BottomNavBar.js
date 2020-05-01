@@ -31,52 +31,13 @@ const styles = theme => ({
   },
 });
 
-class BottomAppBar extends Component {
-  //componentDidMount = () => {
-  //this.props.onLoad();
-  //};
-
+class BottomNavBar extends Component {
   render() {
-    console.log("Debug message triggered after render");
     const { classes } = this.props;
     return (
-      <React.Fragment>
-        <CssBaseline />
-        <AppBar className={classes.appBar}>
-          <Toolbar className={classes.toolbar}>
-            //{/* Debug message inside IconButton */}
-            <IconButton
-              onClick={() => this.props.onLoad()}
-              //onClick={() => console.log("onclick debug")}
-              //console.log('Triggered after onClick')
-            >
-              <Home />
-            </IconButton>
-            <IconButton>
-              <Grade />
-            </IconButton>
-            <IconButton>
-              <Account />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </React.Fragment>
-    );
-  }
-}
-
-/*
-function BottomAppBar(props) {
-  const { classes } = props;
-  return (
-    <React.Fragment>
-      <CssBaseline />
       <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <IconButton
-            onClick={props.onLoad()}
-            //onClick={() => console.log("onclick debug")}
-          >
+          <IconButton onClick={this.props.loadDefaultNewsArticlesProp}>
             <Home />
           </IconButton>
           <IconButton>
@@ -87,13 +48,12 @@ function BottomAppBar(props) {
           </IconButton>
         </Toolbar>
       </AppBar>
-    </React.Fragment>
-  );
+    );
+  }
 }
-*/
 
-BottomAppBar.propTypes = {
+BottomNavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BottomAppBar);
+export default withStyles(styles)(BottomNavBar);

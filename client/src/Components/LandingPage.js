@@ -47,17 +47,8 @@ class LandingPage extends Component {
     };
   }
 
-  setDefaultCards = e => {
-    fetch("/news")
-      .then(response => response.json())
-      .then(response => {
-        this.setState({ newsCardArticles: response });
-      });
-    //console.log("debug_message1");
-  };
-
-  handleChange = (indexKey, data) => {
-    this.setState({ [indexKey]: data });
+  handleChange = (keyVal, data) => {
+    this.setState({ [keyVal]: data });
   };
 
   getInfo = async () => {
@@ -117,6 +108,14 @@ class LandingPage extends Component {
     });
   };
 
+  loadDefaultNewsArticles = () => {
+    fetch("/news")
+      .then(response => response.json())
+      .then(response => {
+        this.handleChange("newsCardArticles", response);
+      });
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -149,13 +148,15 @@ class LandingPage extends Component {
             {!this.state.showNoResultsCard && (
               <NewsCards
                 handleChange={this.handleChange}
-                onLoad={this.setDefaultCards}
+                loadDefaultNewsArticles={this.loadDefaultNewsArticles}
                 articles={this.state.newsCardArticles}
               />
             )}
           </Grid>
           <Grid item xs>
-            <BottomNavBar onLoad={this.setDefaultCards} />
+            <BottomNavBar
+              loadDefaultNewsArticlesProp={this.loadDefaultNewsArticles}
+            />
           </Grid>
         </Paper>
       </div>

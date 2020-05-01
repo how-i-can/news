@@ -3,7 +3,7 @@ import NewsCard from "./NewsCard";
 
 class NewsCards extends Component {
   componentDidMount = () => {
-    this.props.onLoad();
+    this.props.loadDefaultNewsArticles();
   };
   render() {
     const { articles } = this.props;
