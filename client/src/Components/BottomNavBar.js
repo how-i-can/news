@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
@@ -31,14 +31,13 @@ const styles = theme => ({
   },
 });
 
-function BottomAppBar(props) {
-  const { classes } = props;
-  return (
-    <React.Fragment>
-      <CssBaseline />
+class BottomNavBar extends Component {
+  render() {
+    const { classes } = this.props;
+    return (
       <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <IconButton>
+          <IconButton onClick={this.props.loadDefaultNewsArticlesProp}>
             <Home />
           </IconButton>
           <IconButton>
@@ -49,12 +48,12 @@ function BottomAppBar(props) {
           </IconButton>
         </Toolbar>
       </AppBar>
-    </React.Fragment>
-  );
+    );
+  }
 }
 
-BottomAppBar.propTypes = {
+BottomNavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BottomAppBar);
+export default withStyles(styles)(BottomNavBar);
