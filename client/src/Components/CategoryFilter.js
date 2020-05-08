@@ -1,21 +1,20 @@
 import React, { Component } from "react";
-import Chip from "@material-ui/core/Chip";
+
 import { withStyles } from "@material-ui/core/styles";
+import Chip from "@material-ui/core/Chip";
 
 const styles = () => ({
   filter: {
     display: "flex",
-    paddingTop: "12px",
-    paddingRight: "16px",
-    paddingBottom: "12px",
-    paddingLeft: "16px",
+    padding: 16,
     overflowX: "scroll",
     "&::-webkit-scrollbar": {
       display: "none",
     },
   },
   chip: {
-    marginRight: "6px",
+    marginRight: 8,
+    fontSize: "1rem",
   },
 });
 

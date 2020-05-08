@@ -1,11 +1,23 @@
 import React, { Component } from "react";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import LandingPage from "./LandingPage";
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: "Avenir",
+    useNextVariants: true,
+  },
+});
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <LandingPage />
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <LandingPage />
+        </MuiThemeProvider>
       </div>
     );
   }
