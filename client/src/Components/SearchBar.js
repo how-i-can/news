@@ -13,7 +13,6 @@ const styles = () => ({
   appBar: {
     backgroundColor: "white",
     color: "grey",
-    // boxShadow: "none",
   },
   search: {
     display: "flex",
@@ -68,32 +67,30 @@ class SearchBar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <AppBar className={classes.appBar} position="static">
-          <Toolbar>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                classes={{
-                  root: classes.inputRoot,
-                }}
-                placeholder="What are you looking for?"
-                onChange={this.handleInput}
-                onKeyDown={this.handleSearch}
-                value={this.state.searchStringValue}
-              />
-              <IconButton
-                onClick={this.handleSearchClearClick}
-                aria-label="clear"
-              >
-                <ClearIcon />
-              </IconButton>
+      <AppBar className={classes.appBar} position="static">
+        <Toolbar>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
             </div>
-          </Toolbar>
-        </AppBar>
-      </div>
+            <InputBase
+              classes={{
+                root: classes.inputRoot,
+              }}
+              placeholder="What are you looking for?"
+              onChange={this.handleInput}
+              onKeyDown={this.handleSearch}
+              value={this.state.searchStringValue}
+            />
+            <IconButton
+              onClick={this.handleSearchClearClick}
+              aria-label="clear"
+            >
+              <ClearIcon />
+            </IconButton>
+          </div>
+        </Toolbar>
+      </AppBar>
     );
   }
 }
