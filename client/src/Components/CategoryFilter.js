@@ -19,6 +19,10 @@ const styles = () => ({
 });
 
 class CategoryFilter extends Component {
+  handleClick = category => {
+    console.log(category);
+  };
+
   render() {
     const { classes } = this.props;
     const categories = [
@@ -33,7 +37,12 @@ class CategoryFilter extends Component {
     return (
       <div className={classes.filter}>
         {categories.map((category, i) => (
-          <Chip className={classes.chip} label={category} key={i} />
+          <Chip
+            className={classes.chip}
+            label={category}
+            key={i}
+            onClick={() => this.handleClick(category)}
+          />
         ))}
       </div>
     );
