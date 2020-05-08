@@ -14,21 +14,21 @@ const styles = () => ({
   },
   listHeader: {
     paddingLeft: 16,
-    fontSize: 20,
+    fontSize: "1.125rem",
     fontWeight: "bold",
   },
   listItem: {
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
-    fontSize: 18,
   },
   listItemIcon: {
-    marginRight: 18,
+    marginRight: "1.125rem",
     pointerEvents: "none",
   },
   listItemText: {
     flex: 1,
+    fontSize: "1rem",
   },
 });
 
