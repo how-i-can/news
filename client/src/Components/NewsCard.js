@@ -25,7 +25,7 @@ const styles = () => ({
     paddingTop: "56.25%",
   },
   newsCardTitle: {
-    fontSize: 16,
+    fontSize: "1rem",
     fontWeight: "bold",
   },
   newsCardArticleAge: {
@@ -33,6 +33,9 @@ const styles = () => ({
     fontSize: "0.875rem",
     textTransform: "uppercase",
     textAlign: "right",
+  },
+  newsCardContent: {
+    fontSize: "1rem",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -100,8 +103,10 @@ class NewsCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>By {article.author}</Typography>
-            <Typography paragraph>
+            <Typography className={classes.newsCardContent}>
+              By {article.author}
+            </Typography>
+            <Typography className={classes.newsCardContent}>
               {article.content} <a href={article.url}>Read More</a>
             </Typography>
           </CardContent>

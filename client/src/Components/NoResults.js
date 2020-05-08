@@ -15,17 +15,17 @@ const styles = () => ({
     height: `calc(100vh - 128px)` /* Account for search bar and footer */,
   },
   noResultsHeader: {
-    fontSize: 20,
+    fontSize: "1.25rem",
     fontWeight: "bold",
   },
   noResultsIntro: {
     paddingTop: 24,
     paddingBottom: 8,
-    fontSize: 18,
+    fontSize: "1.125rem",
     fontWeight: "bold",
   },
   noResultsText: {
-    fontSize: 18,
+    fontSize: "1.125rem",
   },
   noResultsSearchQuery: {
     color: "#466264",

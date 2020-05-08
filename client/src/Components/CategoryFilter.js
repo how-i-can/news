@@ -14,7 +14,7 @@ const styles = () => ({
   },
   chip: {
     marginRight: 8,
-    fontSize: 16,
+    fontSize: "1rem",
   },
 });
 
