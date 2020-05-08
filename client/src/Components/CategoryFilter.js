@@ -11,6 +11,11 @@ const styles = () => ({
     "&::-webkit-scrollbar": {
       display: "none",
     },
+    /* Adds padding to the last chip */
+    "&::after": {
+      content: "''",
+      padding: 8 /* Half of parent container */,
+    },
   },
   chip: {
     marginRight: 8,

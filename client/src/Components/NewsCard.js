@@ -103,21 +103,8 @@ class NewsCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cd59cd5... Clean up font sizes
-            <Typography className={classes.newsCardContent}>
-              By {article.author}
-            </Typography>
-            <Typography className={classes.newsCardContent}>
-<<<<<<< HEAD
-=======
             <Typography paragraph>By {article.author}</Typography>
             <Typography paragraph>
->>>>>>> 651b13d... Refactor newscard
-=======
->>>>>>> cd59cd5... Clean up font sizes
               {article.content} <a href={article.url}>Read More</a>
             </Typography>
           </CardContent>
