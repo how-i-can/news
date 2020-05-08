@@ -72,6 +72,30 @@ app.use("/news/filter", (req, res, next) => {
     });
 });
 
+//search news by Sources/Category (for example General)
+let categoryFilter = 'general';
+
+const loadSourcesApi = `https://newsapi.org/v2/sources?category=` + categoryFilter + `&apiKey=${API_KEY}`;
+    //load a key value pair of sources/categories
+    //console.log('before call');
+
+    axios
+    .get(loadSourcesApi)
+    .then( ( response ) => {
+      
+      let jsonSources = response.data.sources;
+      
+
+      let sourceMap = jsonSources.map(e => e.id).join(', ');
+      console.log(sourceMap);
+      console.log("after logging the results");
+      
+    })
+    .catch(err => {
+      console.error(err);
+    }); 
+
+
 app.post("/signin", (req, res) => {
   const user = {
     email: req.body.email,
