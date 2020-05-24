@@ -25,6 +25,7 @@ const styles = () => ({
 
 class CategoryFilter extends Component {
   handleClick = category => {
+    this.props.handleCategorySelection(category);
     console.log(category);
   };
 

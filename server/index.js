@@ -21,7 +21,9 @@ firebase.initializeApp(firebaseConfig);
 const API_KEY = process.env.NEWS_API_KEY;
 const pageSize = 5;
 const newsApiURL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${pageSize}&apiKey=${API_KEY}`;
+const loadSourcesApi = `https://newsapi.org/v2/sources?apiKey=${API_KEY}`;
 const bodyParser = express.json();
+let globalNewSourceCategories = new Object();
 
 //logging HTTP requests and responses
 app.use(volleyball);
@@ -44,11 +46,36 @@ app.get("/news", (req, res, next) => {
     .catch((err) => {
       console.error(err);
     });
+
+    axios
+    .get(loadSourcesApi)
+    .then( ( response ) => {
+      //Check the status
+      let jsonSources = response.data.sources;
+      console.log(jsonSources);
+
+      var sourceMap = response.data.sources.map( src => ({ id: src.id , name: src.name, category: src.category }));
+      console.log("Map of sources");
+      console.log(sourceMap);
+
+      globalNewSourceCategories = sourceMap;
+    })
+    .catch(err => {
+      console.error(err);
+    });
 });
 
 //search top news headlines
+//category name is filter
 app.use("/news/search", (req, res, next) => {
-  const searchNewsApi = `https://newsapi.org/v2/top-headlines?q=${req.body.query}&apiKey=${API_KEY}`;
+  
+  console.log("in search");
+  let categoryFilter = '';
+  if (req.body.category){
+     categoryFilter = `&category=${req.body.category}`;
+  }
+  
+  const searchNewsApi = `https://newsapi.org/v2/top-headlines?q=${req.body.query}&apiKey=${API_KEY}${categoryFilter}`;
   axios
     .get(searchNewsApi)
     .then((response) => {
@@ -60,8 +87,26 @@ app.use("/news/search", (req, res, next) => {
 });
 
 //search news by title-flexible to search by other params in the future
+//source id is filter
 app.use("/news/filter", (req, res, next) => {
-  const searchNewsApi = `https://newsapi.org/v2/everything?qInTitle=${req.body.query}&pageSize=${pageSize}&sortBy=popularity&apiKey=${API_KEY}`;
+
+  let categoryFilter = "";
+  let searchNewsApi = `https://newsapi.org/v2/everything?qInTitle=${req.body.query}&pageSize=${pageSize}&sortBy=popularity&apiKey=${API_KEY}`;
+
+  if (req.body.category){
+    //sourceMap is an array of sources that was loaded the very first time the news search was queried.
+    //get all the of the source ids associated with the category string and transform to a single comma delimted string
+    //pass this as the source parameter to NewsApi
+    var sourceIdList = sourceMap.filter( s => { if (s.category === req.body.category){ return s.id }} ).join(",");
+    console.log( 'Sources' );
+    console.log( sourceIdList );
+
+    categoryFilter = `&source=${sourceIdList}`
+    console.log("category filter is ");
+    console.log(categoryFilter);
+    searchNewsApi = searchNewsApi.concat(categoryFilter);
+  }
+  
   axios
     .get(searchNewsApi)
     .then((response) => {

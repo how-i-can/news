@@ -37,6 +37,7 @@ class LandingPage extends Component {
       loadSearchedQuery: false,
       hasSearchResults: false,
       showNoResultsCard: false,
+      category: null,
     };
   }
 
@@ -109,6 +110,10 @@ class LandingPage extends Component {
       });
   };
 
+  updateCategory = categoryFilter => {
+    this.setState({ category: categoryFilter });
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -128,7 +133,7 @@ class LandingPage extends Component {
             />
           )}
           {!this.state.showNoResultsCard && !this.state.hasSearchResults && (
-            <CategoryFilter />
+            <CategoryFilter handleCategorySelection={this.updateCategory} />
           )}
           {this.state.showNoResultsCard && !this.state.hasSearchResults && (
             <NoResults query={this.state.query} />
