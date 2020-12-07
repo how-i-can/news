@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import LandingPage from "./LandingPage";
+// import Login from "./Input";
 
 const theme = createMuiTheme({
   typography: {
@@ -17,6 +18,7 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <LandingPage />
+          {/* <Login /> */}
         </MuiThemeProvider>
       </div>
     );
