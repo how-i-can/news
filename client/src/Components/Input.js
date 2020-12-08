@@ -7,7 +7,6 @@ const useStyles = makeStyles(() => ({
   input: {
     margin: "8px 0",
     backgroundColor: "#F6F6F6",
-    paddingLeft: "4px",
     borderRadius: "3px",
     "&::placeholder": {
       color: "#F6F6F6",
@@ -33,20 +32,18 @@ const Input = props => {
   const classes = useStyles();
 
   return (
-    <form noValidate autoComplete="off">
-      <TextField
-        id={id}
-        name={name}
-        label={label}
-        variant={variant}
-        className={`${classes.input} ${className}`}
-        disabled={disabled}
-        helperText={helperText || ""}
-        onChange={onChange}
-        placeholder={placeholder}
-        InputProps={inputProps}
-      />
-    </form>
+    <TextField
+      id={id}
+      name={name}
+      label={label}
+      variant={variant}
+      className={`${classes.input} ${className}`}
+      disabled={disabled}
+      helperText={helperText || ""}
+      onChange={onChange}
+      placeholder={placeholder}
+      InputProps={inputProps}
+    />
   );
 };
 
