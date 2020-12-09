@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
+import { register } from "../actions/auth";
 import Input from "./Input";
 import Button from "./Button";
 
@@ -23,14 +25,21 @@ const Registration = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [handle, setHandle] = useState("");
 
+  const auth = useSelector(state => state);
+  const dispatch = useDispatch();
+  console.log(auth);
+
   const classes = useStyles();
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e.target);
+    console.log("EMAIL", email, password, handle);
+    dispatch(register(email, password)).then(res => {
+      console.log("res", res);
+    });
   };
 
-  console.log("state", email, password, confirmPassword, handle);
+  //console.log("state", email, password, confirmPassword, handle);
 
   return (
     <div>

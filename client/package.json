@@ -13,7 +13,11 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.2.2",
     "react-scripts": "3.0.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "withstyles": "^1.0.3"
   },
   "scripts": {
@@ -45,5 +49,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:4000"
+  "proxy": "http://localhost:4000",
+  "devDependencies": {
+    "redux-devtools": "^3.7.0"
+  }
 }
