@@ -58,22 +58,31 @@ const Login = () => {
               }}
             />
           </label>
+          <h4 className={classes.font} style={{ textAlign: "end" }}>
+            Forgot Password?
+          </h4>
           <Button>Submit</Button>
         </FormControl>
       </form>
       <div className={classes.login}>
-        <h4 style={{ textAlign: "center", margin: "0px", fontWeight: "500" }}>
+        <h4
+          className={classes.font}
+          style={{ textAlign: "center", margin: "0px" }}
+        >
           or
         </h4>
         <div className={classes.loginService}>
           <img src={googleIcon} alt="google" className={classes.googleIcon} />
-          <h4 style={{ fontWeight: "800", fontSize: "14px" }}>
+          <h4 className={classes.font} style={{ fontWeight: "800" }}>
             Continue with Google
           </h4>
         </div>
-        <h4 style={{ fontWeight: "500", color: "#717171", fontSize: "14px" }}>
+        <h4 className={classes.font} style={{ color: "#717171" }}>
           Dont' have an account?
-          <span style={{ color: "black", fontWeight: "800" }}> Sign up</span>
+          <span className={classes.font} style={{ fontWeight: "800" }}>
+            {" "}
+            Sign up
+          </span>
         </h4>
       </div>
     </div>
@@ -104,7 +113,6 @@ const useStyles = makeStyles(() => ({
   login: {
     display: "grid",
     justifyContent: "center",
-    fontFamily: "Avenir",
   },
   loginService: {
     display: "flex",
@@ -117,6 +125,12 @@ const useStyles = makeStyles(() => ({
   googleIcon: {
     width: "20px",
     marginRight: "4px",
+  },
+  font: {
+    fontFamily: "Avenir",
+    fontSize: "14px",
+    color: "black",
+    fontWeight: "500",
   },
 }));
 
