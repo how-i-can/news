@@ -6,40 +6,24 @@ import { register } from "../actions/auth";
 import Input from "./Input";
 import Button from "./Button";
 
-const useStyles = makeStyles(() => ({
-  form: {
-    display: "grid",
-    margin: "0 auto",
-    width: "60%",
-  },
-  label: {
-    display: "grid",
-    fontFamily: "Avenir",
-    color: "#717171",
-  },
-}));
-
 const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [handle, setHandle] = useState("");
 
-  const auth = useSelector(state => state);
+  const isRegistered = useSelector(state => state.message);
   const dispatch = useDispatch();
-  console.log(auth);
+  console.log("state", isRegistered);
 
   const classes = useStyles();
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("EMAIL", email, password, handle);
-    dispatch(register(email, password)).then(res => {
+    dispatch(register(email, password, confirmPassword, handle)).then(res => {
       console.log("res", res);
     });
   };
-
-  //console.log("state", email, password, confirmPassword, handle);
 
   return (
     <div>
@@ -84,8 +68,33 @@ const Registration = () => {
           <Button>Submit</Button>
         </FormControl>
       </form>
+      {isRegistered && (
+        <div>
+          <h3 className={classes.registerMessage}>{isRegistered.message}</h3>
+        </div>
+      )}
     </div>
   );
 };
+
+const useStyles = makeStyles(() => ({
+  form: {
+    display: "grid",
+    margin: "0 auto",
+    width: "60%",
+  },
+  label: {
+    display: "grid",
+    fontFamily: "Avenir",
+    color: "#717171",
+  },
+  registerMessage: {
+    fontFamily: "Avenir",
+    textAlign: "center",
+    fontWeight: "300",
+    color: "green",
+    marginTop: "64px",
+  },
+}));
 
 export default Registration;

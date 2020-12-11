@@ -23,26 +23,24 @@ const Login = () => {
     <div>
       <form onSubmit={handleSubmit} className={classes.form}>
         <FormControl>
-          <label for="email" className={classes.label}>
+          <label className={classes.label}>
             <div className={classes.helperText}>
               <img src={emailIcon} alt="email" className={classes.icon} />
               Email or Username
             </div>
             <Input
-              id="email"
               name="email"
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
           </label>
-          <label for="password" className={classes.label}>
+          <label className={classes.label}>
             <div className={classes.helperText}>
               <img src={passwordIcon} alt="password" className={classes.icon} />
               Password
             </div>
             <Input
-              id="password"
               name="password"
               type="password"
               value={password}
