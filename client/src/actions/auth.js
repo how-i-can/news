@@ -1,4 +1,10 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL, SET_MESSAGE } from "./types";
+import {
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  SET_MESSAGE,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+} from "./types";
 
 import AuthService from "../services/auth.service.js";
 
@@ -24,6 +30,26 @@ export const register = (
     error => {
       dispatch({
         type: REGISTER_FAIL,
+      });
+
+      return Promise.reject();
+    }
+  );
+};
+
+export const login = (email, password) => dispatch => {
+  return AuthService.login(email, password).then(
+    res => {
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: { user: res.user },
+      });
+
+      return res;
+    },
+    error => {
+      dispatch({
+        type: LOGIN_FAIL,
       });
 
       return Promise.reject();

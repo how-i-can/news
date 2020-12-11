@@ -14,4 +14,15 @@ const register = (email, password, confirmPassword, handle) => {
     });
 };
 
-export default { register };
+const login = (email, password) => {
+  return axios
+    .post(API_URL + "/signin", {
+      email,
+      password,
+    })
+    .then(res => {
+      return res.data;
+    });
+};
+
+export default { register, login };
