@@ -83,7 +83,8 @@ app.post("/signin", (req, res) => {
     .then((data) => {
       return res
         .status(201)
-        .json({ message: `user ${data.user.id} signed in successfully` });
+        // .json({ message: `user ${data.user.uid} signed in successfully` });
+        .json(data)
     })
     .catch((err) => {
       console.error(err);
@@ -104,7 +105,7 @@ app.post("/signup", (req, res) => {
     .then((data) => {
       return res
         .status(201)
-        .json({ message: `user ${data.user.id} signed up successfully` });
+        .json({ message: `user ${data.user.uid} signed up successfully` });
     })
     .catch((err) => {
       console.error(err);
