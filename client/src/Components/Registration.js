@@ -14,7 +14,6 @@ const Registration = () => {
 
   const isRegistered = useSelector(state => state.message);
   const dispatch = useDispatch();
-  console.log("state", isRegistered);
 
   const classes = useStyles();
 
