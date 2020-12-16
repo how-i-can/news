@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
 import { register } from "../actions/auth";
@@ -66,6 +67,15 @@ const Registration = () => {
           </label>
           <Button>Submit</Button>
         </FormControl>
+        <h4
+          className={classes.font}
+          style={{ color: "#717171", textAlign: "center" }}
+        >
+          Already have an account?
+          <Link to="/signin" className={classes.login}>
+            <span className={classes.font}> Login</span>
+          </Link>
+        </h4>
       </form>
       {isRegistered && (
         <div>
@@ -93,6 +103,16 @@ const useStyles = makeStyles(() => ({
     fontWeight: "300",
     color: "green",
     marginTop: "64px",
+  },
+  login: {
+    textDecoration: "none",
+    fontWeight: "800",
+  },
+  font: {
+    fontFamily: "Avenir",
+    fontSize: "14px",
+    color: "black",
+    fontWeight: "500",
   },
 }));
 

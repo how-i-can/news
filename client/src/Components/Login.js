@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
 import { login } from "../actions/auth";
@@ -18,12 +19,14 @@ const Login = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth);
 
-  console.log(user);
-
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(login(email, password));
   };
+
+  if (user.isLoggedIn) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div>
@@ -83,10 +86,12 @@ const Login = () => {
         </div>
         <h4 className={classes.font} style={{ color: "#717171" }}>
           Dont' have an account?
-          <span className={classes.font} style={{ fontWeight: "800" }}>
-            {" "}
-            Sign up
-          </span>
+          <Link to="/signup" className={classes.signup}>
+            <span className={classes.font} style={{ fontWeight: "800" }}>
+              {" "}
+              Sign up
+            </span>
+          </Link>
         </h4>
       </div>
     </div>
@@ -135,6 +140,9 @@ const useStyles = makeStyles(() => ({
     fontSize: "14px",
     color: "black",
     fontWeight: "500",
+  },
+  signup: {
+    textDecoration: "none",
   },
 }));
 
