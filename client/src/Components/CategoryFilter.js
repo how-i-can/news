@@ -20,12 +20,16 @@ const styles = () => ({
   chip: {
     marginRight: 8,
     fontSize: "1rem",
+
+    "&:focus": {
+      background: "#8CFF78",
+    },
   },
 });
 
 class CategoryFilter extends Component {
   handleClick = category => {
-    console.log(category);
+    this.props.handleFilter(category);
   };
 
   render() {
