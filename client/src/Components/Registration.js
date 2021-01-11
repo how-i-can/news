@@ -7,6 +7,36 @@ import { register } from "../actions/auth";
 import Input from "./Input";
 import Button from "./Button";
 
+const useStyles = makeStyles(() => ({
+  form: {
+    display: "grid",
+    margin: "0 auto",
+    width: "60%",
+  },
+  label: {
+    display: "grid",
+    fontFamily: "Avenir",
+    color: "#717171",
+  },
+  registerMessage: {
+    fontFamily: "Avenir",
+    textAlign: "center",
+    fontWeight: "300",
+    color: "green",
+    marginTop: "64px",
+  },
+  login: {
+    textDecoration: "none",
+    fontWeight: "800",
+  },
+  font: {
+    fontFamily: "Avenir",
+    fontSize: "14px",
+    color: "black",
+    fontWeight: "500",
+  },
+}));
+
 const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -85,35 +115,5 @@ const Registration = () => {
     </div>
   );
 };
-
-const useStyles = makeStyles(() => ({
-  form: {
-    display: "grid",
-    margin: "0 auto",
-    width: "60%",
-  },
-  label: {
-    display: "grid",
-    fontFamily: "Avenir",
-    color: "#717171",
-  },
-  registerMessage: {
-    fontFamily: "Avenir",
-    textAlign: "center",
-    fontWeight: "300",
-    color: "green",
-    marginTop: "64px",
-  },
-  login: {
-    textDecoration: "none",
-    fontWeight: "800",
-  },
-  font: {
-    fontFamily: "Avenir",
-    fontSize: "14px",
-    color: "black",
-    fontWeight: "500",
-  },
-}));
 
 export default Registration;

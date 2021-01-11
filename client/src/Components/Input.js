@@ -3,6 +3,18 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
 
+const useStyles = makeStyles(() => ({
+  input: {
+    margin: "8px 0",
+    backgroundColor: "#F6F6F6",
+    borderRadius: "3px",
+    "&::placeholder": {
+      color: "#F6F6F6",
+      fontSize: "8px",
+    },
+  },
+}));
+
 const Input = props => {
   const {
     id,
@@ -35,18 +47,6 @@ const Input = props => {
   );
 };
 
-const useStyles = makeStyles(() => ({
-  input: {
-    margin: "8px 0",
-    backgroundColor: "#F6F6F6",
-    borderRadius: "3px",
-    "&::placeholder": {
-      color: "#F6F6F6",
-      fontSize: "8px",
-    },
-  },
-}));
-
 Input.defaultProps = {
   id: "outlined-basic",
   label: "",
@@ -59,7 +59,7 @@ Input.defaultProps = {
   inputProps: {},
 };
 
-Input.protoTypes = {
+Input.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   label: PropTypes.string,

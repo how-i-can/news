@@ -11,6 +11,54 @@ import passwordIcon from "../images/password.svg";
 import googleIcon from "../images/google.svg";
 import visibilityIcon from "../images/visibility_off.svg";
 
+const useStyles = makeStyles(() => ({
+  form: {
+    display: "grid",
+    margin: "16px auto",
+    width: "60%",
+  },
+  label: {
+    display: "grid",
+    fontFamily: "Avenir",
+    color: "#717171",
+  },
+  helperText: {
+    display: "flex",
+    justifyContent: "end",
+    alignItems: "center",
+  },
+  icon: {
+    width: "15px",
+    marginRight: "4px",
+    filter: "opacity(0.2) drop-shadow(0 0 0 black)",
+  },
+  login: {
+    display: "grid",
+    justifyContent: "center",
+  },
+  loginService: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  visibilityIcon: {
+    filter: "opacity(0.2) drop-shadow(0 0 0 black)",
+    width: "20px",
+  },
+  googleIcon: {
+    width: "20px",
+    marginRight: "4px",
+  },
+  font: {
+    fontFamily: "Avenir",
+    fontSize: "14px",
+    color: "black",
+    fontWeight: "500",
+  },
+  signup: {
+    textDecoration: "none",
+  },
+}));
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -97,53 +145,5 @@ const Login = () => {
     </div>
   );
 };
-
-const useStyles = makeStyles(() => ({
-  form: {
-    display: "grid",
-    margin: "16px auto",
-    width: "60%",
-  },
-  label: {
-    display: "grid",
-    fontFamily: "Avenir",
-    color: "#717171",
-  },
-  helperText: {
-    display: "flex",
-    justifyContent: "end",
-    alignItems: "center",
-  },
-  icon: {
-    width: "15px",
-    marginRight: "4px",
-    filter: "opacity(0.2) drop-shadow(0 0 0 black)",
-  },
-  login: {
-    display: "grid",
-    justifyContent: "center",
-  },
-  loginService: {
-    display: "flex",
-    justifyContent: "center",
-  },
-  visibilityIcon: {
-    filter: "opacity(0.2) drop-shadow(0 0 0 black)",
-    width: "20px",
-  },
-  googleIcon: {
-    width: "20px",
-    marginRight: "4px",
-  },
-  font: {
-    fontFamily: "Avenir",
-    fontSize: "14px",
-    color: "black",
-    fontWeight: "500",
-  },
-  signup: {
-    textDecoration: "none",
-  },
-}));
 
 export default Login;
