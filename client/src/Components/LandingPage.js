@@ -31,6 +31,7 @@ class LandingPage extends Component {
     this.state = {
       newsCardArticles: [],
       queryResultArticles: [],
+      filterResultArticles: [],
       query: "",
       error: false,
       isLoading: false,
@@ -42,6 +43,32 @@ class LandingPage extends Component {
 
   handleChange = (keyVal, data) => {
     this.setState({ [keyVal]: data });
+  };
+
+  handleFilter = category => {
+    this.setState(
+      {
+        query: category,
+      },
+      () => {
+        this.getFilterInfo();
+      }
+    );
+  };
+
+  getFilterInfo = async () => {
+    const { query } = this.state;
+    await axios
+      .post("/news/search", { query })
+      .then(response => {
+        const results = response.data;
+        if (results.length > 0) {
+          this.setState({ newsCardArticles: results });
+        } else {
+          this.setState({ newsCardArticles: [] });
+        }
+      })
+      .catch(() => this.setState({ error: true }));
   };
 
   getInfo = async () => {
@@ -128,7 +155,7 @@ class LandingPage extends Component {
             />
           )}
           {!this.state.showNoResultsCard && !this.state.hasSearchResults && (
-            <CategoryFilter />
+            <CategoryFilter handleFilter={this.handleFilter} />
           )}
           {this.state.showNoResultsCard && !this.state.hasSearchResults && (
             <NoResults query={this.state.query} />

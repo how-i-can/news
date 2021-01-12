@@ -15,6 +15,8 @@ import Pause from "@material-ui/icons/NotInterested";
 
 import Typography from "@material-ui/core/Typography";
 
+import defaultImage from ".././images/default-image.png";
+
 const calculateArticleAge = require("../Helpers/calculateArticleAge");
 
 const styles = () => ({
@@ -70,7 +72,7 @@ class NewsCard extends Component {
       <Card className={classes.newsCard}>
         <CardMedia
           className={classes.newsCardImage}
-          image={article.urlToImage}
+          image={article.urlToImage || defaultImage}
           title={article.source.name}
         />
         <CardContent>

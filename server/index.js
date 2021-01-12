@@ -19,7 +19,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const API_KEY = process.env.NEWS_API_KEY;
-const pageSize = 5;
+const pageSize = 30;
 const newsApiURL = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${pageSize}&apiKey=${API_KEY}`;
 const bodyParser = express.json();
 
