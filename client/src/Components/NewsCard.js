@@ -16,16 +16,19 @@ import Pause from "@material-ui/icons/NotInterested";
 import Typography from "@material-ui/core/Typography";
 
 import defaultImage from ".././images/default-image.png";
-import { green } from "@material-ui/core/colors";
+
+import green from "@material-ui/core/colors/green";
 
 const calculateArticleAge = require("../Helpers/calculateArticleAge");
+
+const primary = green[50];
 
 const styles = () => ({
   newsCard: {
     borderRadius: 50,
     paddingBottom: 30,
     marginBottom: 30,
-    background: "green",
+    background: `${primary}`,
   },
   newsCardImage: {
     paddingTop: "56.25%",
