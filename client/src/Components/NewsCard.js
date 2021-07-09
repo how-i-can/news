@@ -38,14 +38,20 @@ const styles = () => ({
     fontSize: "1rem",
     fontWeight: "bold",
   },
-  newsCardArticleAge: {
+  newsCardArticle: {
     marginTop: 12,
     fontSize: "0.875rem",
     textTransform: "uppercase",
+  },
+  newsCardArticleSourceName: {
+    textAlign: "left",
+  },
+  newsCardArticleAge: {
     textAlign: "right",
   },
   newsCardContent: {
     fontSize: "1rem",
+    fontFamily: "Arial",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -85,14 +91,17 @@ class NewsCard extends Component {
           className={classes.newsCardImage}
           image={article.urlToImage || defaultImage}
         />
-        <span>{article.source.name}</span>
-        <span>{article.publishedAt}</span>
-        <CardContent>
-          <Typography className={classes.newsCardTitle}>
-            {article.title}
+        <div className={classes.newsCardArticle}>
+          <Typography className={classes.newsCardArticleSourceName}>
+            {article.source.name}
           </Typography>
           <Typography className={classes.newsCardArticleAge}>
             {newsCardArticleAge}
+          </Typography>
+        </div>
+        <CardContent>
+          <Typography className={classes.newsCardTitle}>
+            {article.title}
           </Typography>
         </CardContent>
         <CardActions
