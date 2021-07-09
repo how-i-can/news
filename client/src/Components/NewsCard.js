@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
-
 import { withStyles } from "@material-ui/core/styles";
 import BookMark from "@material-ui/icons/BookmarkBorder";
 import Card from "@material-ui/core/Card";
@@ -12,6 +11,8 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
 import Pause from "@material-ui/icons/NotInterested";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 
 import Typography from "@material-ui/core/Typography";
 
@@ -35,23 +36,33 @@ const styles = () => ({
     paddingTop: "56.25%",
   },
   newsCardTitle: {
+    display: "block",
+    margin: 0,
+    padding: 20,
+    //fontFamily: `${theme}`,
     fontSize: "1rem",
     fontWeight: "bold",
   },
   newsCardArticle: {
     marginTop: 12,
+    //fontFamily: `${theme}`,
     fontSize: "0.875rem",
     textTransform: "uppercase",
   },
   newsCardArticleSourceName: {
-    textAlign: "left",
+    display: "inline-block",
+    float: "left",
+    //fontFamily: `${theme}`,
+    fontWeight: "bold",
   },
   newsCardArticleAge: {
-    textAlign: "right",
+    //fontFamily: `${theme}`,
+    display: "inline-block",
+    float: "right",
   },
   newsCardContent: {
     fontSize: "1rem",
-    fontFamily: "Arial",
+    //fontFamily: `${theme}`,
   },
   expand: {
     transform: "rotate(0deg)",
@@ -104,9 +115,16 @@ class NewsCard extends Component {
             {article.title}
           </Typography>
         </CardContent>
+        <br />
         <CardActions
           className={!this.state.expanded ? classes.actions : classes.actionOne}
         >
+          <IconButton aria-label="share">
+            <ShareOutlinedIcon />
+          </IconButton>
+          <IconButton aria-label="add to favorites">
+            <FavoriteBorderOutlinedIcon />
+          </IconButton>
           <IconButton aria-label="Pause">
             <Pause />
           </IconButton>
