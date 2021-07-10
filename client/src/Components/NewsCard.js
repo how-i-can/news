@@ -16,16 +16,12 @@ import Pause from "@material-ui/icons/NotInterested";
 import Typography from "@material-ui/core/Typography";
 
 import defaultImage from ".././images/default-image.png";
-import { green } from "@material-ui/core/colors";
 
 const calculateArticleAge = require("../Helpers/calculateArticleAge");
 
 const styles = () => ({
   newsCard: {
-    borderRadius: 50,
-    paddingBottom: 30,
-    marginBottom: 30,
-    background: "green",
+    paddingBottom: 20,
   },
   newsCardImage: {
     paddingTop: "56.25%",
@@ -77,8 +73,8 @@ class NewsCard extends Component {
         <CardMedia
           className={classes.newsCardImage}
           image={article.urlToImage || defaultImage}
+          title={article.source.name}
         />
-        <span>{article.source.name}</span>
         <CardContent>
           <Typography className={classes.newsCardTitle}>
             {article.title}
