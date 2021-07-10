@@ -21,7 +21,6 @@ import defaultImage from ".././images/default-image.png";
 import green from "@material-ui/core/colors/green";
 
 const calculateArticleAge = require("../Helpers/calculateArticleAge");
-//const calculateDate = require("../Helpers/calculateDate");
 
 const primary = green[50];
 
@@ -39,30 +38,25 @@ const styles = () => ({
     display: "block",
     margin: 0,
     padding: 20,
-    //fontFamily: `${theme}`,
     fontSize: "1rem",
     fontWeight: "bold",
   },
   newsCardArticle: {
     marginTop: 12,
-    //fontFamily: `${theme}`,
     fontSize: "0.875rem",
     textTransform: "uppercase",
   },
   newsCardArticleSourceName: {
     display: "inline-block",
     float: "left",
-    //fontFamily: `${theme}`,
     fontWeight: "bold",
   },
   newsCardArticleAge: {
-    //fontFamily: `${theme}`,
     display: "inline-block",
     float: "right",
   },
   newsCardContent: {
     fontSize: "1rem",
-    //fontFamily: `${theme}`,
   },
   expand: {
     transform: "rotate(0deg)",
@@ -93,8 +87,6 @@ class NewsCard extends Component {
   render() {
     const { classes, article } = this.props;
     const newsCardArticleAge = calculateArticleAge(article.publishedAt);
-    //const newsCardDate =  calculateDate(article.publishedAt);
-    //newsCardDate should go where article.publishedAt is undernearth the article source name
 
     return (
       <Card className={classes.newsCard}>
