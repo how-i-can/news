@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
 import BookMark from "@material-ui/icons/BookmarkBorder";
+import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -27,6 +28,9 @@ const styles = () => ({
     paddingTop: "56.25%",
   },
   newsCardTitle: {
+    display: "block",
+    margin: 0,
+    padding: 20,
     fontSize: "1rem",
     fontWeight: "bold",
   },
@@ -34,7 +38,15 @@ const styles = () => ({
     marginTop: 12,
     fontSize: "0.875rem",
     textTransform: "uppercase",
-    textAlign: "right",
+  },
+  newsCardArticleSourceName: {
+    display: "inline-block",
+    float: "left",
+    fontWeight: "bold",
+  },
+  newsCardArticleAge: {
+    display: "inline-block",
+    float: "right",
   },
   newsCardContent: {
     fontSize: "1rem",
@@ -47,7 +59,7 @@ const styles = () => ({
     transform: "rotate(180deg)",
   },
   actions: {
-    background: "linear-gradient(to bottom, #ffffff, #a8cbd7)",
+    background: "transparent",
   },
   actionOne: {
     background: "white",
@@ -107,7 +119,10 @@ class NewsCard extends Component {
           <CardContent>
             <Typography paragraph>By {article.author}</Typography>
             <Typography paragraph>
-              {article.content} <a href={article.url}>Read More</a>
+              {article.content}
+              <Button fontWeight="bold" size="small" color="primary">
+                <a href={article.url}>Read More</a>
+              </Button>
             </Typography>
           </CardContent>
         </Collapse>
