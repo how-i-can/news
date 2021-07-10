@@ -68,7 +68,7 @@ const styles = () => ({
     transform: "rotate(180deg)",
   },
   actions: {
-    background: "linear-gradient(to bottom, #ffffff, #a8cbd7)",
+    background: "transparent",
   },
   actionOne: {
     background: "white",
