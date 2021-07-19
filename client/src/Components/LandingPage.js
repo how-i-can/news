@@ -16,8 +16,8 @@ const styles = () => ({
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
-    maxWidth: 576,
     margin: "0 auto",
+    width: "100vw",
     padding: 0,
   },
   landingPageMain: {

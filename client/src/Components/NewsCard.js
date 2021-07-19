@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
-
 import { withStyles } from "@material-ui/core/styles";
 import BookMark from "@material-ui/icons/BookmarkBorder";
 import Card from "@material-ui/core/Card";
@@ -12,29 +11,49 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
 import Pause from "@material-ui/icons/NotInterested";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 
 import Typography from "@material-ui/core/Typography";
 
 import defaultImage from ".././images/default-image.png";
 
+import green from "@material-ui/core/colors/green";
+
 const calculateArticleAge = require("../Helpers/calculateArticleAge");
+
+const primary = green[50];
 
 const styles = () => ({
   newsCard: {
-    paddingBottom: 20,
+    borderRadius: 50,
+    paddingBottom: 30,
+    marginBottom: 30,
+    background: `${primary}`,
   },
   newsCardImage: {
     paddingTop: "56.25%",
   },
   newsCardTitle: {
+    display: "block",
+    margin: 0,
+    padding: 20,
     fontSize: "1rem",
     fontWeight: "bold",
   },
-  newsCardArticleAge: {
+  newsCardArticle: {
     marginTop: 12,
     fontSize: "0.875rem",
     textTransform: "uppercase",
-    textAlign: "right",
+  },
+  newsCardArticleSourceName: {
+    display: "inline-block",
+    float: "left",
+    fontWeight: "bold",
+  },
+  newsCardArticleAge: {
+    display: "inline-block",
+    float: "right",
   },
   newsCardContent: {
     fontSize: "1rem",
@@ -47,7 +66,7 @@ const styles = () => ({
     transform: "rotate(180deg)",
   },
   actions: {
-    background: "linear-gradient(to bottom, #ffffff, #a8cbd7)",
+    background: "transparent",
   },
   actionOne: {
     background: "white",
@@ -68,24 +87,36 @@ class NewsCard extends Component {
   render() {
     const { classes, article } = this.props;
     const newsCardArticleAge = calculateArticleAge(article.publishedAt);
+
     return (
       <Card className={classes.newsCard}>
         <CardMedia
           className={classes.newsCardImage}
           image={article.urlToImage || defaultImage}
-          title={article.source.name}
         />
-        <CardContent>
-          <Typography className={classes.newsCardTitle}>
-            {article.title}
+        <div className={classes.newsCardArticle}>
+          <Typography className={classes.newsCardArticleSourceName}>
+            {article.source.name}
           </Typography>
           <Typography className={classes.newsCardArticleAge}>
             {newsCardArticleAge}
           </Typography>
+        </div>
+        <CardContent>
+          <Typography className={classes.newsCardTitle}>
+            {article.title}
+          </Typography>
         </CardContent>
+        <br />
         <CardActions
           className={!this.state.expanded ? classes.actions : classes.actionOne}
         >
+          <IconButton aria-label="share">
+            <ShareOutlinedIcon />
+          </IconButton>
+          <IconButton aria-label="add to favorites">
+            <FavoriteBorderOutlinedIcon />
+          </IconButton>
           <IconButton aria-label="Pause">
             <Pause />
           </IconButton>
