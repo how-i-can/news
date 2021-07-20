@@ -160,7 +160,7 @@ class LandingPage extends Component {
           {this.state.showNoResultsCard && !this.state.hasSearchResults && (
             <NoResults query={this.state.query} />
           )}
-          {!this.state.showNoResultsCard && (
+          {!this.state.showNoResultsCard && !this.state.hasSearchResults && (
             <NewsCards
               handleChange={this.handleChange}
               loadDefaultNewsArticles={this.loadDefaultNewsArticles}
