@@ -30,6 +30,9 @@ const styles = () => ({
     flex: 1,
     fontSize: "1rem",
   },
+  listOptions: {
+    backgroundColor: "white",
+  },
 });
 
 class Suggestions extends Component {
@@ -65,7 +68,11 @@ class Suggestions extends Component {
       return (
         <div className={classes.list}>
           <Typography className={classes.listHeader}>Results</Typography>
-          <List component="nav" aria-label="search results">
+          <List
+            component="nav"
+            aria-label="search results"
+            className={classes.listOptions}
+          >
             {options}
           </List>
         </div>
