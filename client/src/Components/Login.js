@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
-import { Avenir } from ".././fonts/AvenirLTStd-Black.ttf";
 import FormControl from "@material-ui/core/FormControl";
 import { login } from "../actions/auth";
 import Input from "./Input";
@@ -19,6 +18,7 @@ const useStyles = makeStyles(() => ({
     position: "absolute",
     width: "360px",
     height: "640px",
+    justifyContent: "center",
   },
   form: {
     display: "grid",
@@ -27,13 +27,14 @@ const useStyles = makeStyles(() => ({
   },
   label: {
     display: "grid",
-    fontFamily: { Avenir },
+    fontFamily: "Lato",
     color: "#717171",
   },
   helperText: {
     display: "flex",
     justifyContent: "end",
     alignItems: "center",
+    fontFamily: "Lato",
   },
   icon: {
     width: "15px",
@@ -44,11 +45,13 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     margin: "0 auto",
     justifyContent: "center",
+    fontFamily: "Lato",
   },
   signupService: {
     display: "flex",
     margin: "0 auto",
     justifyContent: "center",
+    fontFamily: "Lato",
   },
   visibilityIcon: {
     filter: "opacity(0.2) drop-shadow(0 0 0 black)",
@@ -59,10 +62,10 @@ const useStyles = makeStyles(() => ({
     marginRight: "4px",
   },
   font: {
-    fontFamily: "Avenir",
+    fontFamily: "Lato",
     fontSize: "14px",
     color: "black",
-    fontWeight: "500",
+    fontWeight: "400",
   },
   or: {
     display: "flex",
@@ -97,6 +100,7 @@ const Login = () => {
       <form onSubmit={handleSubmit} className={classes.form}>
         <h2>Welcome back, Jessica.</h2>
         <h3 className={classes.label}>Keep spreading good vibes</h3>
+        <br />
         <FormControl>
           <label className={classes.label}>
             <div className={classes.helperText}>

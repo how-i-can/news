@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import Avenir from ".././fonts/AvenirLTStd-Black.ttf";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import LandingPage from "./LandingPage";
 import Registration from "./Registration";
@@ -9,13 +8,7 @@ import Login from "./Login";
 
 const styles = {
   root: {
-    display: "flex",
-    fontFamily: "Avenir",
-    fontStyle: "normal",
-    fontWeight: 400,
-    src: `local('Avenir Black'), 
-    url(${Avenir}) format('ttf')
-    `,
+    fontFamily: "Lato",
   },
   App: {
     display: "flex",
