@@ -7,7 +7,7 @@ import { register } from "../actions/auth";
 import Input from "./Input";
 import Button from "./Button";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(styles => ({
   form: {
     display: "grid",
     margin: "0 auto",
@@ -15,11 +15,11 @@ const useStyles = makeStyles(() => ({
   },
   label: {
     display: "grid",
-    fontFamily: "Avenir",
+    fontFamily: "Lato",
     color: "#717171",
   },
   registerMessage: {
-    fontFamily: "Avenir",
+    fontFamily: "Lato",
     textAlign: "center",
     fontWeight: "300",
     color: "green",
@@ -30,10 +30,9 @@ const useStyles = makeStyles(() => ({
     fontWeight: "800",
   },
   font: {
-    fontFamily: "Avenir",
+    fontFamily: "Lato",
     fontSize: "14px",
     color: "black",
-    fontWeight: "500",
   },
 }));
 
