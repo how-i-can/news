@@ -4,11 +4,11 @@ import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
 import { login } from "../actions/auth";
+import GoogleLogin from "./GoogleLogin";
 import Input from "./Input";
 import Button from "./Button";
 import emailIcon from "../images/email.svg";
 import passwordIcon from "../images/password.svg";
-import googleIcon from "../images/google.svg";
 import visibilityIcon from "../images/visibility_off.svg";
 
 const useStyles = makeStyles(() => ({
@@ -127,10 +127,7 @@ const Login = () => {
           or
         </h4>
         <div className={classes.loginService}>
-          <img src={googleIcon} alt="google" className={classes.googleIcon} />
-          <h4 className={classes.font} style={{ fontWeight: "800" }}>
-            Continue with Google
-          </h4>
+          <GoogleLogin />
         </div>
         <h4 className={classes.font} style={{ color: "#717171" }}>
           Dont' have an account?
