@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 const useStyles = makeStyles(() => ({
   button: {
     backgroundColor: "#FED96E",
+    width: "100%",
     borderRadius: "40px",
     textTransform: "none",
     marginTop: "8px",
