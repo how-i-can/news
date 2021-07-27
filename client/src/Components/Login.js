@@ -14,7 +14,7 @@ import visibilityIcon from "../images/visibility_off.svg";
 const useStyles = makeStyles(() => ({
   loginPage: {
     display: "inline-block",
-    margin: "0 auto",
+    marginLeft: "450px",
     position: "absolute",
     width: "360px",
     height: "640px",
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   form: {
     display: "grid",
     margin: "10px auto",
-    width: "70%",
+    width: "100%",
   },
   label: {
     display: "grid",
@@ -65,7 +65,7 @@ const useStyles = makeStyles(() => ({
     fontFamily: "Lato",
     fontSize: "14px",
     color: "black",
-    fontWeight: "400",
+    fontWeight: "bold",
   },
   or: {
     display: "flex",
@@ -138,7 +138,7 @@ const Login = () => {
           <h4 className={classes.font} style={{ textAlign: "end" }}>
             Forgot Password?
           </h4>
-          <Button>Sign in</Button>
+          <Button className={classes.font}>Sign in</Button>
         </FormControl>
       </form>
       <span className={classes.or}>or</span>
