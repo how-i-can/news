@@ -43,6 +43,7 @@ const Input = props => {
       onChange={onChange}
       placeholder={placeholder}
       InputProps={inputProps}
+      fullWidth={true}
     />
   );
 };
