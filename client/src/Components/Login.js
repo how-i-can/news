@@ -4,7 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
 import { login } from "../actions/auth";
-import GoogleLogin from "./GoogleLogin";
+import { GoogleLogin } from "react-google-login";
 import Input from "./Input";
 import Button from "./Button";
 import emailIcon from "../images/email.svg";
@@ -76,6 +76,10 @@ const Login = () => {
     return <Redirect to="/" />;
   }
 
+  const responseGoogle = response => {
+    console.log(response);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit} className={classes.form}>
@@ -127,7 +131,13 @@ const Login = () => {
           or
         </h4>
         <div className={classes.loginService}>
-          <GoogleLogin />
+          <GoogleLogin
+            clientId="241513642950-4aom6i0o8dglg9j8cdrp4vgvgrp1d4hn.apps.googleusercontent.com"
+            buttonText="Login"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+          />
         </div>
         <h4 className={classes.font} style={{ color: "#717171" }}>
           Dont' have an account?
