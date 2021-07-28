@@ -10,6 +10,7 @@ import Button from "./Button";
 import emailIcon from "../images/email.svg";
 import passwordIcon from "../images/password.svg";
 import visibilityIcon from "../images/visibility_off.svg";
+import { refreshTokenSetup } from "../utils/refreshToken";
 
 const useStyles = makeStyles(() => ({
   form: {
@@ -59,6 +60,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const clientId =
+  "241513642950-4aom6i0o8dglg9j8cdrp4vgvgrp1d4hn.apps.googleusercontent.com";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -76,8 +80,17 @@ const Login = () => {
     return <Redirect to="/" />;
   }
 
-  const responseGoogle = response => {
-    console.log(response);
+  const onSuccess = res => {
+    console.log("Login Success: currentUser:", res.profileObj);
+    alert(
+      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    );
+    refreshTokenSetup(res);
+  };
+
+  const onFailure = res => {
+    console.log("Login failed: res:", res);
+    alert(`Failed to login. 😢`);
   };
 
   return (
@@ -132,11 +145,12 @@ const Login = () => {
         </h4>
         <div className={classes.loginService}>
           <GoogleLogin
-            clientId="241513642950-4aom6i0o8dglg9j8cdrp4vgvgrp1d4hn.apps.googleusercontent.com"
+            clientId={clientId}
             buttonText="Continue with Google"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={onSuccess}
+            onFailure={onFailure}
             cookiePolicy={"single_host_origin"}
+            isSignedIn={true}
           />
         </div>
         <h4 className={classes.font} style={{ color: "#717171" }}>

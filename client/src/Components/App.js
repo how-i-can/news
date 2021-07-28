@@ -7,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import LandingPage from "./LandingPage";
 import Registration from "./Registration";
 import Login from "./Login";
+import Logout from "./Logout";
 
 const styles = {
   root: {
@@ -47,6 +48,7 @@ class App extends Component {
               <Route path="/signin">
                 <Login />
               </Route>
+              <Logout />
             </Switch>
           </Router>
         </div>
