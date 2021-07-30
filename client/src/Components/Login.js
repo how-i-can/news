@@ -4,6 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
 import { login } from "../actions/auth";
+import FacebookLogin from "react-facebook-login";
 import Input from "./Input";
 import Button from "./Button";
 import emailIcon from "../images/email.svg";
@@ -76,6 +77,10 @@ const Login = () => {
     return <Redirect to="/" />;
   }
 
+  const responseFacebook = response => {
+    console.log(response);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit} className={classes.form}>
@@ -131,6 +136,16 @@ const Login = () => {
           <h4 className={classes.font} style={{ fontWeight: "800" }}>
             Continue with Google
           </h4>
+        </div>
+        <div className={classes.loginService}>
+          <FacebookLogin
+            appId="534803271003174"
+            autoLoad={true}
+            fields="name,email,picture"
+            scope="public_profile,user_friends"
+            callback={responseFacebook}
+            icon="fa-facebook"
+          />
         </div>
         <h4 className={classes.font} style={{ color: "#717171" }}>
           Dont' have an account?
