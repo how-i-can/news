@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import BookMark from "@material-ui/icons/BookmarkBorder";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -10,7 +9,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
-import Pause from "@material-ui/icons/NotInterested";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 
@@ -112,12 +110,6 @@ class NewsCard extends Component {
           </IconButton>
           <IconButton aria-label="add to favorites">
             <FavoriteBorderOutlinedIcon />
-          </IconButton>
-          <IconButton aria-label="Pause">
-            <Pause />
-          </IconButton>
-          <IconButton aria-label="Bookmark">
-            <BookMark />
           </IconButton>
           <IconButton
             className={classnames(classes.expand, {
