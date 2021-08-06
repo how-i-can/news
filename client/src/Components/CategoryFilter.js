@@ -22,7 +22,7 @@ const styles = () => ({
     fontSize: "1rem",
 
     "&:focus": {
-      background: "#8CFF78",
+      background: "#FED96E",
     },
   },
 });

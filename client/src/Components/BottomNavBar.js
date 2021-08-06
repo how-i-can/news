@@ -11,8 +11,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 
 const styles = () => ({
   appBar: {
-    position: "unset",
-    backgroundColor: "#87BCBF",
+    position: "fixed",
+    backgroundColor: "white",
+    top: "auto",
+    bottom: 0,
   },
   toolBar: {
     alignItems: "center",

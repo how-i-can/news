@@ -36,21 +36,28 @@ const styles = () => ({
     fontWeight: "bold",
   },
   newsCardArticle: {
-    marginTop: 12,
+    marginTop: 20,
     fontSize: "0.875rem",
     textTransform: "uppercase",
   },
   newsCardArticleSourceName: {
+    margin: 10,
     display: "inline-block",
     float: "left",
     fontWeight: "bold",
   },
   newsCardArticleAge: {
+    margin: 10,
     display: "inline-block",
     float: "right",
   },
   newsCardContent: {
     fontSize: "1rem",
+  },
+  newsCardActionButtons: {
+    display: "block",
+    position: "absolute",
+    margin: "0 auto",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -84,10 +91,6 @@ class NewsCard extends Component {
 
     return (
       <Card className={classes.newsCard}>
-        <CardMedia
-          className={classes.newsCardImage}
-          image={article.urlToImage || defaultImage}
-        />
         <div className={classes.newsCardArticle}>
           <Typography className={classes.newsCardArticleSourceName}>
             {article.source.name}
@@ -100,17 +103,26 @@ class NewsCard extends Component {
           <Typography className={classes.newsCardTitle}>
             {article.title}
           </Typography>
+          <CardActions
+            className={
+              !this.state.expanded ? classes.actions : classes.actionOne
+            }
+          ></CardActions>
+          <CardMedia
+            className={classes.newsCardImage}
+            image={article.urlToImage || defaultImage}
+          />
         </CardContent>
         <br />
-        <CardActions
-          className={!this.state.expanded ? classes.actions : classes.actionOne}
-        >
-          <IconButton aria-label="share">
-            <ShareOutlinedIcon />
-          </IconButton>
-          <IconButton aria-label="add to favorites">
-            <FavoriteBorderOutlinedIcon />
-          </IconButton>
+        <CardActions>
+          <div className={classes.newsCardActionButtons}>
+            <IconButton aria-label="share">
+              <ShareOutlinedIcon />
+            </IconButton>
+            <IconButton aria-label="add to favorites">
+              <FavoriteBorderOutlinedIcon />
+            </IconButton>
+          </div>
           <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
