@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { withStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
+import FilterListIcon from "@material-ui/icons/FilterList";
 
 const styles = () => ({
   filter: {
@@ -24,6 +25,10 @@ const styles = () => ({
     "&:focus": {
       background: "#FED96E",
     },
+  },
+  filterIcon: {
+    display: "flex",
+    float: "right",
   },
 });
 
@@ -53,6 +58,9 @@ class CategoryFilter extends Component {
             onClick={() => this.handleClick(category)}
           />
         ))}
+        <div className={classes.filterIcon}>
+          <FilterListIcon />
+        </div>
       </div>
     );
   }

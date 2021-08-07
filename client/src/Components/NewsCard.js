@@ -15,6 +15,7 @@ import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import Typography from "@material-ui/core/Typography";
 
 import defaultImage from ".././images/default-image.png";
+import { FormHelperText } from "@material-ui/core";
 
 const calculateArticleAge = require("../Helpers/calculateArticleAge");
 
@@ -55,9 +56,10 @@ const styles = () => ({
     fontSize: "1rem",
   },
   newsCardActionButtons: {
-    display: "block",
-    position: "absolute",
-    margin: "0 auto",
+    display: "flex",
+    position: "relative",
+    margin: "auto",
+    float: "none",
   },
   expand: {
     transform: "rotate(0deg)",
