@@ -30,7 +30,8 @@ const styles = () => ({
     paddingTop: "56.25%",
   },
   newsCardTitle: {
-    display: "block",
+    display: "inline-block",
+    textAlign: "left",
     margin: 0,
     padding: 20,
     fontSize: "1rem",
