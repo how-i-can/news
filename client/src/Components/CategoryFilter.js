@@ -29,6 +29,7 @@ const styles = () => ({
   filterIcon: {
     display: "flex",
     float: "right",
+    paddingLeft: 10,
   },
 });
 

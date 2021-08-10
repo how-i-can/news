@@ -51,7 +51,7 @@ const styles = () => ({
   newsCardArticleAge: {
     margin: 10,
     display: "inline-block",
-    float: "right",
+    float: "left",
   },
   newsCardContent: {
     fontSize: "1rem",
