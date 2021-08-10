@@ -27,6 +27,7 @@ const styles = () => ({
   },
   menuIcon: {
     float: "left",
+    padding: 10,
   },
   pageTop: {
     display: "table",
@@ -37,6 +38,8 @@ const styles = () => ({
   },
   searchIcon: {
     float: "right",
+    marginTop: -100,
+    paddingRight: 10,
   },
 });
 

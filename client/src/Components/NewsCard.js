@@ -61,6 +61,7 @@ const styles = () => ({
     position: "relative",
     margin: "auto",
     float: "none",
+    left: "15%",
   },
   expand: {
     transform: "rotate(0deg)",
