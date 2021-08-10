@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
   button: {
-    backgroundColor: "#FBB13C",
+    backgroundColor: "#FED96E",
     borderRadius: "40px",
     textTransform: "none",
     marginTop: "8px",
