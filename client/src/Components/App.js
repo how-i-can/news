@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import LandingPage from "./LandingPage";
 import Registration from "./Registration";
 import Login from "./Login";
-import MyWall from "./MyWall";
+import MyWallPage from "./MyWallPage";
 
 const styles = {
   root: {
@@ -13,6 +13,7 @@ const styles = {
   },
   App: {
     display: "flex",
+    alignItems: "center",
   },
 };
 
@@ -33,7 +34,7 @@ class App extends Component {
                 <LandingPage />
               </Route>
               <Route path="/mywall">
-                <MyWall />
+                <MyWallPage />
               </Route>
               <Route path="/signup">
                 <Registration />

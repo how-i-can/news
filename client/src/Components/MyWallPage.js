@@ -50,7 +50,7 @@ class MyWallPage extends Component {
           </div>
           <div className={classes.pageTop}>
             <h1>Cathy Zen</h1>
-            <h5>Good news from around the world.</h5>
+            <h5>Post good things that happened to you.</h5>
           </div>
           <div className={classes.searchIcon}>
             <SearchIcon />
