@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
 import BottomNavBar from "./BottomNavBar";
-import MyWallPosts from "./MyWallPosts";
 import Paper from "@material-ui/core/Paper";
 import SearchIcon from "@material-ui/icons/Search";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -29,13 +28,25 @@ const styles = () => ({
     position: "relative",
     margin: "auto",
     float: "none",
-    fontWeight: "bold",
     fontFamily: "Lato",
+  },
+  userName: {
+    fontWeight: "bold",
   },
   searchIcon: {
     float: "right",
     marginTop: -100,
     paddingRight: 10,
+  },
+  defaultGreeting: {
+    display: "inline-block",
+    textAlign: "left",
+    fontFamily: "Lato",
+    paddingLeft: 20,
+  },
+  myWallHeart: {
+    width: 20,
+    marginRight: 4,
   },
 });
 
@@ -49,11 +60,15 @@ class MyWallPage extends Component {
             <MenuIcon />
           </div>
           <div className={classes.pageTop}>
-            <h1>Cathy Zen</h1>
-            <h5>Post good things that happened to you.</h5>
+            <h1 className={classes.userName}>Cathy Zen</h1>
+            <p>Post good things that happened to you.</p>
           </div>
           <div className={classes.searchIcon}>
             <SearchIcon />
+          </div>
+          <div className={classes.defaultGreeting}>
+            <h1>Your happy moments will show up here!</h1>
+            <p>For only you to see. It can be anything that makes you happy.</p>
           </div>
         </div>
         <BottomNavBar className={classes.BottomNavBar} />

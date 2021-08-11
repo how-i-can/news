@@ -11,11 +11,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
-import BottomNavBar from "./BottomNavBar";
 
 import Typography from "@material-ui/core/Typography";
-
-import defaultImage from ".././images/default-image.png";
 
 const calculateArticleAge = require("../Helpers/calculateArticleAge");
 
