@@ -25,6 +25,7 @@ const styles = () => ({
     paddingBottom: 30,
     marginBottom: 30,
     background: `#FFFF`,
+    fontFamily: "Lato",
   },
   newsCardImage: {
     paddingTop: "56.25%",
@@ -59,6 +60,8 @@ const styles = () => ({
   },
   newsCardContent: {
     fontSize: "1rem",
+  },
+  articleDetails: {
     fontFamily: "Lato",
   },
   newsCardActionButtons: {
@@ -145,8 +148,10 @@ class NewsCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>By {article.author}</Typography>
-            <Typography paragraph>
+            <Typography paragraph className={classes.articleDetails}>
+              By {article.author}
+            </Typography>
+            <Typography paragraph className={classes.articleDetails}>
               {article.content} <a href={article.url}>Read More</a>
             </Typography>
           </CardContent>

@@ -33,6 +33,7 @@ const styles = () => ({
     display: "inlineBlock",
     position: "absolute",
     fontSize: 14,
+    fontFamily: "Lato",
   },
 });
 
