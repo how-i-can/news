@@ -36,25 +36,30 @@ const styles = () => ({
     padding: 20,
     fontSize: "1rem",
     fontWeight: "bold",
+    fontFamily: "Lato",
   },
   newsCardArticle: {
     marginTop: 20,
     fontSize: "0.875rem",
     textTransform: "uppercase",
+    fontFamily: "Lato",
   },
   newsCardArticleSourceName: {
     margin: 10,
     display: "inline-block",
     float: "left",
     fontWeight: "bold",
+    fontFamily: "Lato",
   },
   newsCardArticleAge: {
     margin: 10,
     display: "inline-block",
     float: "left",
+    fontFamily: "Lato",
   },
   newsCardContent: {
     fontSize: "1rem",
+    fontFamily: "Lato",
   },
   newsCardActionButtons: {
     display: "flex",

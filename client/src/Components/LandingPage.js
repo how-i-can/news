@@ -35,6 +35,7 @@ const styles = () => ({
     margin: "auto",
     float: "none",
     fontWeight: "bold",
+    fontFamily: "Lato",
   },
   searchIcon: {
     float: "right",
