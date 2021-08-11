@@ -5,6 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import LandingPage from "./LandingPage";
 import Registration from "./Registration";
 import Login from "./Login";
+import MyWall from "./MyWall";
 
 const styles = {
   root: {
@@ -30,6 +31,9 @@ class App extends Component {
             <Switch>
               <Route exact path="/">
                 <LandingPage />
+              </Route>
+              <Route path="/mywall">
+                <MyWall />
               </Route>
               <Route path="/signup">
                 <Registration />

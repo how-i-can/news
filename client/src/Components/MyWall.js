@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -12,6 +11,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
+import BottomNavBar from "./BottomNavBar";
 
 import Typography from "@material-ui/core/Typography";
 
@@ -70,19 +70,11 @@ class MyWall extends Component {
 
   render() {
     const { classes, article } = this.props;
-    const myWallPostArticleAge = calculateArticleAge(article.publishedAt);
+    const myWallPostArticleAge = calculateArticleAge;
 
     return (
       <Card className={classes.myWallPost}>
-        <CardMedia
-          className={classes.myWallPostImage}
-          image={article.urlToImage || defaultImage}
-        />
-        <div className={classes.myWallPost}>
-          <Typography className={classes.myWallPostArticleAge}>
-            {myWallPostArticleAge}
-          </Typography>
-        </div>
+        <div className={classes.myWallPost}></div>
         <CardContent>
           <Typography className={classes.userNameTitle}>Cathy Zen</Typography>
         </CardContent>
