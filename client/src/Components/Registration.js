@@ -30,6 +30,7 @@ const useStyles = makeStyles(styles => ({
   login: {
     textDecoration: "none",
     fontWeight: "800",
+    color: "#2161F3",
   },
   font: {
     fontFamily: "Lato",
@@ -189,7 +190,7 @@ const Registration = () => {
                 >
                   Already have an account?
                   <Link to="/signin" className={classes.login}>
-                    <span style={{ color: "#2161F3" }}> Login</span>
+                    <span> Login</span>
                   </Link>
                 </h4>
               </Grid>
