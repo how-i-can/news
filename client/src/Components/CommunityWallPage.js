@@ -6,6 +6,9 @@ import BottomNavBar from "./BottomNavBar";
 import Paper from "@material-ui/core/Paper";
 import SearchIcon from "@material-ui/icons/Search";
 import MenuIcon from "@material-ui/icons/Menu";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const styles = () => ({
   CommunityWallPage: {
@@ -44,9 +47,10 @@ const styles = () => ({
     fontFamily: "Lato",
     paddingLeft: 20,
   },
-  CommunityWallHeart: {
-    width: 20,
-    marginRight: 4,
+  fabButton: {
+    position: "fixed",
+    bottom: 70,
+    right: 20,
   },
 });
 
@@ -68,6 +72,12 @@ class CommunityWallPage extends Component {
           </div>
         </div>
         <BottomNavBar className={classes.BottomNavBar} />
+        <Fab color="primary" aria-label="add" className={classes.fabButton}>
+          <AddIcon />
+        </Fab>
+        <Fab disabled aria-label="like">
+          <FavoriteIcon />
+        </Fab>
       </Paper>
     );
   }
