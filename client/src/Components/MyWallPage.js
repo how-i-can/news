@@ -57,6 +57,8 @@ const styles = () => ({
     position: "fixed",
     bottom: 70,
     right: 20,
+    color: "blue",
+    backgroundColor: "#FED96E",
   },
 });
 
