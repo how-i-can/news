@@ -9,6 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import MyWallFilter from "./MyWallFilter.js";
 
 const styles = () => ({
   MyWallPage: {
@@ -38,8 +39,9 @@ const styles = () => ({
   },
   searchIcon: {
     float: "right",
-    marginTop: -100,
-    paddingRight: 10,
+    right: 20,
+    top: 0,
+    padding: 10,
   },
   defaultGreeting: {
     display: "inline-block",
@@ -67,13 +69,14 @@ class MyWallPage extends Component {
           <div className={classes.menuIcon}>
             <MenuIcon />
           </div>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
           <div className={classes.pageTop}>
             <h1 className={classes.userName}>Cathy Zen</h1>
             <p>Post good things that happened to you.</p>
           </div>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
+          <MyWallFilter />
           <div className={classes.defaultGreeting}>
             <h1>Your happy moments will show up here!</h1>
             <p>For only you to see. It can be anything that makes you happy.</p>
