@@ -39,8 +39,9 @@ const styles = () => ({
   },
   searchIcon: {
     float: "right",
-    marginTop: -100,
-    paddingRight: 10,
+    right: 20,
+    top: 0,
+    padding: 10,
   },
   defaultGreeting: {
     display: "inline-block",
@@ -66,14 +67,14 @@ class CommunityWallPage extends Component {
           <div className={classes.menuIcon}>
             <MenuIcon />
           </div>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
           <div className={classes.pageTop}>
             <h1 className={classes.userName}>Community</h1>
             <p>Get inspired by others' positive work.</p>
           </div>
           <CommunityWallFilter />
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
         </div>
         <BottomNavBar className={classes.BottomNavBar} />
         <Fab color="primary" aria-label="add" className={classes.fabButton}>
