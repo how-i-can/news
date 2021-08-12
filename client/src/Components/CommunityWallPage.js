@@ -9,6 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import CommunityWallFilter from "./CommunityWallFilter";
 
 const styles = () => ({
   CommunityWallPage: {
@@ -69,6 +70,7 @@ class CommunityWallPage extends Component {
             <h1 className={classes.userName}>Community</h1>
             <p>Get inspired by others' positive work.</p>
           </div>
+          <CommunityWallFilter />
           <div className={classes.searchIcon}>
             <SearchIcon />
           </div>
