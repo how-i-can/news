@@ -20,6 +20,7 @@ const styles = () => ({
   chip: {
     marginRight: 8,
     fontSize: "1rem",
+    fontFamily: "Lato",
 
     "&:focus": {
       background: "#FED96E",
