@@ -4,12 +4,13 @@ import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
 import { login } from "../actions/auth";
+import { GoogleLogin } from "react-google-login";
 import Input from "./Input";
 import Button from "./Button";
 import emailIcon from "../images/email.svg";
 import passwordIcon from "../images/password.svg";
-import googleIcon from "../images/google.svg";
 import visibilityIcon from "../images/visibility_off.svg";
+import { refreshTokenSetup } from "../utils/refreshToken";
 
 const useStyles = makeStyles(() => ({
   loginPage: {
@@ -95,6 +96,19 @@ const Login = () => {
     return <Redirect to="/" />;
   }
 
+  const onSuccess = res => {
+    console.log("Login Success: currentUser:", res.profileObj);
+    alert(
+      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    );
+    refreshTokenSetup(res);
+  };
+
+  const onFailure = res => {
+    console.log("Login failed: res:", res);
+    alert(`Failed to login. 😢`);
+  };
+
   return (
     <div className={classes.loginPage}>
       <form onSubmit={handleSubmit} className={classes.form}>
@@ -143,12 +157,16 @@ const Login = () => {
       </form>
       <span className={classes.or}>or</span>
       <br />
-      <div className={classes.loginService}>
-        <img src={googleIcon} alt="google" className={classes.googleIcon} />
-        <h4 className={classes.font} style={{ fontWeight: "800" }}>
-          Continue with Google
-        </h4>
-      </div>
+        <div className={classes.loginService}>
+          <GoogleLogin
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+            buttonText="Continue with Google"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            isSignedIn={true}
+          />
+        </div>
       <br />
       <div className={classes.signupService}>
         <h4 className={classes.font} style={{ color: "#717171" }}>
