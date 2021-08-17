@@ -2,21 +2,39 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
-import Account from "@material-ui/icons/Person";
 import AppBar from "@material-ui/core/AppBar";
-import Grade from "@material-ui/icons/Grade";
-import Home from "@material-ui/icons/Home";
-import IconButton from "@material-ui/core/IconButton";
+import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutlined";
+import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
+import PeopleOutlineOutlinedIcon from "@material-ui/icons/PeopleOutlineOutlined";
+import WbSunnyOutlinedIcon from "@material-ui/icons/WbSunnyOutlined";
+import { ListItemIcon } from "@material-ui/core";
 import Toolbar from "@material-ui/core/Toolbar";
 
 const styles = () => ({
   appBar: {
-    position: "unset",
-    backgroundColor: "#87BCBF",
+    position: "fixed",
+    backgroundColor: "white",
+    top: "auto",
+    bottom: 0,
   },
   toolBar: {
     alignItems: "center",
     justifyContent: "space-evenly",
+  },
+  iconButton: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    "&:hover": {
+      color: "blue",
+    },
+  },
+  pageLabel: {
+    display: "flex",
+    fontSize: 14,
+    fontFamily: "Lato",
+    flexDirection: "column",
   },
 });
 
@@ -26,15 +44,25 @@ class BottomNavBar extends Component {
     return (
       <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
-          <IconButton onClick={this.props.loadDefaultNewsArticlesProp}>
-            <Home />
-          </IconButton>
-          <IconButton>
-            <Grade />
-          </IconButton>
-          <IconButton>
-            <Account />
-          </IconButton>
+          <ListItemIcon className={classes.iconButton}>
+            <PersonOutlineOutlinedIcon />
+            <span className={classes.pageLabel}>My Wall</span>
+          </ListItemIcon>
+          <ListItemIcon
+            className={classes.iconButton}
+            onClick={this.props.loadDefaultNewsArticlesProp}
+          >
+            <ImportContactsOutlinedIcon />
+            <span className={classes.pageLabel}>News</span>
+          </ListItemIcon>
+          <ListItemIcon className={classes.iconButton}>
+            <PeopleOutlineOutlinedIcon />
+            <span className={classes.pageLabel}>Community</span>
+          </ListItemIcon>
+          <ListItemIcon className={classes.iconButton}>
+            <WbSunnyOutlinedIcon />
+            <span className={classes.pageLabel}>NGOs</span>
+          </ListItemIcon>
         </Toolbar>
       </AppBar>
     );

@@ -13,6 +13,7 @@ const styles = {
   },
   App: {
     display: "flex",
+    alignItems: "center",
   },
 };
 

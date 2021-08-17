@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import BookMark from "@material-ui/icons/BookmarkBorder";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -10,53 +9,67 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Collapse from "@material-ui/core/Collapse";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
-import Pause from "@material-ui/icons/NotInterested";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 
 import Typography from "@material-ui/core/Typography";
 
 import defaultImage from ".././images/default-image.png";
-
-import green from "@material-ui/core/colors/green";
+import { FormHelperText } from "@material-ui/core";
 
 const calculateArticleAge = require("../Helpers/calculateArticleAge");
-
-const primary = green[50];
 
 const styles = () => ({
   newsCard: {
     borderRadius: 50,
     paddingBottom: 30,
     marginBottom: 30,
-    background: `${primary}`,
+    background: `#FFFF`,
+    fontFamily: "Lato",
   },
   newsCardImage: {
     paddingTop: "56.25%",
   },
   newsCardTitle: {
-    display: "block",
+    display: "inline-block",
+    textAlign: "left",
     margin: 0,
     padding: 20,
     fontSize: "1rem",
     fontWeight: "bold",
+    fontFamily: "Lato",
   },
   newsCardArticle: {
-    marginTop: 12,
+    marginTop: 20,
     fontSize: "0.875rem",
     textTransform: "uppercase",
+    fontFamily: "Lato",
   },
   newsCardArticleSourceName: {
+    margin: 10,
     display: "inline-block",
     float: "left",
     fontWeight: "bold",
+    fontFamily: "Lato",
   },
   newsCardArticleAge: {
+    margin: 10,
     display: "inline-block",
-    float: "right",
+    float: "left",
+    fontFamily: "Lato",
   },
   newsCardContent: {
     fontSize: "1rem",
+  },
+  articleDetails: {
+    fontFamily: "Lato",
+  },
+  newsCardActionButtons: {
+    display: "flex",
+    position: "relative",
+    margin: "auto",
+    float: "none",
+    left: "15%",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -90,10 +103,6 @@ class NewsCard extends Component {
 
     return (
       <Card className={classes.newsCard}>
-        <CardMedia
-          className={classes.newsCardImage}
-          image={article.urlToImage || defaultImage}
-        />
         <div className={classes.newsCardArticle}>
           <Typography className={classes.newsCardArticleSourceName}>
             {article.source.name}
@@ -106,23 +115,26 @@ class NewsCard extends Component {
           <Typography className={classes.newsCardTitle}>
             {article.title}
           </Typography>
+          <CardActions
+            className={
+              !this.state.expanded ? classes.actions : classes.actionOne
+            }
+          ></CardActions>
+          <CardMedia
+            className={classes.newsCardImage}
+            image={article.urlToImage || defaultImage}
+          />
         </CardContent>
         <br />
-        <CardActions
-          className={!this.state.expanded ? classes.actions : classes.actionOne}
-        >
-          <IconButton aria-label="share">
-            <ShareOutlinedIcon />
-          </IconButton>
-          <IconButton aria-label="add to favorites">
-            <FavoriteBorderOutlinedIcon />
-          </IconButton>
-          <IconButton aria-label="Pause">
-            <Pause />
-          </IconButton>
-          <IconButton aria-label="Bookmark">
-            <BookMark />
-          </IconButton>
+        <CardActions>
+          <div className={classes.newsCardActionButtons}>
+            <IconButton aria-label="share">
+              <ShareOutlinedIcon />
+            </IconButton>
+            <IconButton aria-label="add to favorites">
+              <FavoriteBorderOutlinedIcon />
+            </IconButton>
+          </div>
           <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
@@ -136,8 +148,10 @@ class NewsCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>By {article.author}</Typography>
-            <Typography paragraph>
+            <Typography paragraph className={classes.articleDetails}>
+              By {article.author}
+            </Typography>
+            <Typography paragraph className={classes.articleDetails}>
               {article.content} <a href={article.url}>Read More</a>
             </Typography>
           </CardContent>

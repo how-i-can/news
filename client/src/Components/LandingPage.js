@@ -9,7 +9,9 @@ import NewsCards from "./NewsCards";
 import NoResults from "./NoResults";
 import Paper from "@material-ui/core/Paper";
 import SearchBar from "./SearchBar";
+import SearchIcon from "@material-ui/icons/Search";
 import Suggestions from "./Suggestions";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const styles = () => ({
   landingPage: {
@@ -22,6 +24,23 @@ const styles = () => ({
   },
   landingPageMain: {
     flexGrow: 1,
+  },
+  menuIcon: {
+    float: "left",
+    padding: 10,
+  },
+  pageTop: {
+    display: "table",
+    position: "relative",
+    margin: "auto",
+    float: "none",
+    fontWeight: "bold",
+    fontFamily: "Lato",
+  },
+  searchIcon: {
+    float: "right",
+    marginTop: -100,
+    paddingRight: 10,
   },
 });
 
@@ -141,6 +160,16 @@ class LandingPage extends Component {
     return (
       <Paper className={classes.landingPage}>
         <div className={classes.landingPageMain}>
+          <div className={classes.menuIcon}>
+            <MenuIcon />
+          </div>
+          <div className={classes.pageTop}>
+            <h1>Good News</h1>
+            <h5>Good news from around the world.</h5>
+          </div>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
           <SearchBar
             handleClearClick={this.handleClearClick}
             handleInputChange={this.handleInputChange}
