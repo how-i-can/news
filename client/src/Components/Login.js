@@ -60,9 +60,6 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const clientId =
-  "241513642950-4aom6i0o8dglg9j8cdrp4vgvgrp1d4hn.apps.googleusercontent.com";
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -145,7 +142,7 @@ const Login = () => {
         </h4>
         <div className={classes.loginService}>
           <GoogleLogin
-            clientId={clientId}
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             buttonText="Continue with Google"
             onSuccess={onSuccess}
             onFailure={onFailure}
