@@ -4,41 +4,55 @@ import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
 import { login } from "../actions/auth";
+import { GoogleLogin } from "react-google-login";
 import Input from "./Input";
 import Button from "./Button";
 import emailIcon from "../images/email.svg";
 import passwordIcon from "../images/password.svg";
-import googleIcon from "../images/google.svg";
 import visibilityIcon from "../images/visibility_off.svg";
+import { refreshTokenSetup } from "../utils/refreshToken";
 
 const useStyles = makeStyles(() => ({
+  loginPage: {
+    display: "inline-block",
+    marginLeft: "450px",
+    position: "absolute",
+    width: "360px",
+    height: "640px",
+    justifyContent: "center",
+  },
   form: {
     display: "grid",
-    margin: "16px auto",
-    width: "60%",
+    margin: "10px auto",
+    width: "100%",
   },
   label: {
     display: "grid",
-    fontFamily: "Avenir",
+    fontFamily: "Lato",
     color: "#717171",
   },
   helperText: {
     display: "flex",
     justifyContent: "end",
     alignItems: "center",
+    fontFamily: "Lato",
   },
   icon: {
     width: "15px",
     marginRight: "4px",
     filter: "opacity(0.2) drop-shadow(0 0 0 black)",
   },
-  login: {
-    display: "grid",
-    justifyContent: "center",
-  },
   loginService: {
     display: "flex",
+    margin: "0 auto",
     justifyContent: "center",
+    fontFamily: "Lato",
+  },
+  signupService: {
+    display: "flex",
+    margin: "0 auto",
+    justifyContent: "center",
+    fontFamily: "Lato",
   },
   visibilityIcon: {
     filter: "opacity(0.2) drop-shadow(0 0 0 black)",
@@ -49,10 +63,16 @@ const useStyles = makeStyles(() => ({
     marginRight: "4px",
   },
   font: {
-    fontFamily: "Avenir",
+    fontFamily: "Lato",
     fontSize: "14px",
     color: "black",
-    fontWeight: "500",
+    fontWeight: "bold",
+  },
+  or: {
+    display: "flex",
+    margin: "0 auto",
+    justifyContent: "center",
+    padding: "2px",
   },
   signup: {
     textDecoration: "none",
@@ -76,9 +96,25 @@ const Login = () => {
     return <Redirect to="/" />;
   }
 
+  const onSuccess = res => {
+    console.log("Login Success: currentUser:", res.profileObj);
+    alert(
+      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    );
+    refreshTokenSetup(res);
+  };
+
+  const onFailure = res => {
+    console.log("Login failed: res:", res);
+    alert(`Failed to login. 😢`);
+  };
+
   return (
-    <div>
+    <div className={classes.loginPage}>
       <form onSubmit={handleSubmit} className={classes.form}>
+        <h2>Welcome back, Jessica.</h2>
+        <h3 className={classes.label}>Keep spreading good vibes</h3>
+        <br />
         <FormControl>
           <label className={classes.label}>
             <div className={classes.helperText}>
@@ -116,24 +152,25 @@ const Login = () => {
           <h4 className={classes.font} style={{ textAlign: "end" }}>
             Forgot Password?
           </h4>
-          <Button>Submit</Button>
+          <Button className={classes.font}>Sign in</Button>
         </FormControl>
       </form>
-      <div className={classes.login}>
-        <h4
-          className={classes.font}
-          style={{ textAlign: "center", margin: "0px" }}
-        >
-          or
-        </h4>
+      <span className={classes.or}>or</span>
+      <br />
         <div className={classes.loginService}>
-          <img src={googleIcon} alt="google" className={classes.googleIcon} />
-          <h4 className={classes.font} style={{ fontWeight: "800" }}>
-            Continue with Google
-          </h4>
+          <GoogleLogin
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+            buttonText="Continue with Google"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            isSignedIn={true}
+          />
         </div>
+      <br />
+      <div className={classes.signupService}>
         <h4 className={classes.font} style={{ color: "#717171" }}>
-          Dont' have an account?
+          Don't have an account?
           <Link to="/signup" className={classes.signup}>
             <span className={classes.font} style={{ fontWeight: "800" }}>
               {" "}
