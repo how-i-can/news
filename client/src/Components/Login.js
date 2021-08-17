@@ -139,7 +139,7 @@ const Login = () => {
         </div>
         <div className={classes.loginService}>
           <FacebookLogin
-            appId="534803271003174"
+            appID={process.env.REACT_APP_FACEBOOK_APP_ID}
             autoLoad={true}
             fields="name,email,picture"
             scope="public_profile,user_friends"
