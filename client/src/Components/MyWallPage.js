@@ -84,7 +84,7 @@ class MyWallPage extends Component {
             <h1>Your happy moments will show up here!</h1>
             <p>For only you to see. It can be anything that makes you happy.</p>
           </div>
-          <img src="../images/my_wall_heart.jpg" alt="heart"></img>
+          {/* <img src="../images/my_wall_heart.jpg" alt="heart"></img> */}
         </div>
         <BottomNavBar className={classes.BottomNavBar} />
         <Fab color="primary" aria-label="add" className={classes.fabButton}>
