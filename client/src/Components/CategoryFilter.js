@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { withStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
+import FilterListIcon from "@material-ui/icons/FilterList";
 
 const styles = () => ({
   filter: {
@@ -20,10 +21,16 @@ const styles = () => ({
   chip: {
     marginRight: 8,
     fontSize: "1rem",
+    fontFamily: "Lato",
 
     "&:focus": {
-      background: "#8CFF78",
+      background: "#FED96E",
     },
+  },
+  filterIcon: {
+    display: "flex",
+    float: "right",
+    paddingLeft: 10,
   },
 });
 
@@ -53,6 +60,9 @@ class CategoryFilter extends Component {
             onClick={() => this.handleClick(category)}
           />
         ))}
+        <div className={classes.filterIcon}>
+          <FilterListIcon />
+        </div>
       </div>
     );
   }
