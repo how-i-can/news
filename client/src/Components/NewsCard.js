@@ -13,6 +13,7 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 
 import Typography from "@material-ui/core/Typography";
+import Share from "./Share";
 
 import defaultImage from ".././images/default-image.png";
 import { FormHelperText } from "@material-ui/core";
