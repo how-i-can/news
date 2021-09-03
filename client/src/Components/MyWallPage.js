@@ -11,8 +11,6 @@ import AddIcon from "@material-ui/icons/Add";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MyWallFilter from "./MyWallFilter.js";
 
-import "../images/my_wall_heart.jpg";
-
 const styles = () => ({
   MyWallPage: {
     display: "flex",
@@ -20,10 +18,11 @@ const styles = () => ({
     minHeight: "100vh",
     margin: "0 auto",
     width: "100vw",
-    padding: 0,
   },
   MyWallPageMain: {
     flexGrow: 1,
+    height: "100%",
+    width: "100%",
   },
   menuIcon: {
     float: "left",
@@ -52,8 +51,14 @@ const styles = () => ({
     paddingLeft: 20,
   },
   myWallHeart: {
-    width: 20,
-    marginRight: 4,
+    display: "flex",
+    flexGrow: 1,
+    maxHeight: "100%",
+    maxWidth: "100",
+    margin: "0 auto",
+    height: 300,
+    width: 300,
+    padding: 10,
   },
   fabButton: {
     position: "fixed",
@@ -61,6 +66,10 @@ const styles = () => ({
     right: 20,
     color: "blue",
     backgroundColor: "#FED96E",
+  },
+  BottomNavBar: {
+    maxHeight: "100%",
+    maxWidth: "100%",
   },
 });
 
@@ -85,7 +94,12 @@ class MyWallPage extends Component {
             <h1>Your happy moments will show up here!</h1>
             <p>For only you to see. It can be anything that makes you happy.</p>
           </div>
-          <img src="..\images\my_wall_heart.jpg" alt="heart"></img>
+          <div className={classes.myWallHeart}>
+            <img
+              src="https://www.nicepng.com/png/full/815-8150281_blue-and-green-flower-heart-heart-flower-blue.png"
+              alt=""
+            />
+          </div>
         </div>
         <BottomNavBar className={classes.BottomNavBar} />
         <Fab color="primary" aria-label="add" className={classes.fabButton}>
