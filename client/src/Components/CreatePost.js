@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import PublicIcon from "@material-ui/icons/Public";
 import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
+import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 
 const styles = () => ({
@@ -10,10 +11,8 @@ const styles = () => ({
     flexDirection: "column",
     padding: 20,
     margin: "0 auto",
-    position: "relative",
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
+    width: "100vw",
+    height: "100vh",
   },
   pageTitle: {
     display: "inline-flex",
@@ -21,40 +20,59 @@ const styles = () => ({
     alignItems: "center",
     margin: "0 auto",
     fontFamily: "Lato",
-    fontSize: 20,
+    fontSize: 22,
+    padding: 20,
+  },
+  cancelOption: {
+    display: "flex",
+    alignItems: "top",
+    cursor: "pointer",
+    color: "gray",
+    fontFamily: "Lato",
   },
   postTop: {
     display: "flex",
     flexDirection: "column",
     margin: "0 auto",
+    height: "100%",
+    width: "100%",
+    borderStyle: "solid",
+    borderColors: "gray",
     fontFamily: "Lato",
+    fontSize: 22,
   },
   postProfileImg: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     borderRadius: "50%",
     marginRight: 10,
+    padding: 5,
   },
   postInput: {
+    display: "flex",
     fontFamily: "Lato",
+    fontSize: 18,
+    position: "relative",
     width: "100%",
+    height: "100%",
+    border: "none",
+    resize: "none",
   },
   postBottom: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "left",
     justifyContent: "spaceBetween",
   },
   postOptions: {
     display: "flex",
     flexDirection: "column",
-    marginLeft: -50,
   },
   postOption: {
     display: "flex",
-    alignItems: "center",
     marginRight: 15,
     cursor: "pointer",
+    padding: 5,
   },
   postIcon: {
     fontFamily: "Lato",
@@ -63,29 +81,22 @@ const styles = () => ({
   },
   postOptionText: {
     fontFamily: "Lato",
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: 500,
   },
   postButton: {
     border: "none",
-    padding: 7,
+    padding: 20,
     borderRadius: 5,
     margin: 20,
-    width: "80%",
+    width: "95%",
     backgroundColor: "grey",
     fontFamily: "Lato",
     fontWeight: 500,
+    fontSize: 18,
     marginRight: 20,
     cursor: "pointer",
     color: "black",
-  },
-  textarea: {
-    position: "fixed",
-    left: 10,
-    top: 10,
-    width: "calc(100vw - 20px)",
-    height: "calc(100vh - 20px)",
-    resize: "none",
   },
 });
 
@@ -94,7 +105,11 @@ class CreatePost extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.CreatePost}>
-        <h1 className={classes.pageTitle}>Create a New Post</h1>
+        <div className={classes.cancelOption}>
+          <CloseIcon className={classes.cancelIcon} />
+          <span className={classes.cancelOptionText}>Cancel</span>
+        </div>
+        <h1 className={classes.pageTitle}>Create New Post</h1>
         <div className={classes.postTop}>
           <img
             className={classes.postProfileImg}
@@ -102,18 +117,19 @@ class CreatePost extends Component {
             alt=""
           />
           <span>Jessica Brown</span>
-          <p className={classes.postInput}>
-            What made you smile today? Share it with your friends and family.
-          </p>
+          <textarea
+            className={classes.postInput}
+            placeholder="What made you smile today? Share it with your friends and family."
+          />
         </div>
         <div className={classes.postBottom}>
           <div className={classes.postOptions}>
             <div className={classes.postOption}>
-              <span className={classes.postOptionText}>Add a Photo</span>
+              <span className={classes.postOptionText}>Add a Photo </span>
               <InsertPhotoIcon className={classes.postIcon} />
             </div>
             <div className={classes.postOption}>
-              <span className={classes.postOptionText}>Everyone can view</span>
+              <span className={classes.postOptionText}>Everyone can view </span>
               <PublicIcon className={classes.postIcon} />
             </div>
           </div>
