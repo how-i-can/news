@@ -6,6 +6,7 @@ import LandingPage from "./LandingPage";
 import Registration from "./Registration";
 import Login from "./Login";
 import MyWallPage from "./MyWallPage";
+import CreatePost from "./CreatePost";
 
 const styles = {
   root: {
@@ -41,6 +42,9 @@ class App extends Component {
               </Route>
               <Route path="/signin">
                 <Login />
+              </Route>
+              <Route path="/createpost">
+                <CreatePost />
               </Route>
             </Switch>
           </Router>
