@@ -1,21 +1,30 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { PermMedia, Label } from "@material-ui/icons";
+import { Paper } from "@material-ui/core";
+import PropTypes from "prop-types";
 
 const styles = () => ({
   CreatePost: {
-    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    padding: 30,
     height: 170,
     borderRadius: 10,
     webkitBoxShadow: "0px 0px 16px -8px rgba(0, 0, 0, 0.68)",
     boxShadow: "0px 0px 16px -8px rgba(0, 0, 0, 0.68)",
   },
-  postWrapper: {
-    padding: 10,
+  pageTitle: {
+    display: "inline-flex",
+    fontFamily: "Lato",
+    textAlign: "center",
+    fontSize: 20,
   },
   postTop: {
     display: "flex",
     alignItems: "center",
+    margin: "0 auto",
+    fontFamily: "Lato",
   },
   postProfileImg: {
     width: 50,
@@ -26,7 +35,8 @@ const styles = () => ({
   },
   postInput: {
     border: "none",
-    width: "80%",
+    width: "100%",
+    fontFamily: "Lato",
   },
   postBottom: {
     display: "flex",
@@ -44,10 +54,12 @@ const styles = () => ({
     cursor: "pointer",
   },
   postIcon: {
+    fontFamily: "Lato",
     fontSize: 18,
     marginRight: 3,
   },
   postOptionText: {
+    fontFamily: "Lato",
     fontSize: 14,
     fontWeight: 500,
   },
@@ -55,11 +67,12 @@ const styles = () => ({
     border: "none",
     padding: 7,
     borderRadius: 5,
-    backgroundColor: "green",
+    backgroundColor: "grey",
+    fontFamily: "Lato",
     fontWeight: 500,
     marginRight: 20,
     cursor: "pointer",
-    color: "white",
+    color: "black",
   },
 });
 
@@ -67,36 +80,39 @@ class CreatePost extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="CreatePost">
-        <div className="postWrapper">
-          <div className="postTop">
-            <img
-              className="postProfileImg"
-              src="/assets/person/1.jpeg"
-              alt=""
-            />
-            <input
+      <Paper>
+        <div className={classes.createPost}>
+          <h1 className={classes.pageTitle}>Create a New Post</h1>
+          <div className={classes.postTop}>
+            <img className={classes.postProfileImg} src="" alt="" />
+            <textarea
               placeholder="What made you smile today? Share it with your friends and family."
-              className="postInput"
+              className={classes.postInput}
             />
           </div>
-          <div className="postBottom">
-            <div className="postOptions">
-              <div className="postOption">
-                <PermMedia htmlColor="tomato" className="postIcon" />
-                <span className="postOptionText">Add a Photo</span>
+          <div className={classes.postBottom}>
+            <div className={classes.postOptions}>
+              <div className={classes.postOption}>
+                <PermMedia htmlColor="tomato" className={classes.postIcon} />
+                <span className={classes.postOptionText}>Add a Photo</span>
               </div>
-              <div className="shareOption">
-                <Label htmlColor="blue" className="postIcon" />
-                <span className="postOptionText">Everyone can view.</span>
+              <div className={classes.shareOption}>
+                <Label htmlColor="blue" className={classes.postIcon} />
+                <span className={classes.postOptionText}>
+                  Everyone can view
+                </span>
               </div>
             </div>
-            <button className="postButton">Post to MyWall</button>
+            <button className={classes.postButton}>Post to My Wall</button>
           </div>
         </div>
-      </div>
+      </Paper>
     );
   }
 }
+
+CreatePost.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(CreatePost);
