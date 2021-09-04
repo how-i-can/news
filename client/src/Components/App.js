@@ -43,9 +43,6 @@ class App extends Component {
               <Route path="/signin">
                 <Login />
               </Route>
-              <Route path="/createpost">
-                <CreatePost />
-              </Route>
             </Switch>
           </Router>
         </div>

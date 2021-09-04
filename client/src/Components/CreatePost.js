@@ -102,6 +102,7 @@ const styles = () => ({
 
 class CreatePost extends Component {
   render() {
+    console.log("createPostRendersHere");
     const { classes } = this.props;
     return (
       <div className={classes.CreatePost}>

@@ -10,6 +10,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MyWallFilter from "./MyWallFilter.js";
+import CreatePost from "./CreatePost.js";
 
 const styles = () => ({
   MyWallPage: {
@@ -74,8 +75,17 @@ const styles = () => ({
 });
 
 class MyWallPage extends Component {
+  state = { showCreatePost: false };
+
+  handleCreatePostModalClick = () => {
+    const showModalUpdate = !this.state.showCreatePost;
+    console.log("ShowModalUpdate", showModalUpdate);
+    this.setState({ showCreatePost: showModalUpdate });
+  };
+
   render() {
     const { classes } = this.props;
+
     return (
       <Paper className={classes.MyWallPage}>
         <div className={classes.MyWallPageMain}>
@@ -86,6 +96,7 @@ class MyWallPage extends Component {
             <SearchIcon />
           </div>
           <div className={classes.pageTop}>
+            {this.state.showCreatePost && <CreatePost />}
             <h1 className={classes.userName}>Jessica Brown</h1>
             <p>Post good things that happened to you.</p>
           </div>
@@ -94,6 +105,7 @@ class MyWallPage extends Component {
             <h1>Your happy moments will show up here!</h1>
             <p>For only you to see. It can be anything that makes you happy.</p>
           </div>
+
           <div className={classes.myWallHeart}>
             <img
               src="https://www.nicepng.com/png/full/815-8150281_blue-and-green-flower-heart-heart-flower-blue.png"
@@ -102,7 +114,13 @@ class MyWallPage extends Component {
           </div>
         </div>
         <BottomNavBar className={classes.BottomNavBar} />
-        <Fab color="primary" aria-label="add" className={classes.fabButton}>
+
+        <Fab
+          color="primary"
+          aria-label="add"
+          className={classes.fabButton}
+          onClick={this.handleCreatePostModalClick}
+        >
           <AddIcon />
         </Fab>
         <Fab disabled aria-label="like">
