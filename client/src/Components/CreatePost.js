@@ -7,12 +7,19 @@ import PropTypes from "prop-types";
 
 const styles = () => ({
   CreatePost: {
+    zIndex: 2000,
     display: "flex",
     flexDirection: "column",
     padding: 20,
     margin: "0 auto",
     width: "100vw",
     height: "100vh",
+    position: "fixed",
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "white",
   },
   pageTitle: {
     display: "inline-flex",
@@ -71,13 +78,13 @@ const styles = () => ({
   postOption: {
     display: "flex",
     marginRight: 15,
-    cursor: "pointer",
     padding: 5,
   },
   postIcon: {
     fontFamily: "Lato",
     fontSize: 18,
     marginRight: 3,
+    cursor: "pointer",
   },
   postOptionText: {
     fontFamily: "Lato",
@@ -101,12 +108,23 @@ const styles = () => ({
 });
 
 class CreatePost extends Component {
+  state = { showCreatePost: true };
+
+  handleCreatePostModalClick = () => {
+    const showModalUpdate = !this.state.showCreatePost;
+    console.log("ShowModalUpdate", showModalUpdate);
+    this.setState({ showCreatePost: showModalUpdate });
+  };
+
   render() {
-    console.log("createPostRendersHere");
     const { classes } = this.props;
+
     return (
       <div className={classes.CreatePost}>
-        <div className={classes.cancelOption}>
+        <div
+          className={classes.cancelOption}
+          onClick={this.handleCreatePostModalClick}
+        >
           <CloseIcon className={classes.cancelIcon} />
           <span className={classes.cancelOptionText}>Cancel</span>
         </div>
