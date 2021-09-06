@@ -6,7 +6,9 @@ import LandingPage from "./LandingPage";
 import Registration from "./Registration";
 import Login from "./Login";
 import MyWallPage from "./MyWallPage";
-import CreatePost from "./CreatePost";
+import CommunityWallPage from "./CommunityWallPage";
+import Logout from "./Logout";
+import Profile from "./Profile";
 
 const styles = {
   root: {
@@ -37,12 +39,19 @@ class App extends Component {
               <Route path="/mywall">
                 <MyWallPage />
               </Route>
+              <Route path="/community">
+                <CommunityWallPage />
+              </Route>
               <Route path="/signup">
                 <Registration />
               </Route>
               <Route path="/signin">
                 <Login />
               </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+              <Logout />
             </Switch>
           </Router>
         </div>
