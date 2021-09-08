@@ -11,8 +11,8 @@ const styles = () => ({
     alignItems: "center",
     margin: "0 auto",
     padding: 50,
-    height: "100%",
-    width: "100%",
+    height: "auto",
+    width: "100vw",
   },
   profileCard: {
     display: "flex",
@@ -138,10 +138,10 @@ const styles = () => ({
   },
   birthdayDate: {
     display: "inline-flex",
-    flexDirection: "row",
+    flexDirection: "column",
   },
   birthdayPart: {
-    display: "inline-flex",
+    display: "flex",
     flexDirection: "row",
   },
   editLocationLabel: {
@@ -240,20 +240,30 @@ class EditProfile extends Component {
             </thead>
             <tbody className={classes.birthdayDate}>
               <tr className={classes.birthdayPart}>
-                <td>Country</td>
-                <input
-                  className={classes.inputBoxNumbers}
-                  name="country"
-                  type="dropdown"
-                  value="Nigeria"
-                />
-                <td>City</td>
-                <input
-                  className={classes.inputBoxNumbers}
-                  name="city"
-                  type="dropdown"
-                  value="Lagos"
-                />
+                <td class="dropdown">
+                  Country
+                  <form
+                    action=""
+                    name="FILTER"
+                    className={classes.inputBoxNumbers}
+                  >
+                    <select name="filter_for">
+                      <option value="Nigeria">Nigeria</option>
+                    </select>
+                  </form>
+                </td>
+                <td class="dropdown">
+                  City
+                  <form
+                    action=""
+                    name="FILTER"
+                    className={classes.inputBoxNumbers}
+                  >
+                    <select name="filter_for">
+                      <option value="Lagos">Lagos</option>
+                    </select>
+                  </form>
+                </td>
               </tr>
             </tbody>
           </table>
