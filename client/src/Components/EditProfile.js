@@ -70,38 +70,6 @@ const styles = () => ({
     fontWeight: 500,
     color: "#717171",
   },
-  newsCount: {
-    display: "inline-flex",
-    margin: 18,
-    color: "#717171",
-  },
-  editProfile: {
-    display: "inline-flex",
-    margin: 18,
-    fontWeight: "bold",
-  },
-  accountSettings: {
-    display: "inline-flex",
-    margin: 18,
-    fontWeight: "bold",
-  },
-  signOut: {
-    display: "inline-flex",
-    margin: 18,
-    fontWeight: "bold",
-  },
-  editIcon: {
-    display: "inline-flex",
-    marginLeft: 18,
-  },
-  settingsOutlinedIcon: {
-    display: "inline-flex",
-    marginLeft: 18,
-  },
-  powerSettingsNewOutlinedIcon: {
-    display: "inline-flex",
-    marginLeft: 18,
-  },
   inputBox: {
     backgroundColor: "#F6F6F6",
     border: "none",
