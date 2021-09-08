@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Button from "./Button.js";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = () => ({
   Profile: {
@@ -119,6 +120,11 @@ const styles = () => ({
     fontWeight: 500,
     color: "#717171",
   },
+  arrowBackIcon: {
+    fontSize: 30,
+    margin: 5,
+    cursor: "pointer",
+  },
 });
 
 class EditProfile extends Component {
@@ -127,6 +133,7 @@ class EditProfile extends Component {
     return (
       <div className={classes.Profile}>
         <Card className={classes.profileCard}>
+          <ArrowBackIcon className={classes.arrowBackIcon} />
           <div>
             <img
               className={classes.profilePhoto}
