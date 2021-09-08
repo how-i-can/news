@@ -8,6 +8,7 @@ import Login from "./Login";
 import CommunityWallPage from "./CommunityWallPage";
 import Logout from "./Logout";
 import Profile from "./Profile";
+import AccountSettings from "./AccountSettings";
 
 const styles = {
   root: {
@@ -46,6 +47,9 @@ class App extends Component {
               </Route>
               <Route path="/profile">
                 <Profile />
+              </Route>
+              <Route path="/accountsettings">
+                <AccountSettings />
               </Route>
               <Logout />
             </Switch>
