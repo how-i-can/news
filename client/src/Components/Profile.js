@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import EditIcon from "@material-ui/icons/Edit";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import PowerSettingsNewOutlinedIcon from "@material-ui/icons/PowerSettingsNewOutlined";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = () => ({
   Profile: {
@@ -71,6 +72,11 @@ const styles = () => ({
     display: "inline-flex",
     marginLeft: 18,
   },
+  arrowBackIcon: {
+    fontSize: 30,
+    margin: 10,
+    cursor: "pointer",
+  },
 });
 
 class Profile extends Component {
@@ -79,6 +85,7 @@ class Profile extends Component {
     return (
       <div className={classes.Profile}>
         <Card>
+          <ArrowBackIcon className={classes.arrowBackIcon} />
           <div>
             <img
               className={classes.profilePhoto}
