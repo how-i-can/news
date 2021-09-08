@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Button from "./Button.js";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 const styles = () => ({
   Profile: {
@@ -70,11 +71,6 @@ const styles = () => ({
     color: "#717171",
     cursor: "pointer",
   },
-  editProfile: {
-    display: "inline-flex",
-    margin: 18,
-    fontWeight: "bold",
-  },
   inputBox: {
     backgroundColor: "#F6F6F6",
     border: "none",
@@ -104,6 +100,11 @@ const styles = () => ({
   deleteAccountMessage: {
     fontWeight: "bold",
   },
+  arrowBackIcon: {
+    fontSize: 30,
+    margin: 5,
+    cursor: "pointer",
+  },
 });
 
 class AccountSettings extends Component {
@@ -113,6 +114,7 @@ class AccountSettings extends Component {
       <div className={classes.Profile}>
         <Card className={classes.profileCard}>
           <div>
+            <ArrowBackIcon className={classes.arrowBackIcon} />
             <img
               className={classes.profilePhoto}
               alt=""
