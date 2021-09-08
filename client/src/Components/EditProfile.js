@@ -1,21 +1,28 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import Button from "./Button.js";
 
 const styles = () => ({
   Profile: {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     margin: "0 auto",
-    paddingTop: 20,
-    paddingLeft: 420,
+    padding: 50,
+    height: "100%",
+    width: "100%",
   },
   profileCard: {
     display: "flex",
     flexDirection: "column",
+    justifyContent: "left",
+    alignItems: "left",
     margin: "0 auto",
-    paddingLeft: 50,
+    padding: 50,
+    height: "100%",
+    width: "100%",
   },
   profilePhoto: {
     display: "flex",
@@ -25,35 +32,41 @@ const styles = () => ({
     width: 160,
     height: 160,
     borderRadius: 80,
+    cursor: "pointer",
   },
   changePhoto: {
     textAlign: "center",
+    cursor: "pointer",
   },
   personalInformation: {
     display: "inline-flex",
     justifyContent: "space-around",
     textAlign: "left",
+    alignItems: "left",
     margin: 18,
     fontWeight: 800,
   },
   fullName: {
     display: "inline-flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "left",
     height: "50",
   },
   fullNameLabel: {
     display: "inline-flex",
-    justifyContent: "space-around",
+    justifyContent: "left",
     textAlign: "left",
+    alignItems: "left",
     margin: 18,
     fontWeight: 500,
     color: "#717171",
   },
   editBioLabel: {
     display: "inline-flex",
-    justifyContent: "space-around",
+    justifyContent: "left",
     textAlign: "left",
+    alignItems: "left",
+    margin: 18,
     fontWeight: 500,
     color: "#717171",
   },
@@ -129,7 +142,14 @@ const styles = () => ({
   },
   birthdayPart: {
     display: "inline-flex",
-    flexDirection: "column",
+    flexDirection: "row",
+  },
+  editLocationLabel: {
+    display: "inline-flex",
+    justifyContent: "space-around",
+    textAlign: "left",
+    fontWeight: 500,
+    color: "#717171",
   },
 });
 
@@ -210,6 +230,34 @@ class EditProfile extends Component {
               </tr>
             </tbody>
           </table>
+          <table className={classes.editLocation}>
+            <thead>
+              <tr>
+                <th colspan="6" className={classes.editLocationLabel}>
+                  Location
+                </th>
+              </tr>
+            </thead>
+            <tbody className={classes.birthdayDate}>
+              <tr className={classes.birthdayPart}>
+                <td>Country</td>
+                <input
+                  className={classes.inputBoxNumbers}
+                  name="country"
+                  type="dropdown"
+                  value="Nigeria"
+                />
+                <td>City</td>
+                <input
+                  className={classes.inputBoxNumbers}
+                  name="city"
+                  type="dropdown"
+                  value="Lagos"
+                />
+              </tr>
+            </tbody>
+          </table>
+          <Button>Save changes</Button>
         </Card>
       </div>
     );
