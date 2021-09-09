@@ -108,23 +108,14 @@ const styles = () => ({
 });
 
 class CreatePost extends Component {
-  state = { showCreatePost: true };
+  state = { showCreatePost: false };
 
-  handleCreatePostModalClick = () => {
-    const showModalUpdate = !this.state.showCreatePost;
-    console.log("ShowModalUpdate", showModalUpdate);
-    this.setState({ showCreatePost: showModalUpdate });
-  };
-
-  render() {
+  render(props) {
     const { classes } = this.props;
 
     return (
       <div className={classes.CreatePost}>
-        <div
-          className={classes.cancelOption}
-          onClick={this.handleCreatePostModalClick}
-        >
+        <div className={classes.cancelOption} onClick={this.props.data}>
           <CloseIcon className={classes.cancelIcon} />
           <span className={classes.cancelOptionText}>Cancel</span>
         </div>

@@ -75,11 +75,15 @@ const styles = () => ({
 });
 
 class MyWallPage extends Component {
-  state = { showCreatePost: false };
+  state = { showCreatePost: true };
 
-  handleCreatePostModalClick = () => {
+  handleCreatePostModalOpen = () => {
     const showModalUpdate = !this.state.showCreatePost;
-    console.log("ShowModalUpdate", showModalUpdate);
+    this.setState({ showCreatePost: showModalUpdate });
+  };
+
+  handleCreatePostModalClose = () => {
+    const showModalUpdate = !this.state.showCreatePost;
     this.setState({ showCreatePost: showModalUpdate });
   };
 
@@ -96,7 +100,9 @@ class MyWallPage extends Component {
             <SearchIcon />
           </div>
           <div className={classes.pageTop}>
-            {this.state.showCreatePost && <CreatePost />}
+            {this.state.showCreatePost && (
+              <CreatePost data={this.handleCreatePostModalClose} />
+            )}
             <h1 className={classes.userName}>Jessica Brown</h1>
             <p>Post good things that happened to you.</p>
           </div>
@@ -119,7 +125,7 @@ class MyWallPage extends Component {
           color="primary"
           aria-label="add"
           className={classes.fabButton}
-          onClick={this.handleCreatePostModalClick}
+          onClick={this.handleCreatePostModalOpen}
         >
           <AddIcon />
         </Fab>
