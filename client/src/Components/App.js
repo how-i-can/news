@@ -9,6 +9,7 @@ import CommunityWallPage from "./CommunityWallPage";
 import Logout from "./Logout";
 import EditProfile from "./EditProfile";
 import Profile from "./Profile";
+import AccountDeleted from "./AccountDeleted";
 import Password from "./Password";
 
 const styles = {
@@ -51,6 +52,8 @@ class App extends Component {
               <Route path="/profile">
                 <Profile />
               </Route>
+              <Route path="/accountdeleted">
+                <AccountDeleted />
               <Route path="/password">
                 <Password />
               </Route>
