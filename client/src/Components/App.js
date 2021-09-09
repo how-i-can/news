@@ -54,13 +54,16 @@ class App extends Component {
               </Route>
               <Route path="/editprofile">
                 <EditProfile />
+              </Route>
               <Route path="/profile">
                 <Profile />
               </Route>
               <Route path="/accountsettings">
                 <AccountSettings />
+              </Route>
               <Route path="/accountdeleted">
                 <AccountDeleted />
+              </Route>
               <Route path="/password">
                 <Password />
               </Route>
