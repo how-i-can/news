@@ -7,8 +7,11 @@ import Registration from "./Registration";
 import Login from "./Login";
 import CommunityWallPage from "./CommunityWallPage";
 import Logout from "./Logout";
+import EditProfile from "./EditProfile";
 import Profile from "./Profile";
 import AccountSettings from "./AccountSettings";
+import AccountDeleted from "./AccountDeleted";
+import Password from "./Password";
 
 const styles = {
   root: {
@@ -45,11 +48,17 @@ class App extends Component {
               <Route path="/signin">
                 <Login />
               </Route>
+              <Route path="/editprofile">
+                <EditProfile />
               <Route path="/profile">
                 <Profile />
               </Route>
               <Route path="/accountsettings">
                 <AccountSettings />
+              <Route path="/accountdeleted">
+                <AccountDeleted />
+              <Route path="/password">
+                <Password />
               </Route>
               <Logout />
             </Switch>
