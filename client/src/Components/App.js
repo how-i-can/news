@@ -5,6 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import LandingPage from "./LandingPage";
 import Registration from "./Registration";
 import Login from "./Login";
+import MyWallPage from "./MyWallPage";
 import CommunityWallPage from "./CommunityWallPage";
 import Logout from "./Logout";
 import EditProfile from "./EditProfile";
@@ -38,6 +39,9 @@ class App extends Component {
             <Switch>
               <Route exact path="/">
                 <LandingPage />
+              </Route>
+              <Route path="/mywall">
+                <MyWallPage />
               </Route>
               <Route path="/community">
                 <CommunityWallPage />
