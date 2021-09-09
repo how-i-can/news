@@ -139,7 +139,7 @@ class AccountSettings extends Component {
               className={classes.inputBox}
               name="emailAddress"
               type="text"
-              value="jessbrown@gmail.com"
+              value="emailaddress@gmail.com"
             />
           </form>
           <form className={classes.editUserName}>
