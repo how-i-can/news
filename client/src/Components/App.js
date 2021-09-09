@@ -9,6 +9,7 @@ import CommunityWallPage from "./CommunityWallPage";
 import Logout from "./Logout";
 import EditProfile from "./EditProfile";
 import Profile from "./Profile";
+import AccountSettings from "./AccountSettings";
 import AccountDeleted from "./AccountDeleted";
 import Password from "./Password";
 
@@ -52,6 +53,8 @@ class App extends Component {
               <Route path="/profile">
                 <Profile />
               </Route>
+              <Route path="/accountsettings">
+                <AccountSettings />
               <Route path="/accountdeleted">
                 <AccountDeleted />
               <Route path="/password">
