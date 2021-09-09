@@ -4,6 +4,7 @@ import PublicIcon from "@material-ui/icons/Public";
 import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
 import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
+import Button from "./Button.js";
 
 const styles = () => ({
   CreatePost: {
@@ -143,7 +144,7 @@ class CreatePost extends Component {
               <PublicIcon className={classes.postIcon} />
             </div>
           </div>
-          <button className={classes.postButton}>Post to My Wall</button>
+          <Button>Post to My Wall</Button>
         </div>
       </div>
     );

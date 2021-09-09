@@ -26,6 +26,7 @@ const styles = () => ({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+    cursor: "pointer",
     "&:hover": {
       color: "blue",
     },

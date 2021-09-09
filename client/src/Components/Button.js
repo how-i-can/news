@@ -10,6 +10,8 @@ const useStyles = makeStyles(() => ({
     borderRadius: "40px",
     textTransform: "none",
     marginTop: "8px",
+    fontFamily: "Lato",
+    fontWeight: "bold",
     "&:hover": {
       backgroundColor: "#fba53c",
     },
