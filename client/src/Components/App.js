@@ -5,8 +5,10 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import LandingPage from "./LandingPage";
 import Registration from "./Registration";
 import Login from "./Login";
+import CommunityWallPage from "./CommunityWallPage";
 import Logout from "./Logout";
 import EditProfile from "./EditProfile";
+import Profile from "./Profile";
 
 const styles = {
   root: {
@@ -34,6 +36,9 @@ class App extends Component {
               <Route exact path="/">
                 <LandingPage />
               </Route>
+              <Route path="/community">
+                <CommunityWallPage />
+              </Route>
               <Route path="/signup">
                 <Registration />
               </Route>
@@ -42,6 +47,8 @@ class App extends Component {
               </Route>
               <Route path="/editprofile">
                 <EditProfile />
+              <Route path="/profile">
+                <Profile />
               </Route>
               <Logout />
             </Switch>

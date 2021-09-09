@@ -157,16 +157,16 @@ const Login = () => {
       </form>
       <span className={classes.or}>or</span>
       <br />
-        <div className={classes.loginService}>
-          <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            buttonText="Continue with Google"
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={"single_host_origin"}
-            isSignedIn={true}
-          />
-        </div>
+      <div className={classes.loginService}>
+        <GoogleLogin
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+          buttonText="Continue with Google"
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          cookiePolicy={"single_host_origin"}
+          isSignedIn={true}
+        />
+      </div>
       <br />
       <div className={classes.signupService}>
         <h4 className={classes.font} style={{ color: "#717171" }}>
