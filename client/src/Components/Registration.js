@@ -9,6 +9,7 @@ import googleIcon from "../images/google.svg";
 import Input from "./Input";
 import Button from "./Button";
 import visibilityIcon from "../images/visibility_off.svg";
+import "firebaseui/dist/firebaseui.css";
 
 const useStyles = makeStyles(styles => ({
   form: {
